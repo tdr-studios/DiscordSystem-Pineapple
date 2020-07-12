@@ -8,8 +8,19 @@ public enum Emojis {
 	GRIN("work-in-progress"),
 	SWEAT_SMILE("😅"),
 	LAUGING("😆"),
-	INTELLIJ("🚽");
-	
+	INTELLIJ("🚽"),
+	WINK("😉"),
+	BLUSH("😊"),
+	YUM("😋"),
+	PENSIVE("😌"),
+	HEART_EYEY("😍"),
+	SEYY("😏"),
+	UNAMUSED("😒"),
+	SWEAT("😓"),
+	DISSAPOINTET("😔"),
+	CONFOUNDED("😖"),
+	KISSING_HEART("😘"),
+	RELAXED("😚")
 	
 
 

@@ -1,7 +1,7 @@
 package de.dseelp.discordsystem.api;
 
-import de.dseelp.event.EventListener;
-import de.dseelp.event.EventManager;
+import de.dseelp.discordsystem.utils.EventManager;
+import de.dseelp.discordsystem.utils.Listener;
 import lombok.Getter;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.sharding.DefaultShardManagerBuilder;
@@ -38,7 +38,7 @@ public class DiscordBot {
         shardManager.shutdown();
     }
 
-    public void addListener(EventListener<?> listener) {
+    public void addListener(DiscordModule module, Listener listener) {
         eventManager.addListener(listener);
     }
 }

@@ -43,6 +43,11 @@
             <artifactId>JDA</artifactId>
             <version>4.2.0_168</version>
         </dependency>
+        <dependency>
+            <groupId>de.dseelp.discordsystem</groupId>
+            <artifactId>utils</artifactId>
+            <version>0.0.1-ALPHA</version>
+        </dependency>
     </dependencies>
 
 

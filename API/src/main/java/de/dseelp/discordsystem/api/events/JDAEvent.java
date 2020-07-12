@@ -1,6 +1,6 @@
 package de.dseelp.discordsystem.api.events;
 
-import de.dseelp.event.Event;
+import de.dseelp.discordsystem.utils.Event;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import net.dv8tion.jda.api.JDA;

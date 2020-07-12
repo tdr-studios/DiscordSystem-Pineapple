@@ -20,7 +20,18 @@ public enum Emojis {
 	DISSAPOINTET("😔"),
 	CONFOUNDED("😖"),
 	KISSING_HEART("😘"),
-	RELAXED("😚")
+	RELAXED("😚"),
+	ZANY_FACE("😜"),
+	STUCK_OUT_TOUNGE_CLOSED_EYES("😝"),
+	PENSIVE2("😞"), // two diffrent Names on Global and Discord Use
+	WORRIED("😠"),
+	RAGE("😡"),
+	CRY("😢"),
+	TRIUMPF("😤"),
+	DISAPPOINTET_RELIEVED("😥"),
+	FEARFUL("😨");
+	
+	
 	
 
 

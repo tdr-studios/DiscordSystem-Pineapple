@@ -1,5 +1,6 @@
 package de.dseelp.discordsystem.api;
-import de.dseelp.event.EventManager;
+
+import de.dseelp.discordsystem.utils.EventManager;
 import net.dv8tion.jda.api.events.*;
 import net.dv8tion.jda.api.events.channel.category.CategoryCreateEvent;
 import net.dv8tion.jda.api.events.channel.category.CategoryDeleteEvent;
@@ -195,7 +196,6 @@ public class ShardEventListener extends ListenerAdapter {
 
     @Override
     public void onGuildMessageReceived(@Nonnull GuildMessageReceivedEvent event) {
-        System.out.println("receive");
         eventManager.callEvent(new de.dseelp.discordsystem.api.events.GuildMessageReceivedEvent(event.getJDA(), event.getGuild(), event.getMessage()));
     }
 

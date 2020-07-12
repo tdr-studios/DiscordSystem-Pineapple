@@ -1,12 +1,13 @@
 package de.dseelp.discordsystem.utils;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 public class EventManager {
-    private List<Listener> listeners;
+    private List<Listener> listeners = new ArrayList<>();
     public void callEvent(Event event) {
         final Class<?> eventClass = event.getClass();
         for (Listener listener : this.listeners) {
@@ -20,14 +21,26 @@ public class EventManager {
                         if (method.getParameterCount() == 1) {
                             for (Class<?> parameterType : method.getParameterTypes()) {
                                 if (parameterType.getName().equals(eventClass.getName())) {
-                                    listeners.add(listener);
+                                    method.setAccessible(true);
+                                    try {
+                                        method.invoke(listener, event);
+                                    } catch (IllegalAccessException | InvocationTargetException e) {
+                                        e.printStackTrace();
+                                    }
                                 }
                             }
                         }
                     }
-
                 }
             }
         }
+    }
+
+    public void addListener(Listener listener) {
+        listeners.add(listener);
+    }
+
+    public void removeListener(Listener listener) {
+        listeners.remove(listener);
     }
 }

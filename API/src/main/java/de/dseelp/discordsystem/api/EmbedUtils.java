@@ -17,4 +17,16 @@ public class EmbedUtils {
     public static MessageEmbed createError(String title, String description) {
         return createErrorBuilder(title, description).build();
     }
+
+    public static EmbedBuilder createNormalBuilder(String title, String description) {
+        EmbedBuilder builder = new EmbedBuilder();
+        builder.setColor(Color.ORANGE);
+        builder.setTitle(title);
+        builder.setDescription(description);
+        return builder;
+    }
+
+    public static MessageEmbed createNormal(String title, String description) {
+        return createErrorBuilder(title, description).build();
+    }
 }

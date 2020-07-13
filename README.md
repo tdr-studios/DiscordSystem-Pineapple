@@ -12,7 +12,7 @@
 1. Emojis Support
 2. General System
 3. API
-4. Kepp things alive!
+4. Keep things alive!
 
 **At the Next Time:**
 

@@ -20,11 +20,14 @@
 
 	<dependencies>
 		<dependency>
+<<<<<<< HEAD
 			<groupId>de.dseelp.discordsystem</groupId>
 			<artifactId>API</artifactId>
 			<version>0.0.1-ALPHA</version>
 		</dependency>
 		<dependency>
+=======
+>>>>>>> 087e19de3b1fc4383614c32a9e537ee2fad95b83
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
@@ -39,12 +42,27 @@
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
 		</dependency>
+<<<<<<< HEAD
 
+=======
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+>>>>>>> 087e19de3b1fc4383614c32a9e537ee2fad95b83
 	</dependencies>
 
 	<build>
 		<plugins>
 			<plugin>
+<<<<<<< HEAD
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
 				<version>3.2.1</version>
@@ -75,6 +93,10 @@
 						</manifestEntries>
 					</archive>
 				</configuration>
+=======
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+>>>>>>> 087e19de3b1fc4383614c32a9e537ee2fad95b83
 			</plugin>
 		</plugins>
 	</build>

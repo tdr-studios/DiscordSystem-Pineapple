@@ -1,0 +1,8 @@
+diff a/API/src/main/java/de/dseelp/discordsystem/api/EmbedUtils.java b/API/src/main/java/de/dseelp/discordsystem/api/EmbedUtils.java	(rejected hunks)
+@@ -30,4 +30,6 @@
+     public static MessageEmbed createNormal(String title, String description) {
+         return createErrorBuilder(title, description).build();
+     }
++=======
++>>>>>>> 087e19de3b1fc4383614c32a9e537ee2fad95b83
+ }

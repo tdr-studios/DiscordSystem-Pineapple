@@ -40,7 +40,6 @@
             <version>1.0</version>
             <scope>provided</scope>
         </dependency>
-<<<<<<< HEAD
 
         <dependency>
             <groupId>com.github.gwenn</groupId>
@@ -52,8 +51,6 @@
             <artifactId>sqlite-jdbc</artifactId>
             <version>3.30.1</version>
         </dependency>
-=======
->>>>>>> 087e19de3b1fc4383614c32a9e537ee2fad95b83
     </dependencies>
 
 

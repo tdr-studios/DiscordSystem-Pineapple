@@ -23,7 +23,7 @@ public class DiscordBot {
     private final CommandSystem commandSystem;
 
     public void start() {
-        if (shardManager == null) {
+        if (shardManager != null) {
             try {
                 shardManager = DefaultShardManagerBuilder.createDefault(token)
                 .build();

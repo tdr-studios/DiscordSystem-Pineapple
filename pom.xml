@@ -25,4 +25,16 @@
         </dependency>
     </dependencies>
 
+    <repositories>
+        <repository>
+            <id>jcenter</id>
+            <name>jcenter-bintray</name>
+            <url>https://jcenter.bintray.com</url>
+        </repository>
+        <repository>
+            <id>ModuleSystem</id>
+            <url>https://raw.githubusercontent.com/DSeeLPYT/repo/repository/</url>
+        </repository>
+    </repositories>
+
 </project>

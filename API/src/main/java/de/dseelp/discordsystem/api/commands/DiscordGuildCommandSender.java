@@ -1,8 +1,7 @@
 package de.dseelp.discordsystem.api.commands;
 
-import de.dseelp.discordsystem.api.events.GuildMessageReceivedEvent;
-import net.dv8tion.jda.api.entities.Message;
-import net.dv8tion.jda.api.entities.MessageEmbed;
+import de.dseelp.discordsystem.api.events.discord.guild.GuildMessageReceivedEvent;
+import net.dv8tion.jda.api.entities.*;
 import net.dv8tion.jda.api.requests.RestAction;
 
 public class DiscordGuildCommandSender implements CommandSender {
@@ -10,6 +9,22 @@ public class DiscordGuildCommandSender implements CommandSender {
 
     public DiscordGuildCommandSender(GuildMessageReceivedEvent event) {
         this.event = event;
+    }
+
+    public User getAuthor() {
+        return event.getAuthor();
+    }
+
+    public Guild getGuild() {
+        return event.getGuild();
+    }
+
+    public Message getMessage() {
+        return event.getMessage();
+    }
+
+    public TextChannel getChannel() {
+        return event.getChannel();
     }
 
     @Override

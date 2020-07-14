@@ -2,6 +2,8 @@ package de.dseelp.discordsystem.core.spring.components;
 
 import de.dseelp.discordsystem.api.Discord;
 import de.dseelp.discordsystem.api.DiscordBot;
+import de.dseelp.discordsystem.api.commands.CommandSystem;
+import de.dseelp.discordsystem.core.module.commands.guild.TestCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

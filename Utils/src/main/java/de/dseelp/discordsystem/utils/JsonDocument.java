@@ -83,6 +83,14 @@ public class JsonDocument {
         object.add(key, array);
     }
 
+    public void addElement(String key, JsonElement element) {
+        object.add(key, element);
+    }
+
+    public void addDocument(String key, JsonDocument document) {
+        object.add(key, document.getObject());
+    }
+
     public String getString(String key) {
         return object.get(key).getAsString();
     }

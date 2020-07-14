@@ -1,4 +1,4 @@
-package de.dseelp.discordsystem.utils;
+package de.dseelp.discordsystem.api.event;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

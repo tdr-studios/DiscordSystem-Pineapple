@@ -8,8 +8,6 @@ import de.dseelp.discordsystem.core.spring.listeners.AppFinishedStartedListener;
 import de.dseelp.discordsystem.api.BotConfig;
 import de.dseelp.discordsystem.api.Discord;
 import de.dseelp.discordsystem.api.DiscordBot;
-import de.dseelp.discordsystem.api.commands.CommandSystem;
-import de.dseelp.discordsystem.utils.EventManager;
 import lombok.Getter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -25,7 +23,7 @@ public class DiscordSystemApplication {
 	@Bean
 	public DiscordBot discordBot() {
 		System.out.println("Creating DC Bot");
-		return new DiscordBot(BotConfig.getToken(), new EventManager(), new CommandSystem());
+		return new DiscordBot(BotConfig.getToken());
 	}
 
 	public static void main(String[] args) {

@@ -23,6 +23,7 @@ public class DiscordSystemApplication {
 	@Bean
 	public DiscordBot discordBot() {
 		System.out.println("Creating DC Bot");
+
 		return new DiscordBot(BotConfig.getToken());
 	}
 

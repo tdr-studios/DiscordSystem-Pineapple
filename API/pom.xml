@@ -23,7 +23,13 @@
         </plugins>
     </build>
 
+
+
     <repositories>
+        <repository>
+            <id>Build</id>
+            <url>https://raw.githubusercontent.com/DSeeLPYT/repo/repository/</url>
+        </repository>
         <repository>
             <id>jcenter</id>
             <name>jcenter-bintray</name>

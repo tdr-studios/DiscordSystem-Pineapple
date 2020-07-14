@@ -11,9 +11,12 @@
     <version>0.0.1-ALPHA</version>
 
     <modules>
-        <module>Core</module>
-        <module>API</module>
         <module>Utils</module>
+        <module>API</module>
+        <module>Core</module>
+        <module>SAY-Command</module>
+
+
     </modules>
 
     <dependencies>

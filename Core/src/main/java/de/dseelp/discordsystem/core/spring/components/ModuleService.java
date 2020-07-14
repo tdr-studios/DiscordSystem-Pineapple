@@ -1,5 +1,8 @@
 package de.dseelp.discordsystem.core.spring.components;
 
+import de.dseelp.discordsystem.api.Discord;
+import de.dseelp.discordsystem.api.DiscordModule;
+import de.dseelp.discordsystem.core.module.RootModule;
 import de.dseelp.modules.Module;
 import de.dseelp.modules.ModuleLoader;
 import de.dseelp.modules.ModuleManager;
@@ -18,30 +21,54 @@ public class ModuleService {
     @Getter
     private ModuleLoader loader;
 
+    private RootModule rootModule;
+
     @Getter
     private static final File moduleFolder = new File("modules");
+
+    public ModuleService() {
+        loader = new NewModuleLoader();
+        manager = new CustomModuleManager(loader);
+    }
 
     @PostConstruct
     public void load() {
         System.out.println("Load");
-        loader = new NewModuleLoader();
-        manager = new NewModuleManager(loader);
         if (!moduleFolder.exists()) moduleFolder.mkdirs();
         manager.loadFolder(moduleFolder);
     }
 
     @PostConstruct
     public void enableAll() {
+        rootModule = new RootModule();
         for (Module module : manager.getModules()) {
             module.setEnabled(true);
         }
         System.out.println("Enable");
+        rootModule.setEnabled(true);
     }
 
     public void stop() {
+        rootModule.setEnabled(false);
         for (Module module : manager.getModules()) {
             module.setEnabled(false);
         }
         manager.unloadAll();
+    }
+
+    private class CustomModuleManager extends NewModuleManager {
+
+        public CustomModuleManager(ModuleLoader loader) {
+            super(loader);
+        }
+
+        @Override
+        public void disable(String name) {
+            Module module = getModule(name);
+            if (module instanceof DiscordModule) {
+                Discord.getCommandSystem().removeCommandsForModule((DiscordModule) module);
+            }
+            super.disable(name);
+        }
     }
 }

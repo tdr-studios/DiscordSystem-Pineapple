@@ -1,6 +1,6 @@
 package de.dseelp.discordsystem.api;
 
-import de.dseelp.discordsystem.utils.EventManager;
+import de.dseelp.discordsystem.api.event.EventManager;
 import net.dv8tion.jda.api.events.*;
 import net.dv8tion.jda.api.events.channel.category.CategoryCreateEvent;
 import net.dv8tion.jda.api.events.channel.category.CategoryDeleteEvent;
@@ -196,32 +196,32 @@ public class ShardEventListener extends ListenerAdapter {
 
     @Override
     public void onGuildMessageReceived(@Nonnull GuildMessageReceivedEvent event) {
-        eventManager.callEvent(new de.dseelp.discordsystem.api.events.GuildMessageReceivedEvent(event.getJDA(), event.getGuild(), event.getMessage()));
+        eventManager.callEvent(new de.dseelp.discordsystem.api.events.discord.guild.GuildMessageReceivedEvent(event.getJDA(), event.getGuild(), event.getMessage()));
     }
 
     @Override
     public void onGuildMessageUpdate(@Nonnull GuildMessageUpdateEvent event) {
-        eventManager.callEvent(new de.dseelp.discordsystem.api.events.GuildMessageUpdateEvent(event.getJDA(), event.getGuild(), event.getMessage()));
+        eventManager.callEvent(new de.dseelp.discordsystem.api.events.discord.guild.GuildMessageUpdateEvent(event.getJDA(), event.getGuild(), event.getMessage()));
     }
 
     @Override
     public void onGuildMessageDelete(@Nonnull GuildMessageDeleteEvent event) {
-        eventManager.callEvent(new de.dseelp.discordsystem.api.events.GuildMessageDeleteEvent(event.getJDA(), event.getGuild(), event.getChannel(), event.getMessageIdLong()));
+        eventManager.callEvent(new de.dseelp.discordsystem.api.events.discord.guild.GuildMessageDeleteEvent(event.getJDA(), event.getGuild(), event.getChannel(), event.getMessageIdLong()));
     }
 
     @Override
     public void onGuildMessageEmbed(@Nonnull GuildMessageEmbedEvent event) {
-        eventManager.callEvent(new de.dseelp.discordsystem.api.events.GuildMessageEmbedEvent(event.getJDA(), event.getGuild(), event.getChannel(), event.getMessageIdLong(), event.getMessageEmbeds()));
+        eventManager.callEvent(new de.dseelp.discordsystem.api.events.discord.guild.GuildMessageEmbedEvent(event.getJDA(), event.getGuild(), event.getChannel(), event.getMessageIdLong(), event.getMessageEmbeds()));
     }
 
     @Override
     public void onGuildMessageReactionAdd(@Nonnull GuildMessageReactionAddEvent event) {
-        eventManager.callEvent(new de.dseelp.discordsystem.api.events.GuildMessageReactionAddEvent(event.getJDA(), event.getGuild(), event.getMember(), event.getReaction(), event.getUserIdLong()));
+        eventManager.callEvent(new de.dseelp.discordsystem.api.events.discord.guild.GuildMessageReactionAddEvent(event.getJDA(), event.getGuild(), event.getMember(), event.getReaction(), event.getUserIdLong()));
     }
 
     @Override
     public void onGuildMessageReactionRemove(@Nonnull GuildMessageReactionRemoveEvent event) {
-        eventManager.callEvent(new de.dseelp.discordsystem.api.events.GuildMessageReactionRemoveEvent(event.getJDA(), event.getGuild(), event.getMember(), event.getReaction(), event.getUserIdLong()));
+        eventManager.callEvent(new de.dseelp.discordsystem.api.events.discord.guild.GuildMessageReactionRemoveEvent(event.getJDA(), event.getGuild(), event.getMember(), event.getReaction(), event.getUserIdLong()));
     }
 
     @Override

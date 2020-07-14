@@ -1,6 +1,6 @@
 package de.dseelp.discordsystem.core.spring.components;
 
-import de.dseelp.discordsystem.core.commands.console.StopCommand;
+import de.dseelp.discordsystem.core.module.commands.console.StopCommand;
 import de.dseelp.discordsystem.api.Discord;
 import de.dseelp.discordsystem.api.commands.CommandSystem;
 import de.dseelp.discordsystem.api.commands.ConsoleCommandSender;
@@ -22,7 +22,7 @@ public class ConsoleService {
         thread = new Thread(new Runnable() {
             @Override
             public void run() {
-                CommandSystem system = Discord.getBot().getCommandSystem();
+                CommandSystem system = Discord.getCommandSystem();
                 try {
                     bufferedReader = new BufferedReader(new InputStreamReader(System.in));
                     String line;
@@ -37,12 +37,6 @@ public class ConsoleService {
         });
         started = true;
         thread.start();
-    }
-
-    @PostConstruct
-    public void registerCommands() {
-        CommandSystem system = Discord.getBot().getCommandSystem();
-        system.registerCommand(new StopCommand());
     }
 
     public void stop() {

@@ -2,6 +2,7 @@ package de.dseelp.discordsystem.api;
 
 import de.dseelp.discordsystem.utils.config.JsonConfig;
 import lombok.SneakyThrows;
+import net.dv8tion.jda.api.OnlineStatus;
 
 import java.io.File;
 
@@ -14,7 +15,27 @@ public class BotConfig {
         if (!file.exists()) file.createNewFile();
         config = JsonConfig.load(file);
         config.setDefault("token", "Enter Token here!");
+        config.setDefault("activity", "TDRStudios | System");
+        config.setDefault("activityType", ActivityType.PLAYING.toString());
+        config.setDefault("defaultOnlineStatus", OnlineStatus.DO_NOT_DISTURB.toString());
+        config.setDefault("commandPrefix", "+");
         config.save(file);
+    }
+
+    public static String getActivityName() {
+        return config.getString("activity");
+    }
+
+    public static OnlineStatus getOnlineStatus() {
+        return OnlineStatus.valueOf(config.getString("defaultOnlineStatus"));
+    }
+
+    public static ActivityType getActivityType() {
+        return ActivityType.valueOf(config.getString("activityType"));
+    }
+
+    public static String getCommandPrefix() {
+        return config.getString("commandPrefix");
     }
 
     public static String getToken() {

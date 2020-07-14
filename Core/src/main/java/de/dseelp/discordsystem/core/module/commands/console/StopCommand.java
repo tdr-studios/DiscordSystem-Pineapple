@@ -1,4 +1,4 @@
-package de.dseelp.discordsystem.core.commands.console;
+package de.dseelp.discordsystem.core.module.commands.console;
 
 import de.dseelp.discordsystem.core.DiscordSystemApplication;
 import de.dseelp.discordsystem.api.commands.Command;
@@ -8,7 +8,7 @@ import de.dseelp.discordsystem.api.commands.CommandType;
 public class StopCommand extends Command {
 
     public StopCommand() {
-        super(new String[]{"stop", "exit", "shutdown"}, null, "Stops the Application", CommandType.CONSOLE);
+        super(null, "Stops the Application", CommandType.CONSOLE, "stop", "exit", "shutdown");
     }
 
     @Override

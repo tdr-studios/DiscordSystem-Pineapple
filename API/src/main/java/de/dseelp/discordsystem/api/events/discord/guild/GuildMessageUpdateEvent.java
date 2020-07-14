@@ -1,4 +1,4 @@
-package de.dseelp.discordsystem.api.events;
+package de.dseelp.discordsystem.api.events.discord.guild;
 
 import lombok.Getter;
 import net.dv8tion.jda.api.JDA;

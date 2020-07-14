@@ -1,30 +1,56 @@
 package de.dseelp.discordsystem.api.commands;
 
-import de.dseelp.discordsystem.api.events.GuildMessageReceivedEvent;
-import de.dseelp.discordsystem.utils.EventHandler;
-import de.dseelp.discordsystem.utils.Listener;
+import de.dseelp.discordsystem.api.BotConfig;
+import de.dseelp.discordsystem.api.Discord;
+import de.dseelp.discordsystem.api.DiscordModule;
+import de.dseelp.discordsystem.api.events.discord.guild.GuildMessageReceivedEvent;
+import de.dseelp.discordsystem.api.event.EventHandler;
+import de.dseelp.discordsystem.api.event.Listener;
+import de.dseelp.discordsystem.api.events.system.CommandListRegenerateEvent;
 import lombok.Getter;
-import net.dv8tion.jda.api.Permission;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CommandSystem {
-    private List<Command> commands;
+    private HashMap<DiscordModule, List<Command>> commands;
     @Getter
     private CommandListener listener;
 
     public CommandSystem() {
-        commands = new ArrayList<>();
+        commands = new HashMap<>();
         listener = new CommandListener();
     }
 
-    public void registerCommand(Command command) {
-        if (!commandExists(command)) {
-            commands.add(command);
+    private Command[] commandArray = new Command[]{};
+
+    public Command[] getCommands() {
+        return commandArray;
+    }
+
+    private void regenerateCommandList() {
+        List<Command> commands = new ArrayList<>();
+        for (List<Command> value : this.commands.values()) {
+            commands.addAll(value);
         }
+        commandArray = commands.toArray(new Command[commands.size()]);
+        Discord.getEventManager().callEvent(new CommandListRegenerateEvent());
+    }
+
+    public void registerCommand(DiscordModule module, Command command) {
+        if (!commandExists(command)) {
+            commands.computeIfAbsent(module, k -> new ArrayList<>());
+            List<Command> commands = this.commands.get(module);
+            commands.add(command);
+            this.commands.put(module, commands);
+            regenerateCommandList();
+        }
+    }
+
+    public void removeCommandsForModule(DiscordModule module) {
+        commands.remove(module);
+        regenerateCommandList();
     }
 
     public boolean commandExists(Command command) {
@@ -36,10 +62,12 @@ public class CommandSystem {
 
     public Command getCommand(String name) {
         name = name.toLowerCase();
-        for (Command command : commands) {
-            for (String commandName : command.getNames()) {
-                if (commandName.toLowerCase().equals(name)) {
-                    return command;
+        for (Map.Entry<DiscordModule, List<Command>> entry : commands.entrySet()) {
+            for (Command command : entry.getValue()) {
+                for (String commandName : command.getNames()) {
+                    if (commandName.toLowerCase().equals(name)) {
+                        return command;
+                    }
                 }
             }
         }
@@ -48,7 +76,7 @@ public class CommandSystem {
 
     public void execute(CommandSender sender, ParsedCommand command) {
         if (command == null) return;
-        if (CommandType.isSupported(sender, command.getCommand().getType())) {
+        if (CommandType.isSupported(sender, command.getCommand().getTypes())) {
             command.getCommand().execute(sender, command.getArgs(), command.getCommand());
         }
     }
@@ -83,9 +111,11 @@ public class CommandSystem {
         @EventHandler
         public void onGuildMessageReceiveEvent(GuildMessageReceivedEvent event) {
             String message = event.getMessage().getContentRaw();
-            ParsedCommand command = parseCommand(message);
-            DiscordGuildCommandSender commandSender = new DiscordGuildCommandSender(event);
-            execute(commandSender, command);
+            if (message.toLowerCase().startsWith(BotConfig.getCommandPrefix())) {
+                ParsedCommand command = parseCommand(message);
+                DiscordGuildCommandSender commandSender = new DiscordGuildCommandSender(event);
+                execute(commandSender, command);
+            }
         }
     }
 }

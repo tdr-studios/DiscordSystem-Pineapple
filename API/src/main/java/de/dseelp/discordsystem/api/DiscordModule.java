@@ -9,10 +9,10 @@ public abstract class DiscordModule extends Module {
     }
 
     public void registerCommand(Command command) {
-       Discord.getBot().getCommandSystem().registerCommand(command);
+       Discord.getCommandSystem().registerCommand(this, command);
     }
 
     public Command getCommand(String name) {
-        return Discord.getBot().getCommandSystem().getCommand(name);
+        return Discord.getCommandSystem().getCommand(name);
     }
 }

@@ -14,7 +14,7 @@
         <module>Utils</module>
         <module>API</module>
         <module>Core</module>
-        <module>SAY-Command</module>
+
 
 
     </modules>

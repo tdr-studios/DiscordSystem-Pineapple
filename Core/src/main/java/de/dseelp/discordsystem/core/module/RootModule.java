@@ -4,6 +4,7 @@ import de.dseelp.discordsystem.api.Discord;
 import de.dseelp.discordsystem.api.DiscordModule;
 import de.dseelp.discordsystem.api.event.Listener;
 import de.dseelp.discordsystem.core.module.commands.SetStateCommand;
+import de.dseelp.discordsystem.core.module.commands.console.RestartCommand;
 import de.dseelp.discordsystem.core.module.commands.console.StopCommand;
 import de.dseelp.discordsystem.core.module.commands.HelpCommand;
 import de.dseelp.discordsystem.core.module.commands.guild.SayCommand;
@@ -18,7 +19,12 @@ public class RootModule extends DiscordModule implements Listener {
         registerCommand(new StopCommand());
         registerCommand(new TestCommand());
         registerCommand(new SayCommand());
-        registerCommand(new SetStateCommand());
+        if(!Discord.isMaintenance()) {
+            registerCommand(new SetStateCommand());
+        }
+
+        registerCommand(new RestartCommand());
+        registerCommand(new HelpCommand());
     }
 
 

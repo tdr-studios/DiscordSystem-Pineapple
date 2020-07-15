@@ -22,11 +22,12 @@ public class SayCommand extends Command {
         StringBuilder builder = new StringBuilder();
         boolean first = true;
         for (String arg : args) {
-            if (!first) builder.append(", ");
+           if (!first)  builder.append(", ");
             builder.append(arg);
             first = false;
         }
         EmbedBuilder eb = createNormalBuilder("Nachricht",   builder.toString());
+
         eb.setColor(1);
         eb.setFooter(guildSender.getAuthor().getName(), guildSender.getAuthor().getAvatarUrl());
         sender.sendMessage(eb.build()).queue();

@@ -18,7 +18,7 @@ public class BotConfig {
         config.setDefault("token", "Enter Token here!");
         config.setDefault("activity", "TDRStudios | System");
         config.setDefault("activityType", ActivityType.PLAYING.toString());
-        config.setDefault("defaultOnlineStatus", OnlineStatus.DO_NOT_DISTURB.toString());
+        config.setDefault("defaultOnlineStatus", OnlineStatus.ONLINE.toString());
         config.setDefault("commandPrefix", "+");
         config.setDefault("Say-Command Header", "Massage");
         config.save(file);

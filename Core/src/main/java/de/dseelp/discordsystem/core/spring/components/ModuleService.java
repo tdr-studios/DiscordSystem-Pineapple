@@ -23,6 +23,10 @@ public class ModuleService {
 
     private RootModule rootModule;
 
+    public static void reloadModules() {
+        //stop();
+    }
+
     @Getter
     private static final File moduleFolder = new File("modules");
 
@@ -33,7 +37,7 @@ public class ModuleService {
 
     @PostConstruct
     public void load() {
-        System.out.println("Load");
+        System.out.println("[Module  Service] Load");
         if (!moduleFolder.exists()) moduleFolder.mkdirs();
         manager.loadFolder(moduleFolder);
     }
@@ -44,7 +48,7 @@ public class ModuleService {
         for (Module module : manager.getModules()) {
             module.setEnabled(true);
         }
-        System.out.println("Enable");
+        System.out.println("[Module  Service] Enable");
         rootModule.setEnabled(true);
     }
 

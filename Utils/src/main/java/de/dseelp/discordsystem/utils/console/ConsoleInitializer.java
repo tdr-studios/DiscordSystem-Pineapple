@@ -1,7 +1,6 @@
-package de.dseelp.netcloud.lib.console;
+package de.dseelp.discordsystem.utils.console;
 
-import de.dseelp.netcloud.lib.commands.CommandManager;
-import de.dseelp.netcloud.lib.console.logging.LoggerRegistry;
+import de.dseelp.discordsystem.utils.console.logging.LoggerRegistry;
 
 public class ConsoleInitializer {
     private static boolean initialized = false;
@@ -10,7 +9,6 @@ public class ConsoleInitializer {
             initialized = true;
             Console console = new Console();
             console.setPrompt(prompt);
-            console.addReadHandler("cmdhandler",new CommandManager.CommandConsumer());
             console.init();
             ConsoleSystem.init(console);
             LoggerRegistry.register("main", ConsoleSystem.createLogger(defaultLogger));

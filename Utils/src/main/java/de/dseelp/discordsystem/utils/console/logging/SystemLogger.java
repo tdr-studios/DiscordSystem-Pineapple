@@ -1,6 +1,6 @@
-package de.dseelp.netcloud.lib.console.logging;
+package de.dseelp.discordsystem.utils.console.logging;
 
-import de.dseelp.netcloud.lib.console.ConsoleSystem;
+import de.dseelp.discordsystem.utils.console.ConsoleSystem;
 import lombok.Getter;
 
 import java.util.logging.Logger;

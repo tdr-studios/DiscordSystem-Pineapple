@@ -1,4 +1,4 @@
-package de.dseelp.netcloud.lib.console;
+package de.dseelp.discordsystem.utils.console;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

@@ -1,10 +1,11 @@
-package de.dseelp.netcloud.lib.console;
+package de.dseelp.discordsystem.utils.console;
 
-import de.dseelp.netcloud.lib.console.logging.SystemLogger;
+import de.dseelp.discordsystem.utils.console.logging.SystemLogger;
 import lombok.Getter;
 
 import java.util.*;
 import java.util.logging.ConsoleHandler;
+import java.util.logging.Level;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
@@ -64,14 +65,15 @@ public class ConsoleSystem {
                 if (first) first = false;
                 builder.append(param.getDisplayName());
             }
-            System.out.println("["+builder.toString()+"]:"+record.getMessage());
+            console.write("["+builder.toString()+"]: "+record.getMessage());
         }else {
-            System.out.println(record.getMessage());
+            console.write(record.getMessage());
         }
     }
 
     public static SystemLogger createLogger(String name) {
         SystemLogger logger = new SystemLogger(name);
+        logger.setLevel(Level.CONFIG);
         logger.disableTree();
         logger.fixNoTree();
         logger.setParent(rootLogger);
@@ -80,6 +82,7 @@ public class ConsoleSystem {
 
     public static SystemLogger createSubLogger(SystemLogger logger, String name) {
         SystemLogger sub = new SystemLogger(name);
+        sub.setLevel(Level.CONFIG);
         sub.setParent(logger);
         return sub;
     }

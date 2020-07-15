@@ -1,4 +1,4 @@
-package de.dseelp.netcloud.lib.console;
+package de.dseelp.discordsystem.utils.console;
 
 import com.google.common.collect.Maps;
 import org.fusesource.jansi.Ansi;
@@ -36,17 +36,19 @@ public class Console {
         }
         AnsiConsole.systemInstall();
         try {
-            terminal = TerminalBuilder.builder().system(true).build();
+            terminal = TerminalBuilder.builder().streams(System.in, System.out).build();
         } catch (IOException e) {
             e.printStackTrace();
         }
         reader = (LineReaderImpl) LineReaderBuilder.builder().terminal(terminal).build();
-        System.setOut(new PrintStream(new ActionOutputStream(new Consumer<String>() {
+        /*System.setOut(new PrintStream(new ActionOutputStream(new Consumer<String>() {
             @Override
             public void accept(String s) {
                 write(s);
             }
         }), true));
+         */
+
     }
 
     public void init() {

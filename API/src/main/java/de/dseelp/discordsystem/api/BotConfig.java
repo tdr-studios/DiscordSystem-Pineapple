@@ -29,7 +29,7 @@ public class BotConfig {
     }
 
     public static OnlineStatus getOnlineStatus() {
-        return OnlineStatus.valueOf(config.getString("defaultOnlineStatus"));
+        return OnlineStatus.valueOf(config.getString("defaultOnlineStatus").toUpperCase());
     }
 
     public static ActivityType getActivityType() {

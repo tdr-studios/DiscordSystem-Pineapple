@@ -1,16 +1,22 @@
-package de.dseelp.netcloud.lib.console.logging;
+package de.dseelp.discordsystem.utils.console.logging;
 
-import de.dseelp.netcloud.lib.console.ActionOutputStream;
+import de.dseelp.discordsystem.utils.console.ActionOutputStream;
+import de.dseelp.discordsystem.utils.console.ConsoleSystem;
 import lombok.Getter;
 
+import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.util.function.Consumer;
 
 public class LogSystem {
+    @Getter
     private SystemLogger logger;
+
+    private PrintStream system = System.out;
 
     public LogSystem(SystemLogger logger) {
         this.logger = logger;
+        initWriter();
     }
 
     private void initWriter() {
@@ -37,19 +43,19 @@ public class LogSystem {
     }
 
     @Getter
-    private PrintWriter debug;
+    private PrintStream debug;
 
     @Getter
-    private PrintWriter out;
+    private PrintStream out;
 
     @Getter
-    private PrintWriter warning;
+    private PrintStream warning;
 
     @Getter
-    private PrintWriter error;
+    private PrintStream error;
 
-    private PrintWriter create(Level level) {
-        return new PrintWriter(new ActionOutputStream(new Consumer<String>() {
+    private PrintStream create(Level level) {
+        return new PrintStream(new ActionOutputStream(new Consumer<String>() {
             @Override
             public void accept(String s) {
                 logger.log(level.getAssigned(), s);

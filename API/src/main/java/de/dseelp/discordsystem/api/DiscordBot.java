@@ -2,6 +2,7 @@ package de.dseelp.discordsystem.api;
 
 import de.dseelp.discordsystem.utils.config.JsonConfig;
 import de.tdrstudios.utils.Branding;
+import lombok.Getter;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.sharding.DefaultShardManagerBuilder;
@@ -14,7 +15,8 @@ public class DiscordBot {
     public DiscordBot() {
 
     }
-    private static ShardManager shardManager;
+    @Getter
+    private ShardManager shardManager;
     public DiscordBot(String token) {
         this.token = token;
     }
@@ -22,8 +24,7 @@ public class DiscordBot {
 
 
     public void start() {
-
-        if(BotConfig.getOnlineStatus().equals("DO_NOT_DISTURB")) {
+        if(BotConfig.getOnlineStatus() == OnlineStatus.DO_NOT_DISTURB) {
             JsonConfig config;
             System.err.println("[TDRStudios] This Status is only for maintenance -> " + BotConfig.getOnlineStatus());
             File file = new File("config.json");
@@ -32,9 +33,6 @@ public class DiscordBot {
             config.save(file);
 
         }
-
-
-
 
         if (shardManager == null) {
             try {
@@ -61,7 +59,7 @@ public class DiscordBot {
         }
     }
 
-    public static void setStatus(OnlineStatus status) {
+    public void setStatus(OnlineStatus status) {
         if(Discord.isMaintenance()) {
             System.out.println(" ");
             System.out.println("__________________________________________________");
@@ -101,10 +99,5 @@ public class DiscordBot {
         System.out.println(Branding.Big1.getBranding());
         System.out.println("---------------------------------------");
         System.out.println("      Thanks for using our API");
-    }
-
-    public static ShardManager getShardManager() {
-      //  return this.shardManager
-        return shardManager;
     }
 }

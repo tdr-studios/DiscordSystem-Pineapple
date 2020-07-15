@@ -41,7 +41,6 @@ public class RootModule extends DiscordModule implements Listener {
         registerCommand(new StopCommand());
         registerCommand(new TestCommand());
         registerCommand(new SayCommand());
-        registerCommand(new AlertCommand(this));
         if(!Discord.isMaintenance()) {
             registerCommand(new SetStateCommand());
         }

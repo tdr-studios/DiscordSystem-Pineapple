@@ -10,10 +10,14 @@ import de.dseelp.discordsystem.api.Discord;
 import de.dseelp.discordsystem.api.DiscordBot;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
+
+import java.util.logging.Handler;
+import java.util.logging.Logger;
 
 @SpringBootApplication
 public class DiscordSystemApplication {
@@ -47,11 +51,6 @@ public class DiscordSystemApplication {
 		Discord.getBot().stop();
 		context.getBean(ConsoleService.class).stop();
 		context.close();
-	}
-	public  static boolean startBot() {
-		DiscordBot.getShardManager().start(1);
-		System.out.println("[DiscordSystemAPK] Starting Bot via StartBot()");
-		return true;
 	}
 
 }

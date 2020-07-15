@@ -19,7 +19,7 @@ public class RestartCommand extends Command {
 
     @Override
     public void execute(CommandSender sender, String[] args, Command command) {
-        DiscordBot.getShardManager().restart();
+        Discord.getBot().getShardManager().restart();
 
         Discord.getBot().setActivity(ActivityType.PLAYING, "Restarting...");
         System.out.println("[Restart] Restart!");
@@ -34,7 +34,7 @@ public class RestartCommand extends Command {
         System.out.println("[Restart] Try to enable Modules");
         DiscordSystemApplication.getContext().getBean(ModuleService.class).enableAll();
         System.out.println("[Restart] Complete");
-        DiscordBot.setStatus(OnlineStatus.UNKNOWN);
+        Discord.getBot().setStatus(OnlineStatus.UNKNOWN);
 
         Discord.getBot().setActivity(BotConfig.getActivityType(), BotConfig.getActivityName());
         System.out.println(" ");

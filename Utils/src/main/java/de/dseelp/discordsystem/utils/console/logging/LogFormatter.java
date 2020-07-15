@@ -1,4 +1,4 @@
-package de.dseelp.netcloud.lib.console.logging;
+package de.dseelp.discordsystem.utils.console.logging;
 
 public class LogFormatter {
     public String format(SystemLogger log) {

@@ -1,11 +1,14 @@
-package de.dseelp.netcloud.lib.console.logging;
+package de.dseelp.discordsystem.utils.console.logging;
 
 import java.util.HashMap;
 
 public class LoggerRegistry {
     private static HashMap<String, LogSystem> systems = new HashMap<>();
     public static void register(String name, SystemLogger logger) {
-        if (!systems.containsKey(name)) systems.put(name.toLowerCase(), new LogSystem(logger));
+        if (!systems.containsKey(name.toLowerCase())) {
+            LogSystem logSystem = new LogSystem(logger);
+            systems.put(name.toLowerCase(), logSystem);
+        }
     }
 
     public static LogSystem get(String name) {

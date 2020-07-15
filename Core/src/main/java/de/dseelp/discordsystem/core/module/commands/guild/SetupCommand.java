@@ -33,6 +33,7 @@ public class SetupCommand extends Command {
                 TextChannel channel = guildSender.getChannel();
                 String channelID = channel.getId();
                 config.getDocument().add("AlertChannel", channelID);
+                Discord.getGuildManager().save(config);
             }
 
         }else {

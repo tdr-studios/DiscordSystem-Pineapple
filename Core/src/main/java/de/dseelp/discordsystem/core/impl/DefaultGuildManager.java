@@ -1,5 +1,6 @@
 package de.dseelp.discordsystem.core.impl;
 
+import com.google.gson.JsonObject;
 import de.dseelp.discordsystem.core.spring.jpa.entities.RawGuildConfig;
 import de.dseelp.discordsystem.core.spring.jpa.repositories.GuildRepository;
 import de.dseelp.discordsystem.api.GuildManager;
@@ -28,14 +29,15 @@ public class DefaultGuildManager implements GuildManager {
         Optional<RawGuildConfig> optional = repository.findById(id);
         if (optional.isPresent()) {
             RawGuildConfig guildConfig = optional.get();
-            return new GuildConfig(id, new JsonDocument(GsonUtils.get().toJsonTree(guildConfig.getJson()).getAsJsonObject()));
+            return new GuildConfig(id, new JsonDocument(GsonUtils.get().fromJson(guildConfig.getJson(), JsonObject.class)));
         }else {
-            return null;
+            repository.saveAndFlush(new RawGuildConfig(id, new JsonDocument().toString()));
+            return getGuildConfig(id);
         }
     }
 
     @Override
     public void save(GuildConfig config) {
-        repository.save(new RawGuildConfig(config.getId(), config.getDocument().toString()));
+        repository.saveAndFlush(new RawGuildConfig(config.getId(), config.getDocument().toString()));
     }
 }

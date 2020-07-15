@@ -9,9 +9,7 @@ import net.dv8tion.jda.api.sharding.ShardManager;
 public class Discord {
     @Getter
     @Setter
-    private static boolean maintenance = true;
-
-
+    private static boolean maintenance = false;
 
     @Setter
     @Getter

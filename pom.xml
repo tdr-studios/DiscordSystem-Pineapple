@@ -14,7 +14,12 @@
         <module>Core</module>
         <module>API</module>
         <module>Utils</module>
+        <module>TestModule</module>
     </modules>
+
+    <properties>
+        <module-api.version>1.0.1</module-api.version>
+    </properties>
 
     <dependencies>
         <dependency>

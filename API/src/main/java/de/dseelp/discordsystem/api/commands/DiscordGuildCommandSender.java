@@ -1,10 +1,12 @@
 package de.dseelp.discordsystem.api.commands;
 
 import de.dseelp.discordsystem.api.events.discord.guild.GuildMessageReceivedEvent;
+import lombok.Getter;
 import net.dv8tion.jda.api.entities.*;
 import net.dv8tion.jda.api.requests.RestAction;
 
 public class DiscordGuildCommandSender implements CommandSender {
+    @Getter
     private final GuildMessageReceivedEvent event;
 
     public DiscordGuildCommandSender(GuildMessageReceivedEvent event) {

@@ -27,7 +27,7 @@ public class ModuleService {
     private static final File moduleFolder = new File("modules");
 
     public ModuleService() {
-        loader = new NewModuleLoader();
+        loader = new NewModuleLoader(DiscordModule.class);
         manager = new CustomModuleManager(loader);
     }
 

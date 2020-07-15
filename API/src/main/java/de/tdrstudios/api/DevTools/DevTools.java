@@ -15,7 +15,7 @@ import static de.dseelp.discordsystem.api.EmbedUtils.createNormalBuilder;
 
 public class DevTools {
 
-    public void alert(String msg, Color color, Guild guild, String title, Module module) {
+    public static void alert(String msg, Color color, Guild guild, String title, Module module) {
         TextChannel channel = guild.getSystemChannel();
         JsonDocument doc = Discord.getGuildManager().getGuildConfig(guild).getDocument();
         if(Discord.getGuildManager().getGuildConfig(guild).getDocument().getString("AlertChannel").isEmpty()) {

@@ -6,7 +6,11 @@ import net.dv8tion.jda.api.sharding.DefaultShardManagerBuilder;
 import net.dv8tion.jda.api.sharding.ShardManager;
 
 public class DiscordBot {
-    private ShardManager shardManager;
+
+    public DiscordBot() {
+
+    }
+    private static ShardManager shardManager;
     public DiscordBot(String token) {
         this.token = token;
     }
@@ -26,6 +30,7 @@ public class DiscordBot {
             setActivity(BotConfig.getActivityType(), BotConfig.getActivityName());
             shardManager.addEventListener(new ShardEventListener(Discord.getEventManager()));
             Discord.getEventManager().setCommandListener(Discord.getCommandSystem().getListener());
+
         }
     }
 
@@ -42,5 +47,10 @@ public class DiscordBot {
         if (shardManager == null) return;
         shardManager.setStatus(OnlineStatus.OFFLINE);
         shardManager.shutdown();
+    }
+
+    public static ShardManager getShardManager() {
+      //  return this.shardManager
+        return shardManager;
     }
 }

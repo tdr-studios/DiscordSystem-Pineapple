@@ -3,16 +3,31 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.3.1.RELEASE</version>
+		<groupId>de.dseelp.discordsystem</groupId>
+		<artifactId>parent</artifactId>
+		<version>0.0.1-ALPHA</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>de.dseelp.discordsystem</groupId>
+	<!--<groupId>de.dseelp.discordsystem</groupId>-->
 	<artifactId>core</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Core</name>
 	<description>Demo project for Spring Boot</description>
+
+
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>2.3.1.RELEASE</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -43,13 +58,23 @@
 		<dependency>
 			<groupId>de.dseelp.modules</groupId>
 			<artifactId>module-core</artifactId>
-			<version>1.0</version>
+			<version>${module-api.version}</version>
 		</dependency>
 
 	</dependencies>
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>8</source>
+					<target>8</target>
+				</configuration>
+			</plugin>
+
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
@@ -60,13 +85,6 @@
 						<goals>
 							<goal>shade</goal>
 						</goals>
-						<configuration>
-							<artifactSet>
-								<excludes>
-									<exclude>example</exclude> <!-- You may add jars to exclude from shading -->
-								</excludes>
-							</artifactSet>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>

@@ -37,7 +37,7 @@
         <dependency>
             <groupId>de.dseelp.modules</groupId>
             <artifactId>module-api</artifactId>
-            <version>1.0</version>
+            <version>${module-api.version}</version>
             <scope>provided</scope>
         </dependency>
 

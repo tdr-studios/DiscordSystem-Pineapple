@@ -4,8 +4,15 @@ import de.dseelp.discordsystem.api.commands.CommandSystem;
 import de.dseelp.discordsystem.api.event.EventManager;
 import lombok.Getter;
 import lombok.Setter;
+import net.dv8tion.jda.api.sharding.ShardManager;
 
 public class Discord {
+    @Getter
+    @Setter
+    private static boolean maintenance = true;
+
+
+
     @Setter
     @Getter
     private static DiscordBot bot;
@@ -21,4 +28,6 @@ public class Discord {
     @Getter
     @Setter
     private static EventManager eventManager;
+
+
 }

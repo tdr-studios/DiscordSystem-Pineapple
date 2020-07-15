@@ -9,6 +9,7 @@ import de.dseelp.discordsystem.api.BotConfig;
 import de.dseelp.discordsystem.api.Discord;
 import de.dseelp.discordsystem.api.DiscordBot;
 import lombok.Getter;
+import lombok.Setter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -16,6 +17,9 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class DiscordSystemApplication {
+	//@Getter
+	//@Setter
+	 //public static boolean maintenance = false;
 
 	@Getter
 	private static ConfigurableApplicationContext context;
@@ -23,6 +27,7 @@ public class DiscordSystemApplication {
 	@Bean
 	public DiscordBot discordBot() {
 		System.out.println("Creating DC Bot");
+
 		return new DiscordBot(BotConfig.getToken());
 	}
 
@@ -42,6 +47,11 @@ public class DiscordSystemApplication {
 		Discord.getBot().stop();
 		context.getBean(ConsoleService.class).stop();
 		context.close();
+	}
+	public  static boolean startBot() {
+		DiscordBot.getShardManager().start(1);
+		System.out.println("[DiscordSystemAPK] Starting Bot via StartBot()");
+		return true;
 	}
 
 }

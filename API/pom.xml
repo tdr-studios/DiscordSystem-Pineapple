@@ -33,7 +33,7 @@
         <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
-            <version>4.2.0_168</version>
+            <version>${jda.version}</version>
         </dependency>
         <dependency>
             <groupId>de.dseelp.discordsystem</groupId>

@@ -19,6 +19,8 @@
 
     <properties>
         <module-api.version>1.0.1</module-api.version>
+        <java.version>1.8</java.version>
+        <jda.version>4.2.0_168</jda.version>
     </properties>
 
     <dependencies>

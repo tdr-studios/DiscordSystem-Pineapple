@@ -11,14 +11,16 @@ public class BotConfig {
 
     @SneakyThrows
     public static void load() {
+
         File file = new File("config.json");
         if (!file.exists()) file.createNewFile();
         config = JsonConfig.load(file);
         config.setDefault("token", "Enter Token here!");
         config.setDefault("activity", "TDRStudios | System");
         config.setDefault("activityType", ActivityType.PLAYING.toString());
-        config.setDefault("defaultOnlineStatus", OnlineStatus.DO_NOT_DISTURB.toString());
+        config.setDefault("defaultOnlineStatus", OnlineStatus.ONLINE.toString());
         config.setDefault("commandPrefix", "+");
+        config.setDefault("Say-Command Header", "Massage");
         config.save(file);
     }
 
@@ -40,5 +42,8 @@ public class BotConfig {
 
     public static String getToken() {
         return config.getString("token");
+    }
+    public static String getSayCommandHeader() {
+        return config.getString("Say-Command Header");
     }
 }

@@ -2,6 +2,7 @@ package de.dseelp.discordsystem.api;
 
 import de.dseelp.discordsystem.api.commands.CommandSystem;
 import de.dseelp.discordsystem.api.event.EventManager;
+import de.dseelp.discordsystem.api.reload.ReloadManager;
 import de.dseelp.discordsystem.utils.console.Console;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,6 +28,10 @@ public class Discord {
     @Getter
     @Setter
     private static EventManager eventManager;
+
+    @Getter
+    @Setter
+    private static ReloadManager reloadManager;
 
     @Getter
     @Setter

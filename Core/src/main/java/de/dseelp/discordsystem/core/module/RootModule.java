@@ -2,16 +2,25 @@ package de.dseelp.discordsystem.core.module;
 
 import de.dseelp.discordsystem.api.Discord;
 import de.dseelp.discordsystem.api.DiscordModule;
+import de.dseelp.discordsystem.api.event.EventHandler;
 import de.dseelp.discordsystem.api.event.Listener;
+import de.dseelp.discordsystem.api.events.system.modules.*;
+import de.dseelp.discordsystem.api.reload.ReloadableReloadEvent;
+import de.dseelp.discordsystem.api.reload.ReloadableReloadedEvent;
 import de.dseelp.discordsystem.core.module.commands.SetActivityCommand;
 import de.dseelp.discordsystem.core.module.commands.SetStateCommand;
+import de.dseelp.discordsystem.core.module.commands.console.ReloadCommand;
 import de.dseelp.discordsystem.core.module.commands.console.RestartCommand;
 import de.dseelp.discordsystem.core.module.commands.console.StopCommand;
 import de.dseelp.discordsystem.core.module.commands.HelpCommand;
 import de.dseelp.discordsystem.core.module.commands.guild.SayCommand;
 import de.dseelp.discordsystem.core.module.commands.guild.SetupCommand;
 import de.dseelp.discordsystem.core.module.commands.guild.TestCommand;
-import de.dseelp.modules.ModuleInfo;
+import de.dseelp.discordsystem.api.modules.ModuleInfo;
+import de.dseelp.discordsystem.core.module.reloads.BotReload;
+import de.dseelp.discordsystem.utils.console.ConsoleSystem;
+import de.dseelp.discordsystem.utils.console.logging.LogSystem;
+import de.dseelp.discordsystem.utils.console.logging.LoggerRegistry;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -38,25 +47,60 @@ public class RootModule extends DiscordModule implements Listener {
         }
         HelpCommand helpCommand = new HelpCommand();
         Discord.getEventManager().addListener(this, helpCommand);
+        Discord.getEventManager().addListener(this, this);
         registerCommand(helpCommand);
         registerCommand(new StopCommand());
         registerCommand(new TestCommand());
         registerCommand(new SayCommand());
+        registerCommand(new ReloadCommand());
+        Discord.getReloadManager().addReload(this, new BotReload());
         if(!Discord.isMaintenance()) {
             registerCommand(new SetStateCommand());
 
         }
         registerCommand(new SetActivityCommand());
 
-        registerCommand(new RestartCommand());
-        registerCommand(new HelpCommand());
+        //registerCommand(new RestartCommand());
         registerCommand(new SetupCommand());
+        logSystem = LoggerRegistry.get("modules");
+        LoggerRegistry.register("reloads", ConsoleSystem.createSubLogger(LoggerRegistry.get("normal").getLogger(), "ReloadManager"));
     }
 
+    private LogSystem logSystem;
 
-    @Override
-    public void onDisable() {
 
+    @EventHandler
+    public void onModuleLoad(ModuleLoadEvent event) {
+        logSystem.write("Loading Module "+event.getClassLoader().getInfo().getName()+"!");
+    }
+
+    @EventHandler
+    public void onModuleLoadFailure(ModuleLoadFailureEvent event) {
+        logSystem.error("Failed to load Module "+event.getFile().getName()+"! "+event.getMessage());
+    }
+
+    @EventHandler
+    public void onModuleLoadFinishedEvent(ModuleLoadFinishedEvent event) {
+        logSystem.write("Loaded module "+ event.getClassLoader().getInfo().getName()+"!");
+    }
+
+    @EventHandler
+    public void onModuleEnabling(ModuleEnableEvent event) {
+        logSystem.write("Enabling Module " +event.getModule().getName()+ " v"+event.getModule().getVersion());
+    }
+    @EventHandler
+    public void onModuleEnabled(ModuleEnableFinishedEvent event) {
+        logSystem.write("Enabled Module " +event.getModule().getName()+ " v"+event.getModule().getVersion());
+    }
+
+    @EventHandler
+    public void onReload(ReloadableReloadEvent event) {
+        LoggerRegistry.get("reloads").write("Reloading "+event.getReloadable().getReloadName()+"...");
+    }
+
+    @EventHandler
+    public void onReloaded(ReloadableReloadedEvent event) {
+        LoggerRegistry.get("reloads").write("Reloading "+event.getReloadable().getReloadName()+"!");
     }
 
 }

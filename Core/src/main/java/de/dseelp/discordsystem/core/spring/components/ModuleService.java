@@ -3,11 +3,13 @@ package de.dseelp.discordsystem.core.spring.components;
 import de.dseelp.discordsystem.api.Discord;
 import de.dseelp.discordsystem.api.DiscordModule;
 import de.dseelp.discordsystem.core.module.RootModule;
-import de.dseelp.modules.Module;
-import de.dseelp.modules.ModuleLoader;
-import de.dseelp.modules.ModuleManager;
-import de.dseelp.modules.impl.NewModuleLoader;
-import de.dseelp.modules.impl.NewModuleManager;
+import de.dseelp.discordsystem.utils.console.logging.LogSystem;
+import de.dseelp.discordsystem.utils.console.logging.LoggerRegistry;
+import de.dseelp.discordsystem.api.modules.Module;
+import de.dseelp.discordsystem.api.modules.ModuleLoader;
+import de.dseelp.discordsystem.api.modules.ModuleManager;
+import de.dseelp.discordsystem.core.impl.modules.NewModuleLoader;
+import de.dseelp.discordsystem.core.impl.modules.NewModuleManager;
 import lombok.Getter;
 import org.springframework.stereotype.Component;
 
@@ -23,6 +25,8 @@ public class ModuleService {
 
     private RootModule rootModule;
 
+    private LogSystem logSystem;
+
     public static void reloadModules() {
         //stop();
     }
@@ -31,25 +35,24 @@ public class ModuleService {
     private static final File moduleFolder = new File("modules");
 
     public ModuleService() {
+        logSystem = LoggerRegistry.get("modules");
         loader = new NewModuleLoader(DiscordModule.class);
         manager = new CustomModuleManager(loader);
     }
 
     @PostConstruct
     public void load() {
-        System.out.println("[Module  Service] Load");
+        rootModule = new RootModule();
+        rootModule.setEnabled(true);
         if (!moduleFolder.exists()) moduleFolder.mkdirs();
         manager.loadFolder(moduleFolder);
     }
 
     @PostConstruct
     public void enableAll() {
-        rootModule = new RootModule();
         for (Module module : manager.getModules()) {
             module.setEnabled(true);
         }
-        System.out.println("[Module  Service] Enable");
-        rootModule.setEnabled(true);
     }
 
     public void stop() {
@@ -60,7 +63,7 @@ public class ModuleService {
         manager.unloadAll();
     }
 
-    private class CustomModuleManager extends NewModuleManager {
+    private static class CustomModuleManager extends NewModuleManager {
 
         public CustomModuleManager(ModuleLoader loader) {
             super(loader);

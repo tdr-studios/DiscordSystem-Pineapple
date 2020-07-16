@@ -4,6 +4,7 @@ import de.dseelp.discordsystem.api.BotConfig;
 import de.dseelp.discordsystem.api.Discord;
 import de.dseelp.discordsystem.api.commands.CommandSystem;
 import de.dseelp.discordsystem.api.event.EventManager;
+import de.dseelp.discordsystem.api.reload.ReloadManager;
 import de.dseelp.discordsystem.core.spring.components.ConsoleService;
 import org.springframework.boot.context.event.ApplicationContextInitializedEvent;
 import org.springframework.context.ApplicationListener;
@@ -23,7 +24,10 @@ public class ApplicationContextInitialized implements ApplicationListener<Applic
         BotConfig.load();
         Discord.setEventManager(new EventManager());
         Discord.setCommandSystem(new CommandSystem());
+        Discord.setReloadManager(new ReloadManager());
         service = new ConsoleService();
         service.start();
+
+
     }
 }

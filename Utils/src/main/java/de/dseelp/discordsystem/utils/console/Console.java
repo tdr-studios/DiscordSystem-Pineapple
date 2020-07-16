@@ -27,7 +27,7 @@ public class Console {
     private boolean threadStarted;
 
     public Console() {
-        this(false);
+        this(true);
     }
 
     public Console(boolean debug) {
@@ -36,7 +36,7 @@ public class Console {
         }
         AnsiConsole.systemInstall();
         try {
-            terminal = TerminalBuilder.builder().streams(System.in, System.out).build();
+            terminal = TerminalBuilder.terminal();
         } catch (IOException e) {
             e.printStackTrace();
         }

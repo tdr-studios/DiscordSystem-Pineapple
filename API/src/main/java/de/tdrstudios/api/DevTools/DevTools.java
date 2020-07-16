@@ -1,14 +1,12 @@
 package de.tdrstudios.api.DevTools;
 
 import de.dseelp.discordsystem.api.Discord;
-import de.dseelp.discordsystem.api.commands.DiscordGuildCommandSender;
 import de.dseelp.discordsystem.utils.JsonDocument;
-import de.dseelp.modules.Module;
+import de.dseelp.discordsystem.api.modules.Module;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.TextChannel;
 
-import javax.swing.text.Document;
 import java.awt.*;
 
 import static de.dseelp.discordsystem.api.EmbedUtils.createNormalBuilder;

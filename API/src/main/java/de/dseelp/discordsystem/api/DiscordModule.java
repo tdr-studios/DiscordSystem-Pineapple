@@ -1,7 +1,7 @@
 package de.dseelp.discordsystem.api;
 
 import de.dseelp.discordsystem.api.commands.Command;
-import de.dseelp.modules.Module;
+import de.dseelp.discordsystem.api.modules.Module;
 
 public abstract class DiscordModule extends Module {
     public DiscordModule() {

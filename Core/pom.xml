@@ -3,29 +3,26 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>de.dseelp.discordsystem</groupId>
-		<artifactId>parent</artifactId>
-		<version>0.0.1-ALPHA</version>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.3.1.RELEASE</version>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
+	<packaging>jar</packaging>
+	<groupId>de.dseelp.discordsystem</groupId>
 	<artifactId>core</artifactId>
+	<version>0.0.1-ALPHA</version>
 	<name>Core</name>
 	<description>Demo project for Spring Boot</description>
 
 
-
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-dependencies</artifactId>
-				<version>2.3.1.RELEASE</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
-
 	<dependencies>
+		<dependency>
+			<groupId>org.apache.maven</groupId>
+			<artifactId>maven-artifact</artifactId>
+			<version>3.0.3</version>
+		</dependency>
+
 		<dependency>
 			<groupId>de.dseelp.discordsystem</groupId>
 			<artifactId>API</artifactId>
@@ -47,12 +44,6 @@
 			<optional>true</optional>
 		</dependency>
 
-		<dependency>
-			<groupId>de.dseelp.modules</groupId>
-			<artifactId>module-core</artifactId>
-			<version>${module-api.version}</version>
-		</dependency>
-
 	</dependencies>
 
 	<build>
@@ -62,8 +53,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.1</version>
 				<configuration>
-					<source>8</source>
-					<target>8</target>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
 				</configuration>
 			</plugin>
 
@@ -88,7 +79,7 @@
 				<configuration>
 					<archive>
 						<manifestEntries>
-							<Main-Class>de.dseelp.discordsystem.core.DiscordSystemApplication</Main-Class>
+							<Main-Class>de.dseelp.discordsystem.DiscordSystemApplication</Main-Class>
 							<Version>${project.version}</Version>
 						</manifestEntries>
 					</archive>

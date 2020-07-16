@@ -25,7 +25,7 @@ public class ConsoleService {
     //@PostConstruct
     public void start() {
         CommandSystem system = Discord.getCommandSystem();
-        console = ConsoleInitializer.initialize("bot> ", "main");
+        console = ConsoleInitializer.initialize("Console > ", "main");
         console.addReadHandler("commandHandler", new Consumer<String>() {
             @Override
             public void accept(String s) {

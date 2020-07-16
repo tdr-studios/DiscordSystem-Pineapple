@@ -73,6 +73,10 @@ public class DiscordBot {
         }
         if(status.equals(OnlineStatus.UNKNOWN)) {
             status = BotConfig.getOnlineStatus();
+            if(status == OnlineStatus.DO_NOT_DISTURB) {
+                status = OnlineStatus.ONLINE;
+                System.out.println("[Bot] A Service try to set the OnlineState to Maintenance!");
+            }
         }
         shardManager.setStatus(status);
     }

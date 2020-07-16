@@ -7,9 +7,7 @@
 		<artifactId>parent</artifactId>
 		<version>0.0.1-ALPHA</version>
 	</parent>
-	<!--<groupId>de.dseelp.discordsystem</groupId>-->
 	<artifactId>core</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>Core</name>
 	<description>Demo project for Spring Boot</description>
 

@@ -54,7 +54,7 @@ public class DiscordBot {
             System.out.println("---------------------------------------");
             System.out.println(Branding.Big1.getBranding());
             System.out.println("---------------------------------------");
-            System.out.println(" ");
+            System.out.println("      " + Discord.getVersion());
 
         }
     }

@@ -1,13 +1,16 @@
 package de.dseelp.discordsystem.api;
 
 import de.dseelp.discordsystem.utils.config.JsonConfig;
+import de.dseelp.discordsystem.utils.console.logging.LogSystem;
 import de.tdrstudios.utils.Branding;
 import lombok.Getter;
+import lombok.Setter;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.sharding.DefaultShardManagerBuilder;
 import net.dv8tion.jda.api.sharding.ShardManager;
 
+import javax.security.auth.login.LoginException;
 import java.io.File;
 
 public class DiscordBot {
@@ -22,24 +25,29 @@ public class DiscordBot {
     }
     private String token;
 
+    @Getter
+    @Setter
+    private LogSystem logSystem;
+
 
     public void start() {
         if(BotConfig.getOnlineStatus() == OnlineStatus.DO_NOT_DISTURB) {
             JsonConfig config;
-            System.err.println("[TDRStudios] This Status is only for maintenance -> " + BotConfig.getOnlineStatus());
+            logSystem.error(" This Status is only for maintenance -> " + BotConfig.getOnlineStatus());
             File file = new File("config.json");
             config = JsonConfig.load(file);
             config.set("defaultOnlineStatus", "Online");
             config.save(file);
-
         }
 
+
         if (shardManager == null) {
+            logSystem.write("Starting DiscordBot!");
             try {
                 shardManager = DefaultShardManagerBuilder.createDefault(token)
                 .build();
             } catch (Exception e) {
-                System.out.println("[System] Can't Start discord bot!");
+                logSystem.error("Can't start DiscordBot! "+e.getCause().getMessage());
                 System.exit(0);
             }
             if(Discord.isMaintenance()){
@@ -50,33 +58,36 @@ public class DiscordBot {
 
             shardManager.addEventListener(new ShardEventListener(Discord.getEventManager()));
             Discord.getEventManager().setCommandListener(Discord.getCommandSystem().getListener());
-            System.out.println(" ");
-            System.out.println("---------------------------------------");
-            System.out.println(Branding.Big1.getBranding());
-            System.out.println("---------------------------------------");
-            System.out.println(" ");
-
+            logSystem.write(" ");
+            logSystem.write("---------------------------------------");
+            logSystem.write(Branding.Big1.getBranding());
+            logSystem.write("---------------------------------------");
+            logSystem.write(" ");
+        }else {
+            logSystem.error("Bot is already started!");
         }
     }
 
     public void setStatus(OnlineStatus status) {
         if(Discord.isMaintenance()) {
-            System.out.println(" ");
-            System.out.println("__________________________________________________");
-            System.out.println("[TDRStudios] The Api of your Bot is in maintenance!");
-            System.out.println("[TDRStudios] That can hold on for max 3 Weeks!");
-            System.out.println("__________________________________________________");
-            System.out.println(" ");
+            logSystem.write(" ");
+            logSystem.write("__________________________________________________");
+            logSystem.write("[TDRStudios] The Api of your Bot is in maintenance!");
+            logSystem.write("[TDRStudios] That can hold on for max 3 Weeks!");
+            logSystem.write("__________________________________________________");
+            logSystem.write(" ");
             shardManager.setStatus(OnlineStatus.DO_NOT_DISTURB);
             shardManager.setActivity(Activity.watching("Maintenance"));
 
         }
-        if(status.equals(OnlineStatus.UNKNOWN)) {
+        if(status == OnlineStatus.UNKNOWN) {
             status = BotConfig.getOnlineStatus();
             if(status == OnlineStatus.DO_NOT_DISTURB) {
                 status = OnlineStatus.ONLINE;
-                System.out.println("[Bot] A Service try to set the OnlineState to Maintenance!");
+                logSystem.warning("A Service try to set the OnlineState to Maintenance!");
             }
+        }else {
+            //return;
         }
         shardManager.setStatus(status);
     }
@@ -98,6 +109,7 @@ public class DiscordBot {
         if (shardManager == null) return;
         shardManager.setStatus(OnlineStatus.OFFLINE);
         shardManager.shutdown();
+        //shardManager = null;
         System.out.println(" ");
         System.out.println("---------------------------------------");
         System.out.println(Branding.Big1.getBranding());

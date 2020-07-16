@@ -1,6 +1,6 @@
 package de.dseelp.discordsystem.core.spring.listeners;
 
-import de.dseelp.discordsystem.core.DiscordSystemApplication;
+import de.dseelp.discordsystem.DiscordSystemApplication;
 import de.dseelp.discordsystem.core.impl.DefaultGuildManager;
 import de.dseelp.discordsystem.core.spring.event.AppFinishedStartedEvent;
 import de.dseelp.discordsystem.api.Discord;

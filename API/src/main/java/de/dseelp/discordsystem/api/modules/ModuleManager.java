@@ -1,6 +1,7 @@
 package de.dseelp.discordsystem.api.modules;
 
 import java.io.File;
+import java.util.Collections;
 import java.util.List;
 
 public abstract class ModuleManager {

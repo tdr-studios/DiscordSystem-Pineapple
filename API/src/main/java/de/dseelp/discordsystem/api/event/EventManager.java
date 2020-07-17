@@ -20,7 +20,7 @@ public class EventManager {
     }
 
     public void callEvent(Event event) {
-        call(commandListener, event);
+        if (commandListener != null) call(commandListener, event);
         for (Map.Entry<DiscordModule, List<Listener>> entry : listeners.entrySet()) {
             for (Listener listener : entry.getValue()) {
                 call(listener, event);

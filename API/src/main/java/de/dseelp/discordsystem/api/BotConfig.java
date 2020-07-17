@@ -1,10 +1,14 @@
 package de.dseelp.discordsystem.api;
 
+import com.google.gson.JsonArray;
 import de.dseelp.discordsystem.utils.config.JsonConfig;
 import lombok.SneakyThrows;
 import net.dv8tion.jda.api.OnlineStatus;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 public class BotConfig {
     private static JsonConfig config;
@@ -21,6 +25,10 @@ public class BotConfig {
         config.setDefault("defaultOnlineStatus", OnlineStatus.ONLINE.toString());
         config.setDefault("commandPrefix", "+");
         config.setDefault("Say-Command Header", "Massage");
+        config.setDefault("autoUpdates", true);
+        List<String> defaultRepos = new ArrayList<>();
+        defaultRepos.add("https://api.tdrstudios.com");
+        config.setDefaultStringList("moduleRepositories", defaultRepos);
         config.save(file);
     }
 
@@ -30,6 +38,15 @@ public class BotConfig {
 
     public static OnlineStatus getOnlineStatus() {
         return OnlineStatus.valueOf(config.getString("defaultOnlineStatus").toUpperCase());
+    }
+
+    public static boolean isAutoUpdates() {
+        return config.getBoolean("autoUpdates");
+    }
+
+    public static String[] getModuleRepositoryUrls() {
+        Collection<String> moduleRepositories = config.getStringList("moduleRepositories");
+        return moduleRepositories.toArray(new String[moduleRepositories.size()]);
     }
 
     public static ActivityType getActivityType() {

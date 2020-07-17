@@ -27,14 +27,13 @@ public class DiscordSystemApplication {
 	@Getter
 	private static ConfigurableApplicationContext context;
 
+	@Getter
+	private static final String version = "0.0.1-ALPHA";
+
 	@Bean
 	public DiscordBot discordBot() {
 		return new DiscordBot(BotConfig.getToken());
 	}
-
-	@Getter
-	@Setter
-	private static Console console;
 
 	public static void main(String[] args) {
 		SpringApplication application = new SpringApplication(DiscordSystemApplication.class);

@@ -236,4 +236,16 @@ public class JsonDocument {
         }
         return null;
     }
+
+    public boolean has(String key) {
+        return object.has(key);
+    }
+
+    public JsonObject getObject(String key) {
+        return object.get(key).getAsJsonObject();
+    }
+
+    public JsonDocument getDocument(String key) {
+        return new JsonDocument(getObject(key));
+    }
 }

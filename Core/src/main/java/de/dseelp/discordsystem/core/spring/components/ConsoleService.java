@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 import java.util.function.Consumer;
 
 @Component
-@DependsOn("DiscordService")
+@DependsOn("ModuleService")
 public class ConsoleService {
     public Console getConsole() {
         return console;
@@ -26,25 +26,16 @@ public class ConsoleService {
     //@PostConstruct
     public void start() {
         System.out.println("Creating");
-        CommandSystem system = Discord.getCommandSystem();
         console = ConsoleInitializer.initialize("Console > ", "main");
-        console.addReadHandler("commandHandler", new Consumer<String>() {
-            @Override
-            public void accept(String s) {
-                system.execute(new ConsoleCommandSender(), system.parseCommand(s));
-            }
-        });
-        System.out.println("Console: "+console);
-        DiscordSystemApplication.setConsole(console);
         LoggerRegistry.register("normal", ConsoleSystem.createSubLogger(LoggerRegistry.get().getLogger(), "DiscordSystem"));
         LoggerRegistry.register("modules", ConsoleSystem.createSubLogger(LoggerRegistry.get("normal").getLogger(), "Modules"));
         LogSystem normalLogger = LoggerRegistry.get("normal");
         System.setOut(normalLogger.getOut());
         System.setErr(normalLogger.getError());
+        Discord.setCommandSystem(new CommandSystem());
     }
 
     public void stop() {
-        System.out.println(console);
-        DiscordSystemApplication.getConsole().shutdown();
+        ConsoleSystem.getConsole().shutdown();
     }
 }

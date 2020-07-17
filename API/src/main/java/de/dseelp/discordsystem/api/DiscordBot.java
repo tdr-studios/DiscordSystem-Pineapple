@@ -1,5 +1,6 @@
 package de.dseelp.discordsystem.api;
 
+import de.dseelp.discordsystem.api.modules.NewModule;
 import de.dseelp.discordsystem.utils.config.JsonConfig;
 import de.dseelp.discordsystem.utils.console.logging.LogSystem;
 import de.tdrstudios.utils.Branding;
@@ -40,8 +41,7 @@ public class DiscordBot {
             config.save(file);
         }
 
-
-        if (shardManager == null) {
+        if (shardManager != null) {
             logSystem.write("Starting DiscordBot!");
             try {
                 shardManager = DefaultShardManagerBuilder.createDefault(token)

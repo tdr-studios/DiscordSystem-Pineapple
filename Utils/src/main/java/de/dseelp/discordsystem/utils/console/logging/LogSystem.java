@@ -12,8 +12,6 @@ public class LogSystem {
     @Getter
     private SystemLogger logger;
 
-    private PrintStream system = System.out;
-
     public LogSystem(SystemLogger logger) {
         this.logger = logger;
         initWriter();

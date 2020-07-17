@@ -16,7 +16,6 @@
         <module>Core</module>
         <module>Launcher</module>
         <module>VersionManagement</module>
-        <module>TestModule</module>
     </modules>
 
     <properties>

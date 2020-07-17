@@ -11,18 +11,12 @@ public class BotReload implements Reloadable {
     @Override
     public void reload() {
         DiscordBot bot = Discord.getBot();
-        bot.stop();
-        try {
-            TimeUnit.SECONDS.sleep(2);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        bot.start();
+        bot.reload();
     }
 
     @Override
     public String getReloadName() {
-        return "bot";
+        return "Bot";
     }
 
     @Override

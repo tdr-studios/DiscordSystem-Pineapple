@@ -12,5 +12,6 @@ public class AppFinishedStartedListener implements ApplicationListener<AppFinish
     @Override
     public void onApplicationEvent(AppFinishedStartedEvent event) {
         Discord.setGuildManager(DiscordSystemApplication.getContext().getBean(DefaultGuildManager.class));
+        System.out.println("Application started successfully!");
     }
 }

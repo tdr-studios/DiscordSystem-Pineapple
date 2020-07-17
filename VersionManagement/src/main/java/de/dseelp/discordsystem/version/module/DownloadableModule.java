@@ -2,10 +2,7 @@ package de.dseelp.discordsystem.version.module;
 
 import com.google.gson.annotations.Expose;
 import de.dseelp.discordsystem.version.module.DownloadableModuleVersion;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.apache.maven.artifact.versioning.DefaultArtifactVersion;
 
 import java.util.ArrayList;
@@ -13,7 +10,6 @@ import java.util.Collections;
 import java.util.List;
 
 @AllArgsConstructor
-@RequiredArgsConstructor
 public class DownloadableModule {
     @Getter
     @Setter

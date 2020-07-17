@@ -114,6 +114,10 @@ public class SetActivityCommand extends Command{
                         first = false;
                     }
                     Discord.getBot().setActivity(ActivityType.PLAYING, builder.toString());
+                    System.out.println("");
+
+
+
                 }
             }
 

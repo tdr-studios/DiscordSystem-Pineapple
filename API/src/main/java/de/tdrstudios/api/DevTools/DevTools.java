@@ -4,6 +4,8 @@ import de.dseelp.discordsystem.api.Discord;
 import de.dseelp.discordsystem.api.commands.CommandSender;
 import de.dseelp.discordsystem.api.commands.DiscordGuildCommandSender;
 import de.dseelp.discordsystem.utils.JsonDocument;
+import de.dseelp.discordsystem.utils.console.Console;
+import de.dseelp.discordsystem.utils.console.ConsoleSystem;
 import de.dseelp.modules.Module;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Guild;
@@ -19,6 +21,7 @@ import java.util.Date;
 import static de.dseelp.discordsystem.api.EmbedUtils.createNormalBuilder;
 
 public class DevTools {
+
 
     public static void alert(String msg, Color color, Guild guild, String title, Module module) {
         TextChannel channel = guild.getSystemChannel();
@@ -62,6 +65,16 @@ public class DevTools {
         System.out.println(msg);
         System.out.println("-------------------------------------");
          }
+
+
+    @Deprecated
+    public void rawWrite (String msg) {
+        Console console = ConsoleSystem.getConsole();
+        console.write(msg);
+
+    }
+
+
 
 
 

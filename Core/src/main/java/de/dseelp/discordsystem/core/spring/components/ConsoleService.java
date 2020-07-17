@@ -12,6 +12,7 @@ import de.dseelp.discordsystem.utils.console.ConsoleSystem;
 import de.dseelp.discordsystem.utils.console.logging.LogSystem;
 import de.dseelp.discordsystem.utils.console.logging.LoggerRegistry;
 import org.springframework.context.annotation.DependsOn;
+import org.springframework.context.annotation.Description;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -22,6 +23,7 @@ import java.util.function.Consumer;
 @DependsOn("DiscordService")
 public class ConsoleService {
     private Console console;
+
     //@PostConstruct
     public void start() {
         CommandSystem system = Discord.getCommandSystem();
@@ -32,13 +34,20 @@ public class ConsoleService {
                 system.execute(new ConsoleCommandSender(), system.parseCommand(s));
             }
         });
-        LoggerRegistry.register("normal", ConsoleSystem.createSubLogger(LoggerRegistry.get().getLogger(), "DiscordSystem"));
+        LoggerRegistry.register("normal", ConsoleSystem.createSubLogger(LoggerRegistry.get().getLogger(), "System"));
         LogSystem normalLogger = LoggerRegistry.get("normal");
         System.setOut(normalLogger.getOut());
         System.setErr(normalLogger.getError());
+
     }
 
     public void stop() {
         console.shutdown();
     }
+
+
+
+
+
+
 }

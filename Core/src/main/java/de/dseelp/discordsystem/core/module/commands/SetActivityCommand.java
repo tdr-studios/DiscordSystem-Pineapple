@@ -9,6 +9,7 @@ import de.tdrstudios.utils.SenderType;
 import net.dv8tion.jda.api.EmbedBuilder;
 import org.springframework.beans.factory.annotation.CustomAutowireConfigurer;
 
+import javax.xml.bind.SchemaOutputResolver;
 import java.awt.*;
 import java.time.Instant;
 
@@ -90,6 +91,36 @@ public class SetActivityCommand extends Command{
         }
         if(sender instanceof ConsoleCommandSender) {
 
+            if(args.length==0) {
+                HelpSite(SenderType.CONSOLE,eb);
+
+            }else {
+                if(args[0].equalsIgnoreCase("%reset%")) {
+                    if(Discord.isMaintenance()) {
+                        Discord.getBot().setActivity(ActivityType.WATCHING,"Maintenance");
+                        System.out.println("The Activity was set to Maintenance");
+
+                    }else {
+                        Discord.getBot().setActivity(BotConfig.getActivityType(),BotConfig.getActivityName());
+                        System.out.println("The Activity was set to "+ BotConfig.getActivityName());
+
+                    }
+                } else {
+                    StringBuilder builder = new StringBuilder();
+                    boolean first = true;
+                    for (String arg : args) {
+                        if (!first)  builder.append(" ");
+                        builder.append(arg);
+                        first = false;
+                    }
+                    Discord.getBot().setActivity(ActivityType.PLAYING, builder.toString());
+                    System.out.println("");
+
+
+
+                }
+            }
+
 
             //Console Sender!!
 
@@ -97,6 +128,13 @@ public class SetActivityCommand extends Command{
     }
     public void HelpSite(SenderType type, EmbedBuilder embedBuilder) {
         if(type.equals(SenderType.CONSOLE)){
+            System.out.println("-----------------Help-----------------");
+            System.out.println("You can coose between this:");
+            System.out.println(" ");
+            System.out.println("- %reset% -> Reset");
+            System.out.println("- <yourtext> Set your Text");
+            System.out.println(" ");
+            System.out.println("-----------------Help-----------------");
 
         }
         if(type.equals(SenderType.Guild)) {

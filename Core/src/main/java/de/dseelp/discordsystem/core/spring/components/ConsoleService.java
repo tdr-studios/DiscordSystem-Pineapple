@@ -11,6 +11,7 @@ import de.dseelp.discordsystem.utils.console.logging.LogSystem;
 import de.dseelp.discordsystem.utils.console.logging.LoggerRegistry;
 import lombok.Getter;
 import org.springframework.context.annotation.DependsOn;
+import org.springframework.context.annotation.Description;
 import org.springframework.stereotype.Component;
 
 import java.util.function.Consumer;
@@ -23,6 +24,7 @@ public class ConsoleService {
     }
 
     private Console console;
+
     //@PostConstruct
     public void start() {
         System.out.println("Creating");
@@ -38,4 +40,10 @@ public class ConsoleService {
     public void stop() {
         ConsoleSystem.getConsole().shutdown();
     }
+
+
+
+
+
+
 }

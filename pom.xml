@@ -15,6 +15,7 @@
         <module>API</module>
         <module>Core</module>
         <module>Launcher</module>
+        <module>VersionManagement</module>
     </modules>
 
     <properties>

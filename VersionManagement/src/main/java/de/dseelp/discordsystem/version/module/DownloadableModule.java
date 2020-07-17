@@ -1,10 +1,11 @@
-package de.dseelp.discordsystem.utils.version.module;
+package de.dseelp.discordsystem.version.module;
 
 import com.google.gson.annotations.Expose;
-import de.dseelp.discordsystem.utils.version.module.DownloadableModuleVersion;
+import de.dseelp.discordsystem.version.module.DownloadableModuleVersion;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import org.apache.maven.artifact.versioning.DefaultArtifactVersion;
 
 import java.util.ArrayList;
@@ -15,13 +16,29 @@ import java.util.List;
 @RequiredArgsConstructor
 public class DownloadableModule {
     @Getter
+    @Setter
     @Expose
-    private final DefaultArtifactVersion coreVersion;
+    private DefaultArtifactVersion coreVersion;
     @Getter
+    @Setter
     @Expose
-    private final DefaultArtifactVersion installedVersion;
+    private DefaultArtifactVersion installedVersion;
+
     @Getter
-    private List<DownloadableModuleVersion> versions = new ArrayList<>();
+    private final String name;
+    @Getter
+    private final String[] authors;
+
+    @Getter
+    @Setter
+    private ModuleType type;
+
+    public List<DownloadableModuleVersion> getVersions() {
+        Collections.sort(versions);
+        return versions;
+    }
+
+    private final List<DownloadableModuleVersion> versions = new ArrayList<>();
 
     public DownloadableModuleVersion getLatest() {
         Collections.sort(versions);
@@ -53,7 +70,7 @@ public class DownloadableModule {
 
 
     public void addVersion(String minCoreVersion, String maxCoreVersion, String version, long created, String downloadUrl) {
-        addVersion(new DownloadableModuleVersion(new DefaultArtifactVersion(minCoreVersion), new DefaultArtifactVersion(maxCoreVersion), new DefaultArtifactVersion(version), created, downloadUrl));
+        addVersion(new DownloadableModuleVersion(minCoreVersion == null ? null :new DefaultArtifactVersion(minCoreVersion), maxCoreVersion == null ? null : new DefaultArtifactVersion(maxCoreVersion), new DefaultArtifactVersion(version), created, downloadUrl));
     }
 
 

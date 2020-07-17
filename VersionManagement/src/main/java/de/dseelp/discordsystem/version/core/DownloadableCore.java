@@ -1,4 +1,4 @@
-package de.dseelp.discordsystem.utils.version.core;
+package de.dseelp.discordsystem.version.core;
 
 import com.google.gson.annotations.Expose;
 import lombok.AllArgsConstructor;

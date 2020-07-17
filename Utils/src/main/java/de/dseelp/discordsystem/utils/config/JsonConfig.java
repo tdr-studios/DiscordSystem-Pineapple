@@ -68,6 +68,10 @@ public class JsonConfig {
         if (defaults != null) defaults.set(key, value);
     }
 
+    public void setDefault(String key, JsonElement element) {
+        if (defaults != null) defaults.set(key, element);
+    }
+
     public void setDefaultStringList(String key, Collection<String> list) {
         if (defaults != null) defaults.setStringList(key, list);
     }
@@ -99,6 +103,10 @@ public class JsonConfig {
 
     public void set(String key, Character value) {
         setted.addProperty(key, value);
+    }
+
+    public void set(String key, JsonElement element) {
+        setted.add(key, element);
     }
 
     public void setStringList(String key, Collection<String> list) {
@@ -277,6 +285,18 @@ public class JsonConfig {
             }
         }
         return null;
+    }
+
+    public JsonElement getJsonElement(String key) {
+        return toObject().get(key);
+    }
+
+    public JsonArray getJsonArray(String key) {
+        return toObject().get(key).getAsJsonArray();
+    }
+
+    public JsonObject getJsonObject(String key) {
+        return toObject().get(key).getAsJsonObject();
     }
 
     @SneakyThrows

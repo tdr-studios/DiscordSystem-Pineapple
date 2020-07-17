@@ -29,7 +29,7 @@ public class RestartCommand extends Command {
         System.out.println(" ");
         System.out.println("+++++++++++++++++++++++++++++++++++++++");
         System.out.println("[Restart] Try to Load Modules");
-        DiscordSystemApplication.getContext().getBean(ModuleService.class).load();
+        //DiscordSystemApplication.getContext().getBean(ModuleService.class).load();
         System.out.println("[Restart] Modules load!");
         System.out.println("[Restart] Try to enable Modules");
         DiscordSystemApplication.getContext().getBean(ModuleService.class).enableAll();

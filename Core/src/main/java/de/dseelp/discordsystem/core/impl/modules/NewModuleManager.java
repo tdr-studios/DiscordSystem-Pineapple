@@ -17,20 +17,17 @@ public class NewModuleManager extends ModuleManager {
     public NewModuleManager(ModuleLoader loader) {
         super(loader);
     }
-    private List<ModuleClassLoader> loaders = new ArrayList<>();
+    protected List<ModuleClassLoader> loaders = new ArrayList<>();
     private EventManager eventManager = Discord.getEventManager();
 
 
     @Override
     public void loadFolder(File folder) {
         for (File file : Objects.requireNonNull(folder.listFiles((dir, name) -> name.toLowerCase().endsWith(".jar")))) {
-            eventManager.callEvent(new ModuleFileLoadEvent(file));
             load(file);
         }
         for (ModuleClassLoader classLoader : loaders) {
-            eventManager.callEvent(new ModuleLoadEvent(classLoader));
-            loader.load(classLoader);
-            eventManager.callEvent(new ModuleLoadFinishedEvent(classLoader));
+            finalLoad(classLoader);
         }
     }
 
@@ -43,9 +40,16 @@ public class NewModuleManager extends ModuleManager {
         }
     }
 
+    public void finalLoad(ModuleClassLoader classLoader) {
+        eventManager.callEvent(new ModuleLoadEvent(classLoader));
+        loader.load(classLoader);
+        eventManager.callEvent(new ModuleLoadFinishedEvent(classLoader));
+    }
+
     @Override
     public void load(File file) {
         if (file.isDirectory()) return;
+        eventManager.callEvent(new ModuleFileLoadEvent(file));
         ModuleInfo info = loader.loadModuleInfo(file);
         if (info == null) {
             eventManager.callEvent(new ModuleLoadFailureEvent(file, "No Annotation found!"));
@@ -78,18 +82,21 @@ public class NewModuleManager extends ModuleManager {
     @Override
     public void unload(File module) {
         ModuleClassLoader classLoader = getModuleClassLoader(module);
+        loaders.remove(classLoader);
         if (classLoader != null) loader.unload(classLoader);
     }
 
     @Override
     public void unload(Module module) {
         ModuleClassLoader classLoader = getModuleClassLoader(module);
+        loaders.remove(classLoader);
         if (classLoader != null) loader.unload(classLoader);
     }
 
     @Override
     public void unload(ModuleInfo module) {
         ModuleClassLoader classLoader = getModuleClassLoader(module);
+        loaders.remove(classLoader);
         if (classLoader != null) loader.unload(classLoader);
     }
 

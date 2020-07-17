@@ -11,9 +11,13 @@
 	<packaging>jar</packaging>
 	<groupId>de.dseelp.discordsystem</groupId>
 	<artifactId>core</artifactId>
-	<version>0.0.1-ALPHA</version>
+	<version>${system.version}</version>
 	<name>Core</name>
 	<description>Demo project for Spring Boot</description>
+
+	<properties>
+		<system.version>0.0.1-ALPHA</system.version>
+	</properties>
 
 
 	<dependencies>
@@ -42,6 +46,12 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>de.dseelp.discordsystem</groupId>
+			<artifactId>versionmanagement</artifactId>
+			<version>${system.version}</version>
 		</dependency>
 
 	</dependencies>

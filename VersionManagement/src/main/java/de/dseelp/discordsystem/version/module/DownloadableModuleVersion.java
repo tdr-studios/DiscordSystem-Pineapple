@@ -1,4 +1,4 @@
-package de.dseelp.discordsystem.utils.version.module;
+package de.dseelp.discordsystem.version.module;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,5 +29,10 @@ public class DownloadableModuleVersion implements Comparable<DownloadableModuleV
     @Override
     public int compareTo(DownloadableModuleVersion o) {
         return o.getVersion().compareTo(version);
+    }
+
+    @Override
+    public String toString() {
+        return version.toString();
     }
 }

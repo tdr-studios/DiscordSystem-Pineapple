@@ -17,7 +17,10 @@ import de.dseelp.discordsystem.core.module.commands.guild.SayCommand;
 import de.dseelp.discordsystem.core.module.commands.guild.SetupCommand;
 import de.dseelp.discordsystem.core.module.commands.guild.TestCommand;
 import de.dseelp.discordsystem.api.modules.ModuleInfo;
+import de.dseelp.discordsystem.core.module.reloads.AllReload;
 import de.dseelp.discordsystem.core.module.reloads.BotReload;
+import de.dseelp.discordsystem.core.module.reloads.ConfigReload;
+import de.dseelp.discordsystem.core.module.reloads.ModuleReload;
 import de.dseelp.discordsystem.utils.console.ConsoleSystem;
 import de.dseelp.discordsystem.utils.console.logging.LogSystem;
 import de.dseelp.discordsystem.utils.console.logging.LoggerRegistry;
@@ -53,7 +56,10 @@ public class RootModule extends DiscordModule implements Listener {
         registerCommand(new TestCommand());
         registerCommand(new SayCommand());
         registerCommand(new ReloadCommand());
+        Discord.getReloadManager().addReload(this, new AllReload());
         Discord.getReloadManager().addReload(this, new BotReload());
+        Discord.getReloadManager().addReload(this, new ConfigReload());
+        Discord.getReloadManager().addReload(this, new ModuleReload());
         if(!Discord.isMaintenance()) {
             registerCommand(new SetStateCommand());
 
@@ -95,12 +101,12 @@ public class RootModule extends DiscordModule implements Listener {
 
     @EventHandler
     public void onReload(ReloadableReloadEvent event) {
-        LoggerRegistry.get("reloads").write("Reloading "+event.getReloadable().getReloadName()+"...");
+        LoggerRegistry.get("reloads").write("Reloading...");
     }
 
     @EventHandler
     public void onReloaded(ReloadableReloadedEvent event) {
-        LoggerRegistry.get("reloads").write("Reloading "+event.getReloadable().getReloadName()+"!");
+        LoggerRegistry.get("reloads").write("Reload Complete!");
     }
 
 }

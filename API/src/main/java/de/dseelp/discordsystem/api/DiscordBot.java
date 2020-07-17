@@ -37,11 +37,11 @@ public class DiscordBot {
             logSystem.error(" This Status is only for maintenance -> " + BotConfig.getOnlineStatus());
             File file = new File("config.json");
             config = JsonConfig.load(file);
-            config.set("defaultOnlineStatus", "Online");
+            config.set("defaultOnlineStatus", "ONLINE");
             config.save(file);
         }
 
-        if (shardManager != null) {
+        if (shardManager == null) {
             logSystem.write("Starting DiscordBot!");
             try {
                 shardManager = DefaultShardManagerBuilder.createDefault(token)
@@ -115,5 +115,13 @@ public class DiscordBot {
         System.out.println(Branding.Big1.getBranding());
         System.out.println("---------------------------------------");
         System.out.println("      Thanks for using our API");
+    }
+
+    public void reload() {
+        if (shardManager == null) return;
+        logSystem.write("Reloading Bot...");
+        setStatus(BotConfig.getOnlineStatus());
+        setActivity(BotConfig.getActivityType(), BotConfig.getActivityName());
+        logSystem.write("Reloaded Bot!");
     }
 }

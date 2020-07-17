@@ -154,28 +154,30 @@ public class ModuleDownloadService {
 
     public void download(ModuleService.CustomModuleManager customModuleManager) {
         for (ModuleRepository repository : repositories) {
-            System.out.println("Searching Repository "+repository.getName());
-            System.out.println("Repo Type = "+ repository.getType());
             for (DownloadableModule module : repository.getModules()) {
                 if (isNeeded(repository, module)) {
                     ModuleClassLoader classLoader = customModuleManager.getModuleClassLoader(module.getName());
                     if (classLoader == null) {
-                        if (downloadModule(module, customModuleManager)) {
+                        if (!downloadModule(module, customModuleManager)) {
                             logSystem.error("A File with the name "+FilenameUtils.getName(module.getLatestSupported().getUrl())+" already exists!");
                         }
                     }else {
-                        if (Arrays.equals(module.getAuthors(), classLoader.getInfo().getAuthors())) {
-                            if (downloadModule(module, customModuleManager)) {
+                        if (!Arrays.equals(module.getAuthors(), classLoader.getInfo().getAuthors())) {
+                            if (!downloadModule(module, customModuleManager)) {
                                 logSystem.error("A File with the name "+FilenameUtils.getName(module.getLatestSupported().getUrl())+" already exists!");
                             }
                         }else {
                             for (String author : classLoader.getInfo().getAuthors()) {
                                 author = author.toLowerCase();
+                                boolean find = false;
                                 for (String moduleAuthor : module.getAuthors()) {
                                     if (moduleAuthor.toLowerCase().equals(author)) {
-                                        if (downloadModule(module, customModuleManager)) {
-                                            logSystem.error("A File with the name "+FilenameUtils.getName(module.getLatestSupported().getUrl())+" already exists!");
-                                        }
+                                        find = true;
+                                    }
+                                }
+                                if (!find) {
+                                    if (!downloadModule(module, customModuleManager)) {
+                                        logSystem.error("A File with the name "+FilenameUtils.getName(module.getLatestSupported().getUrl())+" already exists!");
                                     }
                                 }
                             }

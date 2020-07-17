@@ -23,7 +23,9 @@ public class WebHelper {
     public WebHelper(String baseUrl) throws Exception {
         httpClient = HttpClients.createMinimal();
         URIBuilder uriBuilder = new URIBuilder(baseUrl);
-        if (!uriBuilder.getPath().endsWith("/")) uriBuilder.setPath(uriBuilder.getPath()+"/");
+        if (uriBuilder.getPath() != null) {
+            if (!uriBuilder.getPath().endsWith("/")) uriBuilder.setPath(uriBuilder.getPath()+"/");
+        }else uriBuilder.setPath("/");
         this.baseUrl = uriBuilder.toString();
     }
 
@@ -49,7 +51,6 @@ public class WebHelper {
 
     public JsonDocument getFromURL(String url) throws IOException {
         HttpGet httpGet = new HttpGet(url);
-        System.out.println(url);
         HttpResponse response = httpClient.execute(httpGet);
         if (response.getStatusLine().getStatusCode() == 200) {
             try {

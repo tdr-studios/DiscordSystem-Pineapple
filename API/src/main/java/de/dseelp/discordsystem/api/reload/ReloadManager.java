@@ -19,12 +19,14 @@ public class ReloadManager {
         return reloadables;
     }
 
-    public void reload(String name) {
+    public boolean reload(String name) {
         for (Reloadable reload : getReloads()) {
             if (reload.getReloadName().toLowerCase().equals(name.toLowerCase())) {
                 reload(reload);
+                return true;
             }
         }
+        return false;
     }
 
     public void reload(Reloadable reloadable) {

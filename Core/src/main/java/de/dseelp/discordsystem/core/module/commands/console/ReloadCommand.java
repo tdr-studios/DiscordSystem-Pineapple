@@ -25,15 +25,7 @@ public class ReloadCommand extends Command {
             sendHelp(sender);
             return;
         }
-        boolean ok = false;
-        for (Reloadable reload : reloadManager.getReloads()) {
-            if (reload.getReloadName().toLowerCase().equals(args[0].toLowerCase())) {
-                reloadManager.reload(reload);
-                ok = true;
-                break;
-            }
-        }
-        if (!ok) {
+        if (!reloadManager.reload(args[0])) {
             sendHelp(sender);
         }
     }
@@ -41,7 +33,7 @@ public class ReloadCommand extends Command {
     private void sendHelp(CommandSender sender) {
         StringBuilder builder = new StringBuilder();
         for (Reloadable reload : Discord.getReloadManager().getReloads()) {
-            builder.append(reload.getReloadName());
+            builder.append(reload.getReloadName().toLowerCase());
             builder.append(" - ");
             builder.append(reload.getDescription() == null ? "No Description present!" : reload.getDescription());
             builder.append(System.lineSeparator());

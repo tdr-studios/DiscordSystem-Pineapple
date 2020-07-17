@@ -1,6 +1,7 @@
 package de.dseelp.discordsystem.core.spring.components;
 
 import com.google.gson.JsonArray;
+import de.dseelp.discordsystem.DiscordSystemApplication;
 import de.dseelp.discordsystem.api.Discord;
 import de.dseelp.discordsystem.api.DiscordModule;
 import de.dseelp.discordsystem.api.modules.ModuleClassLoader;
@@ -70,6 +71,9 @@ public class ModuleService {
 
     public void stop() {
         rootModule.setEnabled(false);
+        Discord.getEventManager().removeListener(rootModule);
+        Discord.getCommandSystem().removeCommandsForModule(rootModule);
+        Discord.getReloadManager().removeReloads(rootModule);
         for (Module module : manager.getModules()) {
             module.setEnabled(false);
         }
@@ -86,6 +90,7 @@ public class ModuleService {
         public void disable(String name) {
             Module module = getModule(name);
             if (module instanceof DiscordModule) {
+                Discord.getEventManager().removeListener((DiscordModule) module);
                 Discord.getCommandSystem().removeCommandsForModule((DiscordModule) module);
             }
             super.disable(name);

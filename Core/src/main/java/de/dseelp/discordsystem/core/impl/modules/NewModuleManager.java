@@ -38,6 +38,7 @@ public class NewModuleManager extends ModuleManager {
             loader.unload(classLoader);
             eventManager.callEvent(new ModuleUnloadFinishedEvent(classLoader.getInfo()));
         }
+        loaders.clear();
     }
 
     public void finalLoad(ModuleClassLoader classLoader) {
@@ -81,23 +82,22 @@ public class NewModuleManager extends ModuleManager {
 
     @Override
     public void unload(File module) {
-        ModuleClassLoader classLoader = getModuleClassLoader(module);
+        unload(getModuleClassLoader(module));
+    }
+
+    public void unload(ModuleClassLoader classLoader) {
         loaders.remove(classLoader);
         if (classLoader != null) loader.unload(classLoader);
     }
 
     @Override
     public void unload(Module module) {
-        ModuleClassLoader classLoader = getModuleClassLoader(module);
-        loaders.remove(classLoader);
-        if (classLoader != null) loader.unload(classLoader);
+        unload(getModuleClassLoader(module));
     }
 
     @Override
     public void unload(ModuleInfo module) {
-        ModuleClassLoader classLoader = getModuleClassLoader(module);
-        loaders.remove(classLoader);
-        if (classLoader != null) loader.unload(classLoader);
+        unload(getModuleClassLoader(module));
     }
 
     @Override

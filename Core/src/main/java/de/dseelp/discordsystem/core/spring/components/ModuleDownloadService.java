@@ -2,6 +2,7 @@ package de.dseelp.discordsystem.core.spring.components;
 
 import de.dseelp.discordsystem.DiscordSystemApplication;
 import de.dseelp.discordsystem.api.BotConfig;
+import de.dseelp.discordsystem.api.Discord;
 import de.dseelp.discordsystem.api.modules.ModuleClassLoader;
 import de.dseelp.discordsystem.api.modules.ModuleInfo;
 import de.dseelp.discordsystem.utils.console.ConsoleSystem;
@@ -108,7 +109,7 @@ public class ModuleDownloadService {
     }
 
     public void checkModules(ModuleService.CustomModuleManager customModuleManager) {
-        final DefaultArtifactVersion coreVersion = new DefaultArtifactVersion(DiscordSystemApplication.getVersion());
+        final DefaultArtifactVersion coreVersion = new DefaultArtifactVersion(Discord.getVersion());
         for (ModuleClassLoader classLoader : customModuleManager.getClassLoaders()) {
             DownloadableModule module = findModule(classLoader.getInfo().getAuthors(), findModules(classLoader.getInfo().getName()));
             if (module == null) {

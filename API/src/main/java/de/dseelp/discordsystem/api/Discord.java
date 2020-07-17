@@ -10,7 +10,7 @@ import net.dv8tion.jda.api.sharding.ShardManager;
 
 public class Discord {
     @Getter
-    private static String Version = "C-ALPHA -- Grapefruit 1";
+    private static final String version = "0.1-ALPHA";
     @Getter
     @Setter
     private static boolean maintenance = false;

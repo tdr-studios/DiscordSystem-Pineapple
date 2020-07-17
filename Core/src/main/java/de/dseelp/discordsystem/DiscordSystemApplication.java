@@ -1,4 +1,4 @@
-package de.dseelp.discordsystem.core;
+package de.dseelp.discordsystem;
 
 import de.dseelp.discordsystem.core.spring.components.ConsoleService;
 import de.dseelp.discordsystem.core.spring.components.ModuleService;
@@ -8,18 +8,17 @@ import de.dseelp.discordsystem.core.spring.listeners.AppFinishedStartedListener;
 import de.dseelp.discordsystem.api.BotConfig;
 import de.dseelp.discordsystem.api.Discord;
 import de.dseelp.discordsystem.api.DiscordBot;
+import de.dseelp.discordsystem.utils.console.Console;
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 
-import java.util.logging.Handler;
-import java.util.logging.Logger;
-
 @SpringBootApplication
+@EnableAutoConfiguration
 public class DiscordSystemApplication {
 	//@Getter
 	//@Setter
@@ -28,10 +27,11 @@ public class DiscordSystemApplication {
 	@Getter
 	private static ConfigurableApplicationContext context;
 
+	@Getter
+	private static final String version = "0.0.1-ALPHA";
+
 	@Bean
 	public DiscordBot discordBot() {
-		System.out.println("Creating DC Bot");
-
 		return new DiscordBot(BotConfig.getToken());
 	}
 
@@ -46,9 +46,8 @@ public class DiscordSystemApplication {
 	}
 
 	public static void shutdown() {
-		context.publishEvent(new AppFinishedStartedEvent(context));
-		context.getBean(ModuleService.class).stop();
 		Discord.getBot().stop();
+		context.getBean(ModuleService.class).stop();
 		context.getBean(ConsoleService.class).stop();
 		context.close();
 	}

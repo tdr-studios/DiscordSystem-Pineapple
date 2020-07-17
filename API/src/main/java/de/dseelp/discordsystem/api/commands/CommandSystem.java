@@ -7,9 +7,11 @@ import de.dseelp.discordsystem.api.events.discord.guild.GuildMessageReceivedEven
 import de.dseelp.discordsystem.api.event.EventHandler;
 import de.dseelp.discordsystem.api.event.Listener;
 import de.dseelp.discordsystem.api.events.system.CommandListRegenerateEvent;
+import de.dseelp.discordsystem.utils.console.ConsoleSystem;
 import lombok.Getter;
 
 import java.util.*;
+import java.util.function.Consumer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -21,6 +23,12 @@ public class CommandSystem {
     public CommandSystem() {
         commands = new HashMap<>();
         listener = new CommandListener();
+        ConsoleSystem.getConsole().addReadHandler("commandHandler", new Consumer<String>() {
+            @Override
+            public void accept(String s) {
+                execute(new ConsoleCommandSender(), parseCommand(s));
+            }
+        });
     }
 
     private Command[] commandArray = new Command[]{};

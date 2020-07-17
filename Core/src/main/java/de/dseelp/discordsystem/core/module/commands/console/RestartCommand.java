@@ -1,7 +1,7 @@
 package de.dseelp.discordsystem.core.module.commands.console;
 
 import de.dseelp.discordsystem.api.*;
-import de.dseelp.discordsystem.core.DiscordSystemApplication;
+import de.dseelp.discordsystem.DiscordSystemApplication;
 import de.dseelp.discordsystem.api.commands.Command;
 import de.dseelp.discordsystem.api.commands.CommandSender;
 import de.dseelp.discordsystem.api.commands.CommandType;
@@ -13,7 +13,7 @@ public class RestartCommand extends Command {
 
 
     public RestartCommand() {
-        super(null, "Restarts the Application", CommandType.CONSOLE, "Restart", "rs", "rl","reload");
+        super(null, "Restarts the Application", CommandType.CONSOLE, "Restart", "rs");
 
     }
 
@@ -29,7 +29,7 @@ public class RestartCommand extends Command {
         System.out.println(" ");
         System.out.println("+++++++++++++++++++++++++++++++++++++++");
         System.out.println("[Restart] Try to Load Modules");
-        DiscordSystemApplication.getContext().getBean(ModuleService.class).load();
+        //DiscordSystemApplication.getContext().getBean(ModuleService.class).load();
         System.out.println("[Restart] Modules load!");
         System.out.println("[Restart] Try to enable Modules");
         DiscordSystemApplication.getContext().getBean(ModuleService.class).enableAll();

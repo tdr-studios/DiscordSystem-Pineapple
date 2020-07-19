@@ -37,7 +37,7 @@ public class ModuleDownloadService {
     private LogSystem logSystem;
 
     public ModuleDownloadService() {
-        LoggerRegistry.register("updater", ConsoleSystem.createSubLogger(LoggerRegistry.get("normal").getLogger(), "Updater"));
+        LoggerRegistry.register("updater", ConsoleSystem.createSubLogger(LoggerRegistry.get().getLogger(), "Updater"));
         logSystem = LoggerRegistry.get("updater");
     }
 

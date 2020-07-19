@@ -11,6 +11,7 @@ import de.dseelp.discordsystem.api.DiscordBot;
 import de.dseelp.discordsystem.utils.console.Console;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -38,6 +39,7 @@ public class DiscordSystemApplication {
 				new ApplicationContextInitialized(),
 				new AppFinishedStartedListener());
 		application.setAdditionalProfiles("sqlite");
+		application.setBannerMode(Banner.Mode.OFF);
 		context = application.run();
 		context.publishEvent(new AppFinishedStartedEvent(context));
 	}

@@ -12,7 +12,13 @@ public enum Level {
     private java.util.logging.Level assigned;
 
     Level(java.util.logging.Level assigned) {
-
         this.assigned = assigned;
+    }
+
+    public static Level get(java.util.logging.Level level) {
+        for (Level value : values()) {
+            if (value.getAssigned().equals(level)) return value;
+        }
+        return null;
     }
 }

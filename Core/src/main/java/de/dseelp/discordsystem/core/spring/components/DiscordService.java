@@ -18,7 +18,7 @@ public class DiscordService {
 
     @PostConstruct
     private void start() {
-        LoggerRegistry.register("discord", ConsoleSystem.createSubLogger(LoggerRegistry.get("normal").getLogger(), "Bot"));
+        LoggerRegistry.register("discord", ConsoleSystem.createSubLogger(LoggerRegistry.get().getLogger(), "Bot"));
         Discord.setBot(discordBot);
         discordBot.setLogSystem(LoggerRegistry.get("discord"));
         discordBot.start();

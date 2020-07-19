@@ -69,7 +69,7 @@ public class RootModule extends DiscordModule implements Listener {
         //registerCommand(new RestartCommand());
         registerCommand(new SetupCommand());
         logSystem = LoggerRegistry.get("modules");
-        LoggerRegistry.register("reloads", ConsoleSystem.createSubLogger(LoggerRegistry.get("normal").getLogger(), "ReloadManager"));
+        LoggerRegistry.register("reloads", ConsoleSystem.createSubLogger(LoggerRegistry.get().getLogger(), "ReloadManager"));
     }
 
     private LogSystem logSystem;

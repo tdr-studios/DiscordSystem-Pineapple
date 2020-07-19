@@ -28,11 +28,7 @@ public class SayCommand extends Command {
         }
         EmbedBuilder eb = createNormalBuilder("Nachricht",   builder.toString());
 
-        eb.setColor(1);
         eb.setFooter(guildSender.getAuthor().getName(), guildSender.getAuthor().getAvatarUrl());
         sender.sendMessage(eb.build()).queue();
-        System.out.println("[SayCommand] A Massage was send by the Bot");
-        System.out.println("[SayCommand] Sender: " + guildSender.getAuthor().getName() + " ID: " + guildSender.getAuthor().getAsTag());
-        System.out.println("[SayCommand] Message: " + builder.toString());
     }
 }

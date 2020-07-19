@@ -21,16 +21,15 @@ public class HelpCommand extends Command implements Listener {
 
     @Override
     public void execute(CommandSender sender, String[] args, Command command) {
+        StringBuilder builder = new StringBuilder();
+        for (Command cmd : guildCommands) {
+            if (!sender.hasPermission(cmd.getPermission())) continue;
+            builder.append("[").append(toCommaSeperatedString(cmd.getNames())).append("] - ").append(cmd.getDescription());
+            builder.append(System.lineSeparator());
+        }
         if (sender instanceof ConsoleCommandSender) {
-            for (Command cmd : consoleCommands) {
-                sender.sendMessage("["+toCommaSeperatedString(cmd.getNames()) +"] - "+cmd.getDescription());
-            }
+            sender.sendMessage(builder.toString());
         }else if (sender instanceof DiscordGuildCommandSender) {
-            StringBuilder builder = new StringBuilder();
-            for (Command cmd : guildCommands) {
-                builder.append("[").append(toCommaSeperatedString(cmd.getNames())).append("] - ").append(cmd.getDescription());
-                builder.append(System.lineSeparator());
-            }
             EmbedBuilder eb = EmbedUtils.createSuccessBuilder("Help", builder.toString());
             EmbedUtils.addUserFooter(eb, ((DiscordGuildCommandSender)sender).getAuthor());
             EmbedUtils.setTimestamp(eb, Instant.now());

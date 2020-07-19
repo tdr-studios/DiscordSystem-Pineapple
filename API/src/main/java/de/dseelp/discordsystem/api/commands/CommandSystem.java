@@ -85,7 +85,9 @@ public class CommandSystem {
     public void execute(CommandSender sender, ParsedCommand command) {
         if (command == null) return;
         if (CommandType.isSupported(sender, command.getCommand().getTypes())) {
-            command.getCommand().execute(sender, command.getArgs(), command.getCommand());
+            if (sender.hasPermission(command.getCommand().getPermission())) {
+                command.getCommand().execute(sender, command.getArgs(), command.getCommand());
+            }
         }
     }
 

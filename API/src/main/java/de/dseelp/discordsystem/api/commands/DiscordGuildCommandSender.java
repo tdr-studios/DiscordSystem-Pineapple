@@ -51,6 +51,10 @@ public class DiscordGuildCommandSender implements CommandSender {
 
     @Override
     public boolean hasPermission(Permission permission) {
-        return true;
+        if (permission == null) return true;
+        if (event.getMember().isOwner()) {
+            return true;
+        }
+        return permission.check(this);
     }
 }

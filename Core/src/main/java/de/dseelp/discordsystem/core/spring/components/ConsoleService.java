@@ -5,6 +5,7 @@ import de.dseelp.discordsystem.api.Discord;
 import de.dseelp.discordsystem.api.commands.CommandSystem;
 import de.dseelp.discordsystem.api.commands.ConsoleCommandSender;
 import de.dseelp.discordsystem.utils.console.Console;
+import de.dseelp.discordsystem.utils.console.ConsoleColor;
 import de.dseelp.discordsystem.utils.console.ConsoleInitializer;
 import de.dseelp.discordsystem.utils.console.ConsoleSystem;
 import de.dseelp.discordsystem.utils.console.logging.LogSystem;
@@ -27,11 +28,10 @@ public class ConsoleService {
 
     //@PostConstruct
     public void start() {
-        System.out.println("Creating");
-        console = ConsoleInitializer.initialize("Console > ", "main");
-        LoggerRegistry.register("normal", ConsoleSystem.createSubLogger(LoggerRegistry.get().getLogger(), "DiscordSystem"));
-        LoggerRegistry.register("modules", ConsoleSystem.createSubLogger(LoggerRegistry.get("normal").getLogger(), "Modules"));
-        LogSystem normalLogger = LoggerRegistry.get("normal");
+        console = ConsoleInitializer.initialize(ConsoleColor.RED+System.getProperty("user.name")+ConsoleColor.DEFAULT+"@"+Discord.getVersion()+" => ", "main");
+        LoggerRegistry.register("bot", ConsoleSystem.createSubLogger(LoggerRegistry.get().getLogger(), "DiscordSystem"));
+        LoggerRegistry.register("modules", ConsoleSystem.createSubLogger(LoggerRegistry.get().getLogger(), "Modules"));
+        LogSystem normalLogger = LoggerRegistry.get("main");
         System.setOut(normalLogger.getOut());
         System.setErr(normalLogger.getError());
         Discord.setCommandSystem(new CommandSystem());

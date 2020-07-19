@@ -1,7 +1,6 @@
 package de.dseelp.discordsystem.api.commands;
 
 import lombok.Getter;
-import net.dv8tion.jda.api.Permission;
 
 public abstract class Command {
     @Getter

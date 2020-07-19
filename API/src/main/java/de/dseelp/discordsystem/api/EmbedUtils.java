@@ -37,7 +37,7 @@ public class EmbedUtils {
 
     public static EmbedBuilder createNormalBuilder(String title, String description) {
         EmbedBuilder builder = new EmbedBuilder();
-        builder.setColor(Color.GRAY);
+        builder.setColor(Color.CYAN);
         builder.setTitle(title);
         builder.setDescription(description);
         return builder;

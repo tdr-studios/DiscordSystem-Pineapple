@@ -17,7 +17,7 @@ import java.time.Instant;
 public class SetActivityCommand extends Command{
 
     public SetActivityCommand() {
-        super(null,"Set a Custom Activity",CommandType.GUILD_AND_CONSOLE,"setactivity");
+        super(new NullPermission(),"Set a Custom Activity",CommandType.GUILD_AND_CONSOLE,"setactivity");
 
     }
 

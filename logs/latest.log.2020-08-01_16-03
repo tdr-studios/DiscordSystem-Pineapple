@@ -1,0 +1,73 @@
+[01.08 16:03:02] INFO: [Updater]: Loading Module Repositories from Config...
+[01.08 16:03:05] ERROR: [Updater]: java.lang.IllegalArgumentException: Repo not valid! https://api.tdrstudios.de/
+[01.08 16:03:05] ERROR: [Updater]: 	at de.dseelp.discordsystem.version.repository.ModuleRepository.findRepository(ModuleRepository.java:57)
+[01.08 16:03:05] ERROR: [Updater]: 	at de.dseelp.discordsystem.core.spring.components.ModuleDownloadService.loadRepositories(ModuleDownloadService.java:80)
+[01.08 16:03:05] ERROR: [Updater]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[01.08 16:03:05] ERROR: [Updater]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+[01.08 16:03:05] ERROR: [Updater]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[01.08 16:03:05] ERROR: [Updater]: 	at java.lang.reflect.Method.invoke(Method.java:498)
+[01.08 16:03:05] ERROR: [Updater]: 	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:389)
+[01.08 16:03:05] ERROR: [Updater]: 	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:333)
+[01.08 16:03:05] ERROR: [Updater]: 	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:157)
+[01.08 16:03:05] ERROR: [Updater]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:416)
+[01.08 16:03:05] ERROR: [Updater]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1788)
+[01.08 16:03:05] ERROR: [Updater]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+[01.08 16:03:05] ERROR: [Updater]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+[01.08 16:03:05] ERROR: [Updater]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+[01.08 16:03:05] ERROR: [Updater]: 	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226)
+[01.08 16:03:05] ERROR: [Updater]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+[01.08 16:03:05] ERROR: [Updater]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+[01.08 16:03:05] ERROR: [Updater]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+[01.08 16:03:05] ERROR: [Updater]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+[01.08 16:03:05] ERROR: [Updater]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+[01.08 16:03:05] ERROR: [Updater]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+[01.08 16:03:05] ERROR: [Updater]: 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:893)
+[01.08 16:03:05] ERROR: [Updater]: 	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:879)
+[01.08 16:03:05] ERROR: [Updater]: 	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:551)
+[01.08 16:03:05] ERROR: [Updater]: 	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:758)
+[01.08 16:03:05] ERROR: [Updater]: 	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+[01.08 16:03:05] ERROR: [Updater]: 	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+[01.08 16:03:05] ERROR: [Updater]: 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+[01.08 16:03:05] ERROR: [Updater]: 	at de.dseelp.discordsystem.DiscordSystemApplication.main(DiscordSystemApplication.java:43)
+[01.08 16:03:05] INFO: [Updater]: Loaded 0 Repositories!
+[01.08 16:03:06] ERROR: [Bot]: Bot is already started!
+[01.08 16:03:09] INFO: Application started successfully!
+[01.08 16:03:38] INFO: [Updater]: Loading Module Repositories from Config...
+[01.08 16:03:42] ERROR: [Updater]: java.lang.IllegalArgumentException: Repo not valid! https://api.tdrstudios.de/
+[01.08 16:03:42] ERROR: [Updater]: 	at de.dseelp.discordsystem.version.repository.ModuleRepository.findRepository(ModuleRepository.java:57)
+[01.08 16:03:42] ERROR: [Updater]: 	at de.dseelp.discordsystem.core.spring.components.ModuleDownloadService.loadRepositories(ModuleDownloadService.java:80)
+[01.08 16:03:42] ERROR: [Updater]: 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[01.08 16:03:42] ERROR: [Updater]: 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+[01.08 16:03:42] ERROR: [Updater]: 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[01.08 16:03:42] ERROR: [Updater]: 	at java.lang.reflect.Method.invoke(Method.java:498)
+[01.08 16:03:42] ERROR: [Updater]: 	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleElement.invoke(InitDestroyAnnotationBeanPostProcessor.java:389)
+[01.08 16:03:42] ERROR: [Updater]: 	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor$LifecycleMetadata.invokeInitMethods(InitDestroyAnnotationBeanPostProcessor.java:333)
+[01.08 16:03:42] ERROR: [Updater]: 	at org.springframework.beans.factory.annotation.InitDestroyAnnotationBeanPostProcessor.postProcessBeforeInitialization(InitDestroyAnnotationBeanPostProcessor.java:157)
+[01.08 16:03:42] ERROR: [Updater]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyBeanPostProcessorsBeforeInitialization(AbstractAutowireCapableBeanFactory.java:416)
+[01.08 16:03:42] ERROR: [Updater]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1788)
+[01.08 16:03:42] ERROR: [Updater]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+[01.08 16:03:42] ERROR: [Updater]: 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+[01.08 16:03:42] ERROR: [Updater]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+[01.08 16:03:42] ERROR: [Updater]: 	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226)
+[01.08 16:03:42] ERROR: [Updater]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+[01.08 16:03:42] ERROR: [Updater]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+[01.08 16:03:42] ERROR: [Updater]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+[01.08 16:03:42] ERROR: [Updater]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+[01.08 16:03:42] ERROR: [Updater]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:310)
+[01.08 16:03:42] ERROR: [Updater]: 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+[01.08 16:03:42] ERROR: [Updater]: 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:893)
+[01.08 16:03:42] ERROR: [Updater]: 	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:879)
+[01.08 16:03:42] ERROR: [Updater]: 	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:551)
+[01.08 16:03:42] ERROR: [Updater]: 	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:758)
+[01.08 16:03:42] ERROR: [Updater]: 	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+[01.08 16:03:42] ERROR: [Updater]: 	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+[01.08 16:03:42] ERROR: [Updater]: 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+[01.08 16:03:42] ERROR: [Updater]: 	at de.dseelp.discordsystem.DiscordSystemApplication.main(DiscordSystemApplication.java:43)
+[01.08 16:03:42] INFO: [Updater]: Loaded 0 Repositories!
+[01.08 16:03:43] INFO: [Bot]: Starting DiscordBot!
+[01.08 16:03:45] INFO: [Bot]:  
+[01.08 16:03:45] INFO: [Bot]: ---------------------------------------
+[01.08 16:03:45] INFO: [Bot]: 【T】【D】【R】【S】【T】【U】【D】【I】【O】【S】
+[01.08 16:03:45] INFO: [Bot]: ---------------------------------------
+[01.08 16:03:45] INFO: [Bot]:  
+[01.08 16:03:46] INFO: Application started successfully!

@@ -1,0 +1,12 @@
+[01.08 16:02:27] ERROR: Exception in thread "Thread-1" 
+[01.08 16:02:27] ERROR: java.lang.NullPointerException
+[01.08 16:02:27] ERROR: 	at de.dseelp.discordsystem.api.DiscordBot.setActivity(DiscordBot.java:100)
+[01.08 16:02:27] ERROR: 	at de.dseelp.discordsystem.core.module.commands.SetActivityCommand.execute(SetActivityCommand.java:116)
+[01.08 16:02:27] ERROR: 	at de.dseelp.discordsystem.api.commands.CommandSystem.execute(CommandSystem.java:89)
+[01.08 16:02:27] ERROR: 	at de.dseelp.discordsystem.api.commands.CommandSystem$1.accept(CommandSystem.java:29)
+[01.08 16:02:27] ERROR: 	at de.dseelp.discordsystem.api.commands.CommandSystem$1.accept(CommandSystem.java:26)
+[01.08 16:02:27] ERROR: 	at de.dseelp.discordsystem.utils.console.Console$1$1.accept(Console.java:70)
+[01.08 16:02:27] ERROR: 	at de.dseelp.discordsystem.utils.console.Console$1$1.accept(Console.java:67)
+[01.08 16:02:27] ERROR: 	at java.util.HashMap.forEach(HashMap.java:1289)
+[01.08 16:02:27] ERROR: 	at de.dseelp.discordsystem.utils.console.Console$1.run(Console.java:67)
+[01.08 16:02:27] ERROR: 	at java.lang.Thread.run(Thread.java:748)

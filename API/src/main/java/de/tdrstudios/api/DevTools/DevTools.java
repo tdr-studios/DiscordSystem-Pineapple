@@ -36,6 +36,7 @@ public class DevTools {
 
     }
 
+
     public void alert(String msg, Color color, Guild guild, TextChannel channel, String Title, Module module) {
         EmbedBuilder eb = createNormalBuilder(Title, msg);
 

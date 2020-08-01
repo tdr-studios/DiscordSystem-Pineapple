@@ -19,6 +19,7 @@ public class BotConfig {
         File file = new File("config.json");
         if (!file.exists()) file.createNewFile();
         config = JsonConfig.load(file);
+        config.setDefault("BotName", "%ignore%");
         config.setDefault("token", "Enter Token here!");
         config.setDefault("activity", "TDRStudios | System");
         config.setDefault("activityType", ActivityType.PLAYING.toString());

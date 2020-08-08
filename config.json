@@ -1,0 +1,13 @@
+{
+  "BotName": "%ignore%",
+  "token": "NzMxNTAwMTkyNDY5MjIxNDE2.Xw7BPg.2vCUep3A6T7THsaIiO03Y1TUGc0",
+  "activity": "TDRStudios | System",
+  "activityType": "PLAYING",
+  "defaultOnlineStatus": "Online",
+  "commandPrefix": "+",
+  "Say-Command Header": "Massage",
+  "autoUpdates": true,
+  "moduleRepositories": [
+    "https://api.tdrstudios.de"
+  ]
+}

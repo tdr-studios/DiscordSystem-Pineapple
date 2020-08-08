@@ -5,9 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/API/API.iml" filepath="$PROJECT_DIR$/API/API.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/DiscordSystem.iml" filepath="$PROJECT_DIR$/.idea/DiscordSystem.iml" />
       <module fileurl="file://$PROJECT_DIR$/Core/core.iml" filepath="$PROJECT_DIR$/Core/core.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Launcher/launcher.iml" filepath="$PROJECT_DIR$/Launcher/launcher.iml" />
       <module fileurl="file://$PROJECT_DIR$/Utils/utils.iml" filepath="$PROJECT_DIR$/Utils/utils.iml" />
-      <module fileurl="file://$PROJECT_DIR$/VersionManagement/versionmanagement.iml" filepath="$PROJECT_DIR$/VersionManagement/versionmanagement.iml" />
     </modules>
   </component>
 </project>

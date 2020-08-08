@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f0e250c1-3aab-44e5-ac09-fe4d4d59bce2" name="Default Changelist" comment="" />
+    <list default="true" id="f0e250c1-3aab-44e5-ac09-fe4d4d59bce2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -143,8 +146,8 @@
       <item itemvalue="Application.Executeable" />
       <item itemvalue="Application.DevTools" />
       <item itemvalue="Application.Executeable (1)" />
-      <item itemvalue="Maven.MARVIN" />
       <item itemvalue="Application.DiscordSystemApplication (1)" />
+      <item itemvalue="Maven.MARVIN" />
     </list>
     <recent_temporary>
       <list>

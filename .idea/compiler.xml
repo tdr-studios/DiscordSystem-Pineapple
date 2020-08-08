@@ -8,19 +8,17 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="core" />
-        <module name="versionmanagement" />
-        <module name="launcher" />
         <module name="API" />
         <module name="utils" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="API" target="1.8" />
+      <module name="API" target="8" />
       <module name="core" target="1.8" />
       <module name="DiscordSystem" target="1.5" />
       <module name="launcher" target="1.8" />
       <module name="SAY-Command" target="1.5" />
-      <module name="utils" target="1.8" />
+      <module name="utils" target="8" />
       <module name="versionmanagement" target="8" />
     </bytecodeTargetLevel>
   </component>

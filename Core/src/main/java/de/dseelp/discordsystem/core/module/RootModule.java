@@ -9,6 +9,7 @@ import de.dseelp.discordsystem.api.reload.ReloadableReloadEvent;
 import de.dseelp.discordsystem.api.reload.ReloadableReloadedEvent;
 import de.dseelp.discordsystem.core.module.commands.SetActivityCommand;
 import de.dseelp.discordsystem.core.module.commands.SetStateCommand;
+import de.dseelp.discordsystem.core.module.commands.console.ModuleCommand;
 import de.dseelp.discordsystem.core.module.commands.console.ReloadCommand;
 import de.dseelp.discordsystem.core.module.commands.console.RestartCommand;
 import de.dseelp.discordsystem.core.module.commands.console.StopCommand;
@@ -56,6 +57,7 @@ public class RootModule extends DiscordModule implements Listener {
         registerCommand(new TestCommand());
         registerCommand(new SayCommand());
         registerCommand(new ReloadCommand());
+        registerCommand(new ModuleCommand());
         Discord.getReloadManager().addReload(this, new AllReload());
         Discord.getReloadManager().addReload(this, new BotReload());
         Discord.getReloadManager().addReload(this, new ConfigReload());

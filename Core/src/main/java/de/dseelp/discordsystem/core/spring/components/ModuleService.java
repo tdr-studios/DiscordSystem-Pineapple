@@ -80,7 +80,7 @@ public class ModuleService {
         manager.unloadAll();
     }
 
-    static class CustomModuleManager extends NewModuleManager {
+    public static class CustomModuleManager extends NewModuleManager {
 
         public CustomModuleManager(ModuleLoader loader) {
             super(loader);

@@ -4,8 +4,13 @@ import de.dseelp.discordsystem.utils.console.logging.SystemLogger;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import org.apache.log4j.DailyRollingFileAppender;
-import org.apache.log4j.Logger;
 import org.apache.log4j.PatternLayout;
+import org.apache.logging.log4j.core.LoggerContext;
+import org.apache.logging.log4j.core.appender.FileAppender;
+import org.apache.logging.log4j.core.appender.RollingRandomAccessFileAppender;
+import org.apache.logging.log4j.core.appender.rolling.OnStartupTriggeringPolicy;
+import org.apache.logging.log4j.core.appender.rolling.TimeBasedTriggeringPolicy;
+import org.apache.logging.log4j.util.Strings;
 
 import java.io.File;
 import java.io.IOException;
@@ -36,18 +41,21 @@ public class ConsoleSystem {
                 file.mkdir();
             }
             rootLogger.addHandler(consoleHandler);
-            Log4JAdapterHandler log4JAdapterHandler = new Log4JAdapterHandler();
+            /*Log4JAdapterHandler log4JAdapterHandler = new Log4JAdapterHandler();
             log4JAdapterHandler.setFormatter(new RootFormatter(false));
             rootLogger.addHandler(log4JAdapterHandler);
             PatternLayout layout = new PatternLayout("%m%n");
-            DailyRollingFileAppender fileAppender =
-                    new DailyRollingFileAppender( layout, "logs/latest.log", "'.'yyyy-MM-dd_HH-mm" );
-            logger.setLevel(org.apache.log4j.Level.DEBUG);
+            fileAppender.start();
+            //fileAppender.setAppend(false);
+            logger.setLevel(org.apache.logging.log4j.Level.DEBUG);
             logger.addAppender(fileAppender);
+             */
         }
     }
 
-    private static Logger logger = Logger.getRootLogger();
+    //private static RollingRandomAccessFileAppender fileAppender = RollingRandomAccessFileAppender.newBuilder().withAppend(false).withFileName("logs/latest.log").withFilePattern("logs/%d{yyyy-MM-dd}-%i.log.gz").withPolicy(TimeBasedTriggeringPolicy.newBuilder().build()).withPolicy(OnStartupTriggeringPolicy.createPolicy(50)).setName("FileHandler").build();
+
+    /*private static org.apache.logging.log4j.core.Logger logger = LoggerContext.getContext().getLogger(Strings.EMPTY);
 
     private static class Log4JAdapterHandler extends ConsoleHandler {
         @Override
@@ -57,15 +65,16 @@ public class ConsoleSystem {
             }
             if (record.getLevel() == Level.CONFIG) {
                 logger.debug(getFormatter().format(record));
-            }else if (record.getLevel() == Level.INFO) {
+            } else if (record.getLevel() == Level.INFO) {
                 logger.info(getFormatter().format(record));
-            }else if (record.getLevel() == Level.WARNING) {
+            } else if (record.getLevel() == Level.WARNING) {
                 logger.warn(getFormatter().format(record));
-            }else if (record.getLevel() == Level.SEVERE) {
+            } else if (record.getLevel() == Level.SEVERE) {
                 logger.error(getFormatter().format(record));
             }
         }
     }
+     */
 
     private static class CustomConsoleHandler extends ConsoleHandler {
         @Override

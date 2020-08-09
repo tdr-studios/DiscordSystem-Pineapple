@@ -24,6 +24,8 @@ public class DownloadableModule {
     private final String name;
     @Getter
     private final String[] authors;
+    @Getter
+    private final String description;
 
     @Getter
     @Setter

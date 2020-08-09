@@ -41,7 +41,7 @@ public class DiscordBot {
             config.save(file);
         }
 
-        if (shardManager != null) {
+        if (shardManager == null) {
             logSystem.write("Starting DiscordBot!");
             try {
                 shardManager = DefaultShardManagerBuilder.createDefault(token)

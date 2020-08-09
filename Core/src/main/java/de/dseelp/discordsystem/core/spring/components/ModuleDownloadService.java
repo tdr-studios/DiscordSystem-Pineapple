@@ -26,9 +26,7 @@ import java.lang.reflect.Array;
 import java.net.FileNameMap;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 @Component("ModuleDownloadService")
 public class ModuleDownloadService {
@@ -41,6 +39,17 @@ public class ModuleDownloadService {
         logSystem = LoggerRegistry.get("updater");
     }
 
+    public Collection<DownloadableModule> getModules() {
+        List<DownloadableModule> modules = new ArrayList<>();
+        for (ModuleRepository repository : repositories) {
+            modules.addAll(repository.getModules());
+        }
+        return Collections.unmodifiableCollection(modules);
+    }
+
+    public Collection<ModuleRepository> getRepositories() {
+        return Collections.unmodifiableCollection(repositories);
+    }
     public DownloadableModule[] findModules(String moduleName) {
         moduleName = moduleName.toLowerCase();
         List<DownloadableModule> modules = new ArrayList<>();
@@ -139,7 +148,6 @@ public class ModuleDownloadService {
                     e.printStackTrace();
                 }
                 cachedFiles.add(newFile);
-                System.out.println(latestSupported.getUrl());
             }
         }
     }

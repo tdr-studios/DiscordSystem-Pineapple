@@ -1,6 +1,7 @@
 package de.dseelp.discordsystem.utils.console;
 
 import com.google.common.collect.Maps;
+import de.dseelp.discordsystem.utils.console.logging.LoggerRegistry;
 import org.fusesource.jansi.Ansi;
 import org.fusesource.jansi.AnsiConsole;
 import org.jline.keymap.KeyMap;
@@ -15,6 +16,8 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
 
@@ -54,11 +57,13 @@ public class Console {
     public void init() {
         threadStarted = true;
         createThread();
-        thread.start();
+        //thread.start();
     }
 
+    private ExecutorService service = Executors.newFixedThreadPool(32);
+
     private void createThread() {
-        thread = new Thread(new Runnable() {
+        service.execute(new Runnable() {
             @Override
             public void run() {
                 while (threadStarted) {
@@ -67,7 +72,16 @@ public class Console {
                         readHandlers.forEach(new BiConsumer<String, Consumer<String>>() {
                             @Override
                             public void accept(String s, Consumer<String> consumer) {
-                                consumer.accept(line);
+                                service.execute(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        try {
+                                            consumer.accept(line);
+                                        }catch (Exception exception) {
+                                            exception.printStackTrace(LoggerRegistry.get().getError());
+                                        }
+                                    }
+                                });
                             }
                         });
                     }catch (UserInterruptException ex) {
@@ -80,7 +94,8 @@ public class Console {
 
     public void shutdown() {
         threadStarted = false;
-        thread.interrupt();
+        //thread.interrupt();
+        service.shutdownNow();
     }
 
     public void setPrompt(String prompt) {

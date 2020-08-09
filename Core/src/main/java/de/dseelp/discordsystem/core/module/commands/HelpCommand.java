@@ -16,7 +16,7 @@ import java.util.List;
 public class HelpCommand extends Command implements Listener {
 
     public HelpCommand() {
-        super(null, "A simple HelpCommand", CommandType.GUILD_AND_CONSOLE, "help");
+        super(null, "A simple HelpCommand", CommandType.GUILD_AND_CONSOLE, "help", "?");
     }
 
     @Override

@@ -1,0 +1,5 @@
+[08.08 19:38:24] INFO: [Updater]: Loading Module Repositories from Config...
+[08.08 19:38:28] INFO: [Updater]: Loaded repository Test Repository from https://api.tdrstudios.de!
+[08.08 19:38:28] INFO: [Updater]: Loaded 1 Repository!
+[08.08 19:38:28] ERROR: [Bot]: Bot is already started!
+[08.08 19:38:30] INFO: Application started successfully!

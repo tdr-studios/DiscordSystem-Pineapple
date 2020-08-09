@@ -6,6 +6,7 @@ import lombok.Getter;
 
 import java.io.PrintStream;
 import java.io.PrintWriter;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 
 public class LogSystem {
@@ -38,6 +39,20 @@ public class LogSystem {
 
     public void debug(String msg) {
         logger.config(msg);
+    }
+
+
+    public void lineSeperator() {
+        this.write(" ");
+
+    }
+    public void lineSeperator(int count) throws InterruptedException {
+        while(count > 0) {
+            this.lineSeperator();
+            count = count - 1;
+            TimeUnit.MILLISECONDS.sleep(2);
+        }
+
     }
 
     @Getter

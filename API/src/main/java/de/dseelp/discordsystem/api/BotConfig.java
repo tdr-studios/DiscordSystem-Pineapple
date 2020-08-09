@@ -26,6 +26,7 @@ public class BotConfig {
         config.setDefault("commandPrefix", "+");
         config.setDefault("Say-Command Header", "Massage");
         config.setDefault("autoUpdates", true);
+        config.setDefault("StartWithGUI", true);
         List<String> defaultRepos = new ArrayList<>();
         defaultRepos.add("https://api.tdrstudios.de");
         config.setDefaultStringList("moduleRepositories", defaultRepos);

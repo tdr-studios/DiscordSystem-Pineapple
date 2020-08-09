@@ -64,7 +64,17 @@ public class DiscordBot {
             logSystem.write("---------------------------------------");
             logSystem.write(" ");
         }else {
-            logSystem.error("Bot is already started!");
+            logSystem.error("The Bot cant be startet!");
+            logSystem.write("******************************************************");
+            logSystem.error("Try to check if the Bot is alredy startet or the Token");
+            logSystem.error("is invalide! ");
+            logSystem.lineSeperator();
+            logSystem.write("Token = " + BotConfig.getToken().toCharArray());
+            logSystem.debug(" This is a Discord ore Config Error dont report to tdr-studios");
+            logSystem.write("******************************************************");
+            logSystem.lineSeperator();
+
+
         }
     }
 

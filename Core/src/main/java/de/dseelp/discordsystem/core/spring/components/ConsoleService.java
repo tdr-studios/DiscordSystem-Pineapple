@@ -28,7 +28,7 @@ public class ConsoleService {
 
     //@PostConstruct
     public void start() {
-        console = ConsoleInitializer.initialize(ConsoleColor.RED+System.getProperty("user.name")+ConsoleColor.DEFAULT+"@"+Discord.getVersion()+" => ", "main");
+        console = ConsoleInitializer.initialize(ConsoleColor.RED+System.getProperty("user.name")+ConsoleColor.DEFAULT+"@"+Discord.getBotVersion()+" => ", "main");
         LoggerRegistry.register("bot", ConsoleSystem.createSubLogger(LoggerRegistry.get().getLogger(), "DiscordSystem"));
         LoggerRegistry.register("modules", ConsoleSystem.createSubLogger(LoggerRegistry.get().getLogger(), "Modules"));
         LogSystem normalLogger = LoggerRegistry.get("main");

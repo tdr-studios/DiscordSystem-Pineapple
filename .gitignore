@@ -34,7 +34,7 @@ Thumbs.db
 *.ipr
 
 ### Maven ###
-
+/target/
 
 #DB Files
 *.db

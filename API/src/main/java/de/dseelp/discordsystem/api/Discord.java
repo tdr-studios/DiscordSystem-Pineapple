@@ -10,7 +10,7 @@ import net.dv8tion.jda.api.sharding.ShardManager;
 
 public class Discord {
     @Getter
-    private static final String version = "0.1-ALPHA";
+    private static final String botVersion = "1.5-ALPHA";
     @Getter
     @Setter
     private static boolean maintenance = false;

@@ -41,6 +41,8 @@ public class DiscordBot {
             config.save(file);
         }
 
+        logSystem.write("Starting TDRStudios API v" + Discord.getBotVersion());
+
         if (shardManager == null) {
             logSystem.write("Starting DiscordBot!");
             try {
@@ -120,6 +122,7 @@ public class DiscordBot {
         shardManager.setStatus(OnlineStatus.OFFLINE);
         shardManager.shutdown();
         //shardManager = null;
+        logSystem.write("The Bot is now turned Off ");
         System.out.println(" ");
         System.out.println("---------------------------------------");
         System.out.println(Branding.Big1.getBranding());

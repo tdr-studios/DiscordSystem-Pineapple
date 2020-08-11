@@ -30,7 +30,6 @@ public class DownloadableCore {
     public boolean isUptoDate() {
         DownloadableCoreVersion version = new DownloadableCoreVersion(currentVersion, 0, "");
         int i = getLatest().compareTo(version);
-        System.out.println(i);
         return i >= 0;
     }
 

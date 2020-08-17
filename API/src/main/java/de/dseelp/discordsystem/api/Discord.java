@@ -38,6 +38,10 @@ public class Discord {
     @Getter
     @Setter
     private static Console console;
+    
+    @Setter
+    @Getter
+    private static boolean Testlombok = unset;
 
 
 }

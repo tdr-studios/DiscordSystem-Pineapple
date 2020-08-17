@@ -108,6 +108,12 @@ public class ModuleDownloadService {
                     author = author.toLowerCase();
                     for (String moduleAuthor : module.getAuthors()) {
                         if (moduleAuthor.toLowerCase().equals(author)) {
+
+                            logSystem.write("[ModuleChecker] Module Authors Checked");
+                            logSystem.lineSeperator();
+                            logSystem.write("       > Autor:  " + author.toLowerCase());
+                            logSystem.write("       > Module: " + module.getName());
+
                             return module;
                         }
                     }
@@ -116,6 +122,10 @@ public class ModuleDownloadService {
         }
         return null;
     }
+    
+    
+
+
 
     public void checkModules(ModuleService.CustomModuleManager customModuleManager) {
         final DefaultArtifactVersion coreVersion = new DefaultArtifactVersion(Discord.getBotVersion());

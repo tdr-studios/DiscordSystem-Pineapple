@@ -13,7 +13,6 @@
 	<artifactId>core</artifactId>
 	<version>${system.version}</version>
 	<name>Core</name>
-	<description>Demo project for Spring Boot</description>
 
 	<properties>
 		<system.version>0.1-ALPHA</system.version>
@@ -98,4 +97,6 @@
 		</plugins>
 	</build>
 
+	<description>A Inovative DiscordBot API by the TDRStudios</description>
+	<url>https://tdrstudios.de#redict_DiscordAPI</url>
 </project>

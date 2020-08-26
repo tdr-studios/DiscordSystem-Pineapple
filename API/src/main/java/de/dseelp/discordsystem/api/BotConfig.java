@@ -1,6 +1,5 @@
 package de.dseelp.discordsystem.api;
 
-import com.google.gson.JsonArray;
 import de.dseelp.discordsystem.utils.config.JsonConfig;
 import lombok.SneakyThrows;
 import net.dv8tion.jda.api.OnlineStatus;
@@ -51,7 +50,7 @@ public class BotConfig {
     }
 
     public static ActivityType getActivityType() {
-        return ActivityType.valueOf(config.getString("activityType"));
+        return ActivityType.valueOf(config.getString("activityType").toUpperCase());
     }
 
     public static String getCommandPrefix() {

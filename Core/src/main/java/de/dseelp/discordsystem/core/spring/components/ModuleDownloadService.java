@@ -1,6 +1,5 @@
 package de.dseelp.discordsystem.core.spring.components;
 
-import de.dseelp.discordsystem.DiscordSystemApplication;
 import de.dseelp.discordsystem.api.BotConfig;
 import de.dseelp.discordsystem.api.Discord;
 import de.dseelp.discordsystem.api.modules.ModuleClassLoader;
@@ -22,9 +21,6 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.net.FileNameMap;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.*;
 

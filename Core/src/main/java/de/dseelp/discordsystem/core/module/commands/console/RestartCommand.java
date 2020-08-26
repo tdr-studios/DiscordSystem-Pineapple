@@ -1,7 +1,9 @@
 package de.dseelp.discordsystem.core.module.commands.console;
 
-import de.dseelp.discordsystem.api.*;
 import de.dseelp.discordsystem.DiscordSystemApplication;
+import de.dseelp.discordsystem.api.ActivityType;
+import de.dseelp.discordsystem.api.BotConfig;
+import de.dseelp.discordsystem.api.Discord;
 import de.dseelp.discordsystem.api.commands.Command;
 import de.dseelp.discordsystem.api.commands.CommandSender;
 import de.dseelp.discordsystem.api.commands.CommandType;

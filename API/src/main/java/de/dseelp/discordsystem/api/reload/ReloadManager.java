@@ -1,9 +1,7 @@
 package de.dseelp.discordsystem.api.reload;
 
-import com.google.common.collect.Maps;
 import de.dseelp.discordsystem.api.Discord;
 import de.dseelp.discordsystem.api.DiscordModule;
-import de.dseelp.discordsystem.api.event.Listener;
 
 import java.util.ArrayList;
 import java.util.HashMap;

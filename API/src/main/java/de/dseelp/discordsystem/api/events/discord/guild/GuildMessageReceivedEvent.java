@@ -2,7 +2,10 @@ package de.dseelp.discordsystem.api.events.discord.guild;
 
 import lombok.Getter;
 import net.dv8tion.jda.api.JDA;
-import net.dv8tion.jda.api.entities.*;
+import net.dv8tion.jda.api.entities.Guild;
+import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.Message;
+import net.dv8tion.jda.api.entities.User;
 
 public class GuildMessageReceivedEvent extends GuildMessageEvent {
 

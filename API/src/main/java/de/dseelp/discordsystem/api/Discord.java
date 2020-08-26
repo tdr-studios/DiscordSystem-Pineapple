@@ -6,7 +6,6 @@ import de.dseelp.discordsystem.api.reload.ReloadManager;
 import de.dseelp.discordsystem.utils.console.Console;
 import lombok.Getter;
 import lombok.Setter;
-import net.dv8tion.jda.api.sharding.ShardManager;
 
 public class Discord {
     @Getter

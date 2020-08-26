@@ -1,24 +1,17 @@
 package de.dseelp.discordsystem.core.spring.components;
 
-import de.dseelp.discordsystem.DiscordSystemApplication;
 import de.dseelp.discordsystem.api.Discord;
 import de.dseelp.discordsystem.api.commands.CommandSystem;
-import de.dseelp.discordsystem.api.commands.ConsoleCommandSender;
 import de.dseelp.discordsystem.utils.console.Console;
 import de.dseelp.discordsystem.utils.console.ConsoleColor;
 import de.dseelp.discordsystem.utils.console.ConsoleInitializer;
 import de.dseelp.discordsystem.utils.console.ConsoleSystem;
 import de.dseelp.discordsystem.utils.console.logging.LogSystem;
 import de.dseelp.discordsystem.utils.console.logging.LoggerRegistry;
-import lombok.Getter;
-import org.springframework.context.annotation.DependsOn;
-import org.springframework.context.annotation.Description;
 import org.springframework.stereotype.Component;
 
-import java.util.function.Consumer;
-
 @Component
-@DependsOn("ModuleService")
+//@DependsOn("ModuleService")
 public class ConsoleService {
     public Console getConsole() {
         return console;

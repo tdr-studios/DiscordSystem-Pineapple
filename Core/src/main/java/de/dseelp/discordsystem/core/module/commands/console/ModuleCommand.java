@@ -10,7 +10,6 @@ import de.dseelp.discordsystem.core.spring.components.ModuleService;
 import de.dseelp.discordsystem.version.module.DownloadableModule;
 import de.dseelp.discordsystem.version.repository.ModuleRepository;
 import org.apache.commons.io.FileUtils;
-import org.springframework.boot.SpringApplication;
 
 import java.io.File;
 import java.io.IOException;

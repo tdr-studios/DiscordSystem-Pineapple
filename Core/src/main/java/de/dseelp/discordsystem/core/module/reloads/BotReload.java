@@ -4,8 +4,6 @@ import de.dseelp.discordsystem.api.Discord;
 import de.dseelp.discordsystem.api.DiscordBot;
 import de.dseelp.discordsystem.api.reload.Reloadable;
 
-import java.util.concurrent.TimeUnit;
-
 public class BotReload implements Reloadable {
 
     @Override

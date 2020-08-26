@@ -3,14 +3,17 @@ package de.dseelp.discordsystem.api.commands;
 import de.dseelp.discordsystem.api.BotConfig;
 import de.dseelp.discordsystem.api.Discord;
 import de.dseelp.discordsystem.api.DiscordModule;
-import de.dseelp.discordsystem.api.events.discord.guild.GuildMessageReceivedEvent;
 import de.dseelp.discordsystem.api.event.EventHandler;
 import de.dseelp.discordsystem.api.event.Listener;
+import de.dseelp.discordsystem.api.events.discord.guild.GuildMessageReceivedEvent;
 import de.dseelp.discordsystem.api.events.system.CommandListRegenerateEvent;
 import de.dseelp.discordsystem.utils.console.ConsoleSystem;
 import lombok.Getter;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.function.Consumer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -83,7 +86,6 @@ public class CommandSystem {
     }
 
     public void execute(CommandSender sender, ParsedCommand command) {
-        System.out.println("Debug -> " + sender + " " + command.getCommand()); // Only for Debug
         if (command == null) {
 
             System.err.println("[CommandSystem] in the future you can see here the Help View!");

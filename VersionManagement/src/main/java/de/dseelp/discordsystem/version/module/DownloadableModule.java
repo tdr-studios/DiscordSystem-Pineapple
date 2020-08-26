@@ -1,8 +1,9 @@
 package de.dseelp.discordsystem.version.module;
 
 import com.google.gson.annotations.Expose;
-import de.dseelp.discordsystem.version.module.DownloadableModuleVersion;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.maven.artifact.versioning.DefaultArtifactVersion;
 
 import java.util.ArrayList;

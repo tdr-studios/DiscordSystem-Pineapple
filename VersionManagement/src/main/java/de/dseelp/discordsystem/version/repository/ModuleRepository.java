@@ -2,30 +2,14 @@ package de.dseelp.discordsystem.version.repository;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import de.dseelp.discordsystem.utils.GsonUtils;
 import de.dseelp.discordsystem.utils.JsonDocument;
 import de.dseelp.discordsystem.version.WebHelper;
-import de.dseelp.discordsystem.version.core.DownloadableCoreVersion;
 import de.dseelp.discordsystem.version.module.DownloadableModule;
 import de.dseelp.discordsystem.version.module.ModuleType;
 import lombok.Getter;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.utils.URIBuilder;
-import org.apache.http.impl.client.HttpClients;
 import org.apache.maven.artifact.versioning.DefaultArtifactVersion;
-import sun.security.pkcs11.Secmod;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 

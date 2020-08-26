@@ -17,6 +17,10 @@ public class DiscordGuildCommandSender implements CommandSender {
         return event.getAuthor();
     }
 
+    public Member getMember() {
+        return event.getMember();
+    }
+
     public Guild getGuild() {
         return event.getGuild();
     }

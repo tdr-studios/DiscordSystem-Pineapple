@@ -1,21 +1,15 @@
 package de.dseelp.discordsystem.utils.console;
 
-import com.google.common.collect.Maps;
 import de.dseelp.discordsystem.utils.console.logging.LoggerRegistry;
-import org.fusesource.jansi.Ansi;
 import org.fusesource.jansi.AnsiConsole;
-import org.jline.keymap.KeyMap;
-import org.jline.reader.*;
+import org.jline.reader.LineReaderBuilder;
+import org.jline.reader.UserInterruptException;
 import org.jline.reader.impl.LineReaderImpl;
 import org.jline.terminal.Terminal;
 import org.jline.terminal.TerminalBuilder;
-import org.jline.utils.AttributedString;
-import org.jline.utils.NonBlockingReaderImpl;
 
 import java.io.IOException;
-import java.io.PrintStream;
 import java.util.HashMap;
-import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.function.BiConsumer;

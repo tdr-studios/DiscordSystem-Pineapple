@@ -7,9 +7,7 @@ import de.dseelp.discordsystem.api.EmbedUtils;
 import de.dseelp.discordsystem.api.commands.*;
 import de.tdrstudios.utils.SenderType;
 import net.dv8tion.jda.api.EmbedBuilder;
-import org.springframework.beans.factory.annotation.CustomAutowireConfigurer;
 
-import javax.xml.bind.SchemaOutputResolver;
 import java.awt.*;
 import java.time.Instant;
 

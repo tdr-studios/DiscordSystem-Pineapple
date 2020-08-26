@@ -1,9 +1,9 @@
 package de.dseelp.discordsystem.core.impl;
 
 import com.google.gson.JsonObject;
+import de.dseelp.discordsystem.api.GuildManager;
 import de.dseelp.discordsystem.core.spring.jpa.entities.RawGuildConfig;
 import de.dseelp.discordsystem.core.spring.jpa.repositories.GuildRepository;
-import de.dseelp.discordsystem.api.GuildManager;
 import de.dseelp.discordsystem.utils.GsonUtils;
 import de.dseelp.discordsystem.utils.JsonDocument;
 import de.dseelp.discordsystem.utils.config.GuildConfig;

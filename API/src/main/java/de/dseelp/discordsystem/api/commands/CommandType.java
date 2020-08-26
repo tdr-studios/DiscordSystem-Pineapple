@@ -1,7 +1,6 @@
 package de.dseelp.discordsystem.api.commands;
 
 import java.util.Arrays;
-import java.util.function.Predicate;
 
 public enum CommandType {
     CONSOLE,

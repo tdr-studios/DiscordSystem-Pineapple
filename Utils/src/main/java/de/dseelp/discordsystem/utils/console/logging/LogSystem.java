@@ -1,11 +1,9 @@
 package de.dseelp.discordsystem.utils.console.logging;
 
 import de.dseelp.discordsystem.utils.console.ActionOutputStream;
-import de.dseelp.discordsystem.utils.console.ConsoleSystem;
 import lombok.Getter;
 
 import java.io.PrintStream;
-import java.io.PrintWriter;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 

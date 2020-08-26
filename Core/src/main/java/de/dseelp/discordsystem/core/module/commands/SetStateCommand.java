@@ -1,24 +1,13 @@
 package de.dseelp.discordsystem.core.module.commands;
 
-import de.dseelp.discordsystem.api.BotConfig;
 import de.dseelp.discordsystem.api.Discord;
-import de.dseelp.discordsystem.api.DiscordBot;
 import de.dseelp.discordsystem.api.EmbedUtils;
 import de.dseelp.discordsystem.api.commands.*;
-import de.dseelp.discordsystem.api.event.EventHandler;
-import de.dseelp.discordsystem.api.event.Listener;
-import de.dseelp.discordsystem.api.events.system.CommandListRegenerateEvent;
 import net.dv8tion.jda.api.EmbedBuilder;
-import de.dseelp.discordsystem.api.DiscordBot;
 import net.dv8tion.jda.api.OnlineStatus;
-import net.dv8tion.jda.api.entities.Activity;
 
 import java.awt.*;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.concurrent.ThreadPoolExecutor;
 
 public class SetStateCommand extends Command {
 
@@ -35,8 +24,6 @@ public class SetStateCommand extends Command {
     public void execute(CommandSender sender, String[] args, Command command) {
 
         if (sender instanceof ConsoleCommandSender) {
-            System.out.println("[Debug] Command by Console");
-            System.out.println("[Debug] -> " + args.toString());
             //String msg = args[];
             if(args.length == 0) {
                 System.out.println("                                      ");
@@ -65,10 +52,6 @@ public class SetStateCommand extends Command {
         } else if (sender instanceof DiscordGuildCommandSender) {
 
             StringBuilder builder = new StringBuilder();
-
-
-            System.out.println("[Debug] Command by Guild");
-            System.out.println("[Debug] -> " + builder.toString());
 
             EmbedBuilder eb = EmbedUtils.createNormalBuilder("Bot-System","");
             if(args.length == 0) {

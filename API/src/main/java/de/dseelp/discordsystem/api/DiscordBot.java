@@ -1,6 +1,5 @@
 package de.dseelp.discordsystem.api;
 
-import de.dseelp.discordsystem.api.modules.NewModule;
 import de.dseelp.discordsystem.utils.config.JsonConfig;
 import de.dseelp.discordsystem.utils.console.logging.LogSystem;
 import de.tdrstudios.utils.Branding;
@@ -8,10 +7,11 @@ import lombok.Getter;
 import lombok.Setter;
 import net.dv8tion.jda.api.OnlineStatus;
 import net.dv8tion.jda.api.entities.Activity;
+import net.dv8tion.jda.api.events.ReadyEvent;
+import net.dv8tion.jda.api.hooks.EventListener;
 import net.dv8tion.jda.api.sharding.DefaultShardManagerBuilder;
 import net.dv8tion.jda.api.sharding.ShardManager;
 
-import javax.security.auth.login.LoginException;
 import java.io.File;
 
 public class DiscordBot {
@@ -42,12 +42,12 @@ public class DiscordBot {
         }
 
         if (shardManager == null) {
-            logSystem.write("Starting DiscordBot!");
+            logSystem.write("Starting...");
             try {
                 shardManager = DefaultShardManagerBuilder.createDefault(token)
                 .build();
             } catch (Exception e) {
-                logSystem.error("Can't start DiscordBot! "+e.getCause().getMessage());
+                logSystem.error("Failed! "+e.getCause().getMessage());
                 System.exit(0);
             }
             if(Discord.isMaintenance()){
@@ -58,19 +58,25 @@ public class DiscordBot {
 
             shardManager.addEventListener(new ShardEventListener(Discord.getEventManager()));
             Discord.getEventManager().setCommandListener(Discord.getCommandSystem().getListener());
-            logSystem.write(" ");
-            logSystem.write("---------------------------------------");
-            logSystem.write(Branding.Big1.getBranding());
-            logSystem.write("---------------------------------------");
-            logSystem.write(" ");
+            shardManager.addEventListener((EventListener) event -> {
+                if (event instanceof ReadyEvent) {
+                    logSystem.write("JDA launched successfully!");
+                    logSystem.write("Bot started!");
+                    logSystem.write(" ");
+                    logSystem.write("---------------------------------------");
+                    logSystem.write(Branding.Big1.getBranding());
+                    logSystem.write("---------------------------------------");
+                    logSystem.write(" ");
+                }
+            });
         }else {
-            logSystem.error("The Bot cant be startet!");
+            logSystem.error("The Bot can't be started!");
             logSystem.write("******************************************************");
-            logSystem.error("Try to check if the Bot is alredy startet or the Token");
-            logSystem.error("is invalide! ");
+            logSystem.error("Try to check if the Bot is already started or the Token");
+            logSystem.error("is invalid! ");
             logSystem.lineSeperator();
-            logSystem.write("Token = " + BotConfig.getToken().toCharArray());
-            logSystem.debug(" This is a Discord ore Config Error dont report to tdr-studios");
+            logSystem.write("Token: " + BotConfig.getToken());
+            logSystem.debug(" This is a Discord ore Config Error don't report this to tdr-studios");
             logSystem.write("******************************************************");
             logSystem.lineSeperator();
 

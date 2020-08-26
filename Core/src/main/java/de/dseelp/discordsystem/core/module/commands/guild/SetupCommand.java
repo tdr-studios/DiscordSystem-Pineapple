@@ -1,14 +1,15 @@
 package de.dseelp.discordsystem.core.module.commands.guild;
 
-import de.dseelp.discordsystem.api.*;
+import de.dseelp.discordsystem.api.ActivityType;
+import de.dseelp.discordsystem.api.BotConfig;
+import de.dseelp.discordsystem.api.Discord;
+import de.dseelp.discordsystem.api.EmbedUtils;
 import de.dseelp.discordsystem.api.commands.*;
 import de.dseelp.discordsystem.utils.config.GuildConfig;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.OnlineStatus;
-import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.entities.TextChannel;
-import org.apache.commons.lang3.ObjectUtils;
 
 import java.awt.*;
 import java.time.Instant;
@@ -16,7 +17,7 @@ import java.time.Instant;
 public class SetupCommand extends Command {
 
     public SetupCommand() {
-        super(new NullPermission(), "Setup the Bot", CommandType.DISCORD_GUILD, "setup");
+        super(new RolePermission("setupCommand"), "Setup the Bot", CommandType.DISCORD_GUILD, "setup");
     }
 
 

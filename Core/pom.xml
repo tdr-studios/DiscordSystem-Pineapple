@@ -11,13 +11,9 @@
 	<packaging>jar</packaging>
 	<groupId>de.dseelp.discordsystem</groupId>
 	<artifactId>core</artifactId>
-	<version>${system.version}</version>
+	<version>0.2-ALPHA</version>
 	<name>Core</name>
 	<description>Demo project for Spring Boot</description>
-
-	<properties>
-		<system.version>0.1-ALPHA</system.version>
-	</properties>
 
 
 	<dependencies>
@@ -30,7 +26,7 @@
 		<dependency>
 			<groupId>de.dseelp.discordsystem</groupId>
 			<artifactId>API</artifactId>
-			<version>${system.version}</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -51,7 +47,7 @@
 		<dependency>
 			<groupId>de.dseelp.discordsystem</groupId>
 			<artifactId>versionmanagement</artifactId>
-			<version>${system.version}</version>
+			<version>${project.version}</version>
 		</dependency>
 
 	</dependencies>

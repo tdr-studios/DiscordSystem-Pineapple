@@ -3,22 +3,17 @@ package de.dseelp.discordsystem.utils.console;
 import de.dseelp.discordsystem.utils.console.logging.SystemLogger;
 import lombok.Getter;
 import lombok.SneakyThrows;
-import org.apache.log4j.DailyRollingFileAppender;
-import org.apache.log4j.PatternLayout;
-import org.apache.logging.log4j.core.LoggerContext;
-import org.apache.logging.log4j.core.appender.FileAppender;
-import org.apache.logging.log4j.core.appender.RollingRandomAccessFileAppender;
-import org.apache.logging.log4j.core.appender.rolling.OnStartupTriggeringPolicy;
-import org.apache.logging.log4j.core.appender.rolling.TimeBasedTriggeringPolicy;
-import org.apache.logging.log4j.util.Strings;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.StringWriter;
 import java.text.SimpleDateFormat;
-import java.util.*;
-import java.util.logging.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.logging.ConsoleHandler;
 import java.util.logging.Formatter;
+import java.util.logging.Level;
+import java.util.logging.LogRecord;
 
 public class ConsoleSystem {
     private static boolean init = false;

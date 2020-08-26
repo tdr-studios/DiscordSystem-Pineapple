@@ -1,8 +1,8 @@
 package de.dseelp.discordsystem.core.spring.listeners;
 
+import de.dseelp.discordsystem.DiscordSystemApplication;
 import de.dseelp.discordsystem.api.BotConfig;
 import de.dseelp.discordsystem.api.Discord;
-import de.dseelp.discordsystem.api.commands.CommandSystem;
 import de.dseelp.discordsystem.api.event.EventManager;
 import de.dseelp.discordsystem.api.reload.ReloadManager;
 import de.dseelp.discordsystem.core.spring.components.ConsoleService;
@@ -24,13 +24,12 @@ public class ApplicationContextInitialized implements ApplicationListener<Applic
 
     @Override
     public void onApplicationEvent(ApplicationContextInitializedEvent event) {
+        Runtime.getRuntime().addShutdownHook(new Thread(DiscordSystemApplication::shutdown));
         BotConfig.load();
         GsonUtils.addAdapter(DefaultArtifactVersion.class, new Serializer());
         Discord.setEventManager(new EventManager());
         Discord.setReloadManager(new ReloadManager());
         service = new ConsoleService();
         service.start();
-
-
     }
 }

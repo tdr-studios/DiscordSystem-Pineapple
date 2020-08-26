@@ -1,19 +1,16 @@
 package de.dseelp.discordsystem.core.spring.components;
 
-import com.google.gson.JsonArray;
-import de.dseelp.discordsystem.DiscordSystemApplication;
 import de.dseelp.discordsystem.api.Discord;
 import de.dseelp.discordsystem.api.DiscordModule;
-import de.dseelp.discordsystem.api.modules.ModuleClassLoader;
-import de.dseelp.discordsystem.core.module.RootModule;
-import de.dseelp.discordsystem.utils.config.JsonConfig;
-import de.dseelp.discordsystem.utils.console.logging.LogSystem;
-import de.dseelp.discordsystem.utils.console.logging.LoggerRegistry;
 import de.dseelp.discordsystem.api.modules.Module;
+import de.dseelp.discordsystem.api.modules.ModuleClassLoader;
 import de.dseelp.discordsystem.api.modules.ModuleLoader;
 import de.dseelp.discordsystem.api.modules.ModuleManager;
 import de.dseelp.discordsystem.core.impl.modules.NewModuleLoader;
 import de.dseelp.discordsystem.core.impl.modules.NewModuleManager;
+import de.dseelp.discordsystem.core.module.RootModule;
+import de.dseelp.discordsystem.utils.console.logging.LogSystem;
+import de.dseelp.discordsystem.utils.console.logging.LoggerRegistry;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.DependsOn;

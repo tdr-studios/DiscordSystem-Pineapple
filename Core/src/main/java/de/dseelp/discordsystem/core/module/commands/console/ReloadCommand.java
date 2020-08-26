@@ -5,10 +5,7 @@ import de.dseelp.discordsystem.api.EmbedUtils;
 import de.dseelp.discordsystem.api.commands.*;
 import de.dseelp.discordsystem.api.reload.ReloadManager;
 import de.dseelp.discordsystem.api.reload.Reloadable;
-import de.dseelp.discordsystem.utils.console.logging.LogSystem;
-import de.dseelp.discordsystem.utils.console.logging.LoggerRegistry;
 import net.dv8tion.jda.api.EmbedBuilder;
-import net.dv8tion.jda.api.Permission;
 
 import java.time.Instant;
 

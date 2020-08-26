@@ -2,6 +2,7 @@ config.json
 system.db
 wip.tdrstudios
 /logs/
+/.idea/
 
 #ignore thumbnails created by windows
 Thumbs.db
@@ -33,7 +34,7 @@ Thumbs.db
 *.ipr
 
 ### Maven ###
-target/
+/target/
 
 #DB Files
 *.db

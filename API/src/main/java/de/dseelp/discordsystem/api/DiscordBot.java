@@ -41,10 +41,8 @@ public class DiscordBot {
             config.save(file);
         }
 
-        logSystem.write("Starting TDRStudios API v" + Discord.getBotVersion());
-
         if (shardManager == null) {
-            logSystem.write("Starting...");
+            logSystem.write("Starting JDA...");
             try {
                 shardManager = DefaultShardManagerBuilder.createDefault(token)
                 .build();
@@ -62,8 +60,7 @@ public class DiscordBot {
             Discord.getEventManager().setCommandListener(Discord.getCommandSystem().getListener());
             shardManager.addEventListener((EventListener) event -> {
                 if (event instanceof ReadyEvent) {
-                    logSystem.write("JDA launched successfully!");
-                    logSystem.write("Bot started!");
+                    logSystem.write("JDA started successfully!");
                     logSystem.write(" ");
                     logSystem.write("---------------------------------------");
                     logSystem.write(Branding.Big1.getBranding());

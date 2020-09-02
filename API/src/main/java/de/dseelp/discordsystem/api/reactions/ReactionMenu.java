@@ -9,6 +9,7 @@ import de.dseelp.discordsystem.api.event.EventHandler;
 import de.dseelp.discordsystem.api.event.Listener;
 import de.dseelp.discordsystem.api.events.discord.guild.GuildMessageReactionAddEvent;
 import lombok.Getter;
+import lombok.Setter;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.*;
 
@@ -36,7 +37,9 @@ public class ReactionMenu implements Listener {
         reactionActions.add(action);
     }
 
-    private String cancelledMessage = "Cancelled";
+    @Getter
+    @Setter
+    private MessageEmbed cancelledMessage = new EmbedBuilder().setColor(Color.RED).setDescription("Cancelled").build();
 
     @Getter
     private Message message;
@@ -56,7 +59,7 @@ public class ReactionMenu implements Listener {
     }
 
     public void cancel() {
-        editMessage(new EmbedBuilder().setColor(Color.RED).setDescription(cancelledMessage).build(), true);
+        editMessage(cancelledMessage, true);
     }
 
     public void editMessage(MessageEmbed embed) {
@@ -71,8 +74,6 @@ public class ReactionMenu implements Listener {
     public void clearReactions() {
         message.clearReactions().queue();
     }
-
-
 
     public void restrictAccess(User user) {
         restrictedLong = user.getIdLong();

@@ -5,6 +5,9 @@
 ### Databases ###
 *.db
 Run/
+.idea/
+*.iml
+*.ipr
 
 ### Eclipse ###
 .metadata

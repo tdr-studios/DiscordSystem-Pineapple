@@ -114,7 +114,7 @@ public class ModuleDownloadService {
     }
 
     public void checkModules(ModuleService.CustomModuleManager customModuleManager) {
-        final DefaultArtifactVersion coreVersion = new DefaultArtifactVersion(Discord.getBotVersion());
+        final DefaultArtifactVersion coreVersion = new DefaultArtifactVersion(Discord.getVersion());
         for (ModuleClassLoader classLoader : customModuleManager.getClassLoaders()) {
             DownloadableModule module = findModule(classLoader.getInfo().getAuthors(), findModules(classLoader.getInfo().getName()));
             if (module == null) {

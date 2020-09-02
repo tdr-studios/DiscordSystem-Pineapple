@@ -8,9 +8,9 @@
         <outputRelativeToContentRoot value="true" />
         <module name="core" />
         <module name="API" />
+        <module name="soundmodule" />
         <module name="versionmanagement" />
         <module name="utils" />
-        <module name="SoundModule" />
         <module name="launcher" />
       </profile>
     </annotationProcessing>
@@ -19,9 +19,8 @@
       <module name="core" target="1.8" />
       <module name="launcher" target="1.8" />
       <module name="module-parent" target="1.5" />
-      <module name="Modules" target="1.5" />
       <module name="parent" target="1.5" />
-      <module name="SoundModule" target="6" />
+      <module name="soundmodule" target="6" />
       <module name="utils" target="1.8" />
       <module name="versionmanagement" target="8" />
     </bytecodeTargetLevel>

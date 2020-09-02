@@ -110,7 +110,7 @@ public class ModuleCommand extends Command {
                 }else {
                     sendGeneralHelp(sender);
                 }
-            }else if (action.equals("reload")) {
+            }else if (action.equals("reloadrepos")) {
                 service.loadRepositories();
             }
         }
@@ -122,6 +122,6 @@ public class ModuleCommand extends Command {
         sender.sendMessage("list <installed/repos/downloadable> - List all modules");
         sender.sendMessage("install <Module> - Installs a module");
         sender.sendMessage("uninstall <Module> - Uninstalls a module");
-        sender.sendMessage("reload - Reloads all repositories");
+        sender.sendMessage("reloadrepos - Reloads all repositories");
     }
 }

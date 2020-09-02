@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/Modules/SoundModule/SoundModule.iml" filepath="$PROJECT_DIR$/Modules/SoundModule/SoundModule.iml" />
       <module fileurl="file://$PROJECT_DIR$/Core/core.iml" filepath="$PROJECT_DIR$/Core/core.iml" />
       <module fileurl="file://$PROJECT_DIR$/Launcher/launcher.iml" filepath="$PROJECT_DIR$/Launcher/launcher.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Modules/module-parent.iml" filepath="$PROJECT_DIR$/Modules/module-parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/parent.iml" filepath="$PROJECT_DIR$/parent.iml" />
       <module fileurl="file://$PROJECT_DIR$/Utils/utils.iml" filepath="$PROJECT_DIR$/Utils/utils.iml" />
       <module fileurl="file://$PROJECT_DIR$/VersionManagement/versionmanagement.iml" filepath="$PROJECT_DIR$/VersionManagement/versionmanagement.iml" />

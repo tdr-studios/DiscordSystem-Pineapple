@@ -109,8 +109,8 @@ local.properties
  .idea/modules.xml
  .idea/*.iml
  .idea/modules
- *.iml
- *.ipr
+ **.iml
+ **.ipr
 
 # CMake
 cmake-build-*/
@@ -119,7 +119,7 @@ cmake-build-*/
 .idea/**/mongoSettings.xml
 
 # File-based project format
-*.iws
+**.iws
 
 # IntelliJ
 out/

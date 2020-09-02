@@ -1,0 +1,13 @@
+{
+  "token": "Enter Token here!",
+  "activity": "TDRStudios | System",
+  "activityType": "PLAYING",
+  "defaultOnlineStatus": "ONLINE",
+  "commandPrefix": "+",
+  "Say-Command Header": "Massage",
+  "autoUpdates": true,
+  "StartWithGUI": true,
+  "moduleRepositories": [
+    "https://api.tdrstudios.de"
+  ]
+}

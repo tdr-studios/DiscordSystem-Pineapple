@@ -12,10 +12,10 @@
 
     <modules>
         <module>Utils</module>
+        <module>VersionManagement</module>
         <module>API</module>
         <module>Core</module>
         <module>Launcher</module>
-        <module>VersionManagement</module>
         <module>Modules</module>
     </modules>
 

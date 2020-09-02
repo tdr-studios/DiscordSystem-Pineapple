@@ -38,5 +38,9 @@ public class Discord {
     @Setter
     private static Console console;
 
+    @Getter
+    @Setter
+    private static Scheduler scheduler;
+
 
 }

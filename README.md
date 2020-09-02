@@ -1,5 +1,4 @@
 <h5>Discord-System</h5>
-![Dev Build](https://github.com/tdr-studios/DiscordSystem/workflows/Java%20CI%20with%20Maven/badge.svg?branch=development)
 <h2>Create your own Discord Bot</h2>
 <h4> Information about the Project </h4>
 

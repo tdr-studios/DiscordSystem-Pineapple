@@ -56,13 +56,43 @@ public class ReactionMenu implements Listener {
     }
 
     public void cancel() {
-        message.editMessage(new EmbedBuilder().setColor(Color.RED).setDescription(cancelledMessage).build()).queue();
+        editMessage(new EmbedBuilder().setColor(Color.RED).setDescription(cancelledMessage).build(), true);
+    }
+
+    public void editMessage(MessageEmbed embed) {
+        editMessage(embed, false);
+    }
+
+    public void editMessage(MessageEmbed embed, boolean clearReactions) {
+        message.editMessage(embed).queue();
+        if (clearReactions) clearReactions();
+    }
+
+    public void clearReactions() {
         message.clearReactions().queue();
     }
+
+
+
+    public void restrictAccess(User user) {
+        restrictedLong = user.getIdLong();
+        restricted = true;
+    }
+
+    public void unrestrictAccess() {
+        restricted = false;
+    }
+
+    private long restrictedLong;
+
+    private boolean restricted;
 
     @EventHandler
     public void onReactionAdd(GuildMessageReactionAddEvent event) {
         if (event.getUser().getIdLong() == event.getJDA().getSelfUser().getIdLong()) return;
+        if (restricted) {
+            if (restrictedLong != event.getUser().getIdLong()) return;
+        }
         MessageReaction reaction = event.getReaction();
         MessageReaction.ReactionEmote reactionEmote = reaction.getReactionEmote();
         if (reactionEmote.isEmote()) return;
@@ -70,6 +100,7 @@ public class ReactionMenu implements Listener {
             reaction.removeReaction(event.getUser()).queue();
             for (ReactionAction action : reactionActions) {
                 if (action.getReaction().getAsUnicode().equals(reactionEmote.getEmoji())) {
+                    clearReactions();
                     action.getSubmitAction().accept(this);
                 }
             }

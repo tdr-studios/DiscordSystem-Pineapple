@@ -59,6 +59,7 @@ public class DiscordGuildCommandSender implements CommandSender {
         if (event.getMember().isOwner()) {
             return true;
         }
+        if (event.getMember().getPermissions().contains(net.dv8tion.jda.api.Permission.ADMINISTRATOR)) return true;
         return permission.check(this);
     }
 }

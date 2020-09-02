@@ -46,6 +46,7 @@ public class BotConfig {
 
     public static String[] getModuleRepositoryUrls() {
         Collection<String> moduleRepositories = config.getStringList("moduleRepositories");
+        if (moduleRepositories == null) return new String[0];
         return moduleRepositories.toArray(new String[moduleRepositories.size()]);
     }
 

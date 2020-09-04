@@ -3,7 +3,6 @@ package de.dseelp.discordsystem.core.impl.modules;
 import de.dseelp.discordsystem.api.Discord;
 import de.dseelp.discordsystem.api.event.EventManager;
 import de.dseelp.discordsystem.api.events.system.modules.*;
-import de.dseelp.discordsystem.api.modules.Module;
 import de.dseelp.discordsystem.api.modules.*;
 
 import java.io.File;

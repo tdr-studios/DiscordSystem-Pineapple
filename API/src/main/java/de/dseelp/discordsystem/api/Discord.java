@@ -10,7 +10,7 @@ import lombok.Setter;
 
 public class Discord {
     @Getter
-    private static final String version = "0.2-ALPHA";
+    private static final String version = "1.0-ALPHA";
     @Getter
     @Setter
     private static boolean maintenance = false;

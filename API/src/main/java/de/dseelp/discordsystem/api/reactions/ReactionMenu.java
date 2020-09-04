@@ -1,10 +1,7 @@
 package de.dseelp.discordsystem.api.reactions;
 
-import com.vdurmont.emoji.Emoji;
-import com.vdurmont.emoji.EmojiManager;
 import de.dseelp.discordsystem.api.Discord;
 import de.dseelp.discordsystem.api.DiscordModule;
-import de.dseelp.discordsystem.api.EmbedUtils;
 import de.dseelp.discordsystem.api.event.EventHandler;
 import de.dseelp.discordsystem.api.event.Listener;
 import de.dseelp.discordsystem.api.events.discord.guild.GuildMessageReactionAddEvent;

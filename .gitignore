@@ -1,0 +1,12 @@
+.idea/
+*.db
+*.iml
+API/target/
+Core/target/
+Utils/target/
+VersionManagement/target/
+Modules/SoundModule/target/
+Modules/ModerationModule/target/
+Launcher/target/
+API/dependency-reduced-pom.xml
+Core/dependency-reduced-pom.xml

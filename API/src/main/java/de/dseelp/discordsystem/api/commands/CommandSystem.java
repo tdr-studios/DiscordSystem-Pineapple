@@ -132,6 +132,7 @@ public class CommandSystem {
     private class CommandListener implements Listener {
         @EventHandler
         public void onGuildMessageReceiveEvent(GuildMessageReceivedEvent event) {
+            if (event.getAuthor().getIdLong() == event.getJDA().getSelfUser().getIdLong()) return;
             String message = event.getMessage().getContentRaw();
             if (message.toLowerCase().startsWith(BotConfig.getCommandPrefix())) {
                 ParsedCommand command = parseCommand(message);

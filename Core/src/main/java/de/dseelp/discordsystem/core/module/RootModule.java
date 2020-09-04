@@ -15,7 +15,6 @@ import de.dseelp.discordsystem.core.module.commands.console.ModuleCommand;
 import de.dseelp.discordsystem.core.module.commands.console.ReloadCommand;
 import de.dseelp.discordsystem.core.module.commands.console.StopCommand;
 import de.dseelp.discordsystem.core.module.commands.guild.SayCommand;
-import de.dseelp.discordsystem.core.module.commands.guild.SetupCommand;
 import de.dseelp.discordsystem.core.module.commands.guild.TestCommand;
 import de.dseelp.discordsystem.core.module.reloads.AllReload;
 import de.dseelp.discordsystem.core.module.reloads.BotReload;

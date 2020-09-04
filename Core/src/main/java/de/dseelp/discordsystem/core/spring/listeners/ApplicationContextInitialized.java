@@ -5,6 +5,7 @@ import de.dseelp.discordsystem.api.BotConfig;
 import de.dseelp.discordsystem.api.Discord;
 import de.dseelp.discordsystem.api.event.EventManager;
 import de.dseelp.discordsystem.api.reload.ReloadManager;
+import de.dseelp.discordsystem.api.setup.SetupManager;
 import de.dseelp.discordsystem.core.spring.components.ConsoleService;
 import de.dseelp.discordsystem.utils.GsonUtils;
 import de.dseelp.discordsystem.version.Serializer;
@@ -29,6 +30,7 @@ public class ApplicationContextInitialized implements ApplicationListener<Applic
         GsonUtils.addAdapter(DefaultArtifactVersion.class, new Serializer());
         Discord.setEventManager(new EventManager());
         Discord.setReloadManager(new ReloadManager());
+        Discord.setSetupManager(new SetupManager());
         service = new ConsoleService();
         service.start();
     }

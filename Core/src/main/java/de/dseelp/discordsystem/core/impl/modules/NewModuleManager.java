@@ -102,6 +102,10 @@ public class NewModuleManager extends ModuleManager {
     @Override
     public void disable(String name) {
         Module module = getModule(name);
+        disable(module);
+    }
+
+    public void disable(Module module) {
         eventManager.callEvent(new ModuleDisableEvent(module));
         module.setEnabled(false);
         eventManager.callEvent(new ModuleDisableFinishedEvent(module));

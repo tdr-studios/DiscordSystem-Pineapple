@@ -71,8 +71,10 @@ public class ModuleService {
         Discord.getEventManager().removeListener(rootModule);
         Discord.getCommandSystem().removeCommandsForModule(rootModule);
         Discord.getReloadManager().removeReloads(rootModule);
+        Discord.getSetupManager().removeSetups(rootModule);
+        CustomModuleManager moduleManager = (CustomModuleManager) this.manager;
         for (Module module : manager.getModules()) {
-            module.setEnabled(false);
+            moduleManager.disable(module);
         }
         manager.unloadAll();
     }
@@ -84,14 +86,18 @@ public class ModuleService {
         }
 
         @Override
-        public void disable(String name) {
-            Module module = getModule(name);
+        public void disable(Module module) {
             if (module instanceof DiscordModule) {
-                Discord.getEventManager().removeListener((DiscordModule) module);
-                Discord.getCommandSystem().removeCommandsForModule((DiscordModule) module);
+                DiscordModule discordModule = (DiscordModule) module;
+                Discord.getEventManager().removeListener(discordModule);
+                Discord.getCommandSystem().removeCommandsForModule(discordModule);
+                Discord.getReloadManager().removeReloads(discordModule);
+                Discord.getSetupManager().removeSetups(discordModule);
             }
-            super.disable(name);
+            super.disable(module);
         }
+
+
 
         public Collection<ModuleClassLoader> getClassLoaders() {
             return super.loaders;

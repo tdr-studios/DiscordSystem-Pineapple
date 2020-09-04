@@ -3,8 +3,8 @@ package de.dseelp.discordsystem.core.module.commands.console;
 import de.dseelp.discordsystem.api.commands.Command;
 import de.dseelp.discordsystem.api.commands.CommandSender;
 import de.dseelp.discordsystem.api.commands.CommandType;
-import de.dseelp.discordsystem.core.module.commands.console.moduleSupCommands.ListSubCommand;
 import de.dseelp.discordsystem.core.module.commands.console.moduleSupCommands.InstallSubCommand;
+import de.dseelp.discordsystem.core.module.commands.console.moduleSupCommands.ListSubCommand;
 import de.dseelp.discordsystem.core.module.commands.console.moduleSupCommands.UninstallSubCommand;
 
 public class ModuleCommand extends Command {

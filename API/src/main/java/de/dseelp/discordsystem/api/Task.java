@@ -1,7 +1,6 @@
 package de.dseelp.discordsystem.api;
 
 import lombok.Getter;
-import lombok.Setter;
 
 import java.util.concurrent.Future;
 

@@ -3,7 +3,6 @@ package de.dseelp.discordsystem.modules.sound;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.source.AudioSourceManagers;
-import de.dseelp.discordsystem.api.Discord;
 import de.dseelp.discordsystem.api.DiscordModule;
 import de.dseelp.discordsystem.api.modules.NewModule;
 

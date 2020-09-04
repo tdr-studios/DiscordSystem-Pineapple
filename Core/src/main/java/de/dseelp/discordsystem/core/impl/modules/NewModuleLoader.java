@@ -1,6 +1,5 @@
 package de.dseelp.discordsystem.core.impl.modules;
 
-import de.dseelp.discordsystem.api.modules.Module;
 import de.dseelp.discordsystem.api.modules.*;
 import javassist.bytecode.AnnotationsAttribute;
 import javassist.bytecode.ClassFile;

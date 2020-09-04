@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.function.Consumer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -23,13 +25,16 @@ public class CommandSystem {
     @Getter
     private CommandListener listener;
 
+    @Getter
+    private ExecutorService executorService = Executors.newFixedThreadPool(8);
+
     public CommandSystem() {
         commands = new HashMap<>();
         listener = new CommandListener();
         ConsoleSystem.getConsole().addReadHandler("commandHandler", new Consumer<String>() {
             @Override
             public void accept(String s) {
-                execute(new ConsoleCommandSender(), parseCommand(s));
+                executorService.execute(() -> execute(new ConsoleCommandSender(), parseCommand(s)));
             }
         });
     }

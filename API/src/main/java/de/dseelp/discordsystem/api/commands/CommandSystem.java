@@ -8,6 +8,7 @@ import de.dseelp.discordsystem.api.event.Listener;
 import de.dseelp.discordsystem.api.events.discord.guild.GuildMessageReceivedEvent;
 import de.dseelp.discordsystem.api.events.system.CommandListRegenerateEvent;
 import de.dseelp.discordsystem.utils.console.ConsoleSystem;
+import de.tdrstudios.utils.SenderType;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -92,8 +93,11 @@ public class CommandSystem {
 
     public void execute(CommandSender sender, ParsedCommand command) {
         if (command == null) {
+            if(sender.getName() == "ConsoleSender") {
 
-            System.err.println("[CommandSystem] in the future you can see here the Help View!");
+            }
+
+
             //command.setCommand(sender,/* Help Command*/);
         }
         if (CommandType.isSupported(sender, command.getCommand().getTypes())) {
@@ -107,7 +111,12 @@ public class CommandSystem {
                 }
                 String msg = builder.toString();
                 command.getCommand().execute(sender, command.getArgs(), command.getCommand());
-                System.out.println("[Command] " + sender.getName() + " -> " + command.getCommandName() + " " + msg);
+                if(sender.getName() == "ConsoleSender") {
+                    System.out.println(">  " + command.getCommandName() + " " + msg);
+                }else {
+                    System.out.println("[Command] " + " " + "-Guild- "  + sender.getName() + " -> " + command.getCommandName() + " " + msg);
+                }
+
             }
         }
     }

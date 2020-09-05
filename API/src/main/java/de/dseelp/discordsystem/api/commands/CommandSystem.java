@@ -28,6 +28,7 @@ public class CommandSystem {
 
     @Getter
     private ExecutorService executorService = Executors.newFixedThreadPool(8);
+    private Object DiscordGuildCommandSender;
 
     public CommandSystem() {
         commands = new HashMap<>();
@@ -101,6 +102,10 @@ public class CommandSystem {
             //command.setCommand(sender,/* Help Command*/);
         }
         if (CommandType.isSupported(sender, command.getCommand().getTypes())) {
+
+
+
+
             if (sender.hasPermission(command.getCommand().getPermission())) {
                 StringBuilder builder = new StringBuilder();
                 boolean first = true;
@@ -111,10 +116,13 @@ public class CommandSystem {
                 }
                 String msg = builder.toString();
                 command.getCommand().execute(sender, command.getArgs(), command.getCommand());
-                if(sender.getName() == "ConsoleSender") {
+                if(sender instanceof ConsoleCommandSender) {
                     System.out.println(">  " + command.getCommandName() + " " + msg);
                 }else {
-                    System.out.println("[Command] " + " " + "-Guild- "  + sender.getName() + " -> " + command.getCommandName() + " " + msg);
+                    System.out.println("[Command] " +  "<" + ((DiscordGuildCommandSender) sender).getGuild().getName() + "> " + ((DiscordGuildCommandSender) sender).getMember().getUser().getAsTag() + " -> " + command.getCommandName() + " " + msg);
+
+
+
                 }
 
             }

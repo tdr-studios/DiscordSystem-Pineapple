@@ -2,11 +2,9 @@ package de.dseelp.discordsystem.api.setup;
 
 import de.dseelp.discordsystem.api.Discord;
 import de.dseelp.discordsystem.api.DiscordModule;
+import de.dseelp.discordsystem.api.commands.CommandSender;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class SetupManager {
     private HashMap<DiscordModule, List<Setup>> reloads = new HashMap<>();
@@ -17,19 +15,19 @@ public class SetupManager {
         return setups;
     }
 
-    public boolean setup(String name) {
-        for (Setup reload : getSetups()) {
-            if (reload.getName().toLowerCase().equals(name.toLowerCase())) {
-                setup(reload);
+    public boolean setup(CommandSender sender, String[] args) {
+        for (Setup setup : getSetups()) {
+            if (setup.getName().toLowerCase().equals(args[0].toLowerCase())) {
+                setup(sender, Arrays.copyOfRange(args, 1, args.length), setup);
                 return true;
             }
         }
         return false;
     }
 
-    public void setup(Setup setup) {
-        Discord.getEventManager().callEvent(new SetupEvent(setup));
-        setup.setup();
+    public void setup(CommandSender sender, String[] args, Setup setup) {
+        Discord.getEventManager().callEvent(new SetupEvent(sender, args, setup));
+        setup.setup(sender, args);
     }
 
     private void updateSetups() {

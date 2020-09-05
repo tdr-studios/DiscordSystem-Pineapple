@@ -22,7 +22,7 @@ public class SetupCommand extends Command {
             sendHelp(sender);
             return;
         }
-        if (!setupManager.setup(args[0])) {
+        if (!setupManager.setup(sender, args)) {
             sendHelp(sender);
         }
     }

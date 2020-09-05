@@ -17,6 +17,7 @@ import de.dseelp.discordsystem.core.module.commands.console.StopCommand;
 import de.dseelp.discordsystem.core.module.commands.guild.SayCommand;
 import de.dseelp.discordsystem.core.module.commands.guild.SetupCommand;
 import de.dseelp.discordsystem.core.module.commands.guild.TestCommand;
+import de.dseelp.discordsystem.core.module.commands.guild.sendPNCommand;
 import de.dseelp.discordsystem.core.module.reloads.AllReload;
 import de.dseelp.discordsystem.core.module.reloads.BotReload;
 import de.dseelp.discordsystem.core.module.reloads.ConfigReload;
@@ -57,6 +58,7 @@ public class RootModule extends DiscordModule implements Listener {
         registerCommand(new SayCommand());
         registerCommand(new ReloadCommand());
         registerCommand(new ModuleCommand());
+        registerCommand(new sendPNCommand());
         Discord.getReloadManager().addReload(this, new AllReload());
         Discord.getReloadManager().addReload(this, new BotReload());
         Discord.getReloadManager().addReload(this, new ConfigReload());

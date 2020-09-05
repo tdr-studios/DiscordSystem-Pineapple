@@ -1,0 +1,12 @@
+[08.08 20:11:43] INFO: [Updater]: Loading Module Repositories from Config...
+[08.08 20:11:45] INFO: [Updater]: Loaded repository Test Repository from https://api.tdrstudios.de!
+[08.08 20:11:45] INFO: [Updater]: Loaded 1 Repository!
+[08.08 20:11:45] ERROR: [Bot]: The Bot cant be startet!
+[08.08 20:11:45] INFO: [Bot]: ******************************************************
+[08.08 20:11:45] ERROR: [Bot]: Try to check if the Bot is alredy startet or the Token
+[08.08 20:11:45] ERROR: [Bot]: is invalide! 
+[08.08 20:11:45] INFO: [Bot]:  
+[08.08 20:11:45] INFO: [Bot]: Token = [C@4f8b4bd0
+[08.08 20:11:45] INFO: [Bot]: ******************************************************
+[08.08 20:11:45] INFO: [Bot]:  
+[08.08 20:11:47] INFO: Application started successfully!

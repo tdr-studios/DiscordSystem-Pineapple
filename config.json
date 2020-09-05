@@ -1,0 +1,14 @@
+{
+  "token": "NzQxNzA1NzA4ODY4OTkzMDI1.Xy7dRQ.J9zVwVCO4dfG-PYqxtSj35h91Vw",
+  "activity": "TDRStudios | System",
+  "activityType": "PLAYING",
+  "defaultOnlineStatus": "ONLINE",
+  "commandPrefix": "+",
+  "Say-Command Header": "Massage",
+  "autoUpdates": true,
+  "StartWithGUI": true,
+  "moduleRepositories": [
+    "https://api.tdrstudios.de"
+  ],
+  "token_old": "NzMxNTAwMTkyNDY5MjIxNDE2.Xwm8pA._AxX4cSgwCSkoQyA7IxTltjMzOM"
+}

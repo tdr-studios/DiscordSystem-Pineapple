@@ -1,0 +1,20 @@
+[09.08 08:17:03] INFO: [Updater]: Loading Module Repositories from Config...
+[09.08 08:17:05] INFO: [Updater]: Loaded repository Test Repository from https://api.tdrstudios.de!
+[09.08 08:17:05] INFO: [Updater]: Loaded 1 Repository!
+[09.08 08:17:05] INFO: [Bot]: Starting DiscordBot!
+[09.08 08:17:06] INFO: [Bot]:  
+[09.08 08:17:06] INFO: [Bot]: ---------------------------------------
+[09.08 08:17:06] INFO: [Bot]: 【T】【D】【R】【S】【T】【U】【D】【I】【O】【S】
+[09.08 08:17:06] INFO: [Bot]: ---------------------------------------
+[09.08 08:17:06] INFO: [Bot]:  
+[09.08 08:17:07] INFO: Application started successfully!
+[09.08 08:17:24] INFO:  
+[09.08 08:17:24] INFO: ---------------------------------------
+[09.08 08:17:24] INFO: 【T】【D】【R】【S】【T】【U】【D】【I】【O】【S】
+[09.08 08:17:24] INFO: ---------------------------------------
+[09.08 08:17:24] INFO:       Thanks for using our API
+[09.08 08:17:54] INFO: [Updater]: Loading Module Repositories from Config...
+[09.08 08:17:56] INFO: [Updater]: Loaded repository Test Repository from https://api.tdrstudios.de!
+[09.08 08:17:56] INFO: [Updater]: Loaded 1 Repository!
+[09.08 08:17:56] INFO: [Bot]: Starting DiscordBot!
+[09.08 08:17:57] ERROR: [Bot]: Can't start DiscordBot! The provided token is invalid!

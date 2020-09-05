@@ -8,6 +8,7 @@ import de.dseelp.discordsystem.api.event.Listener;
 import de.dseelp.discordsystem.api.events.discord.guild.GuildMessageReceivedEvent;
 import de.dseelp.discordsystem.api.events.system.CommandListRegenerateEvent;
 import de.dseelp.discordsystem.utils.console.ConsoleSystem;
+import de.tdrstudios.utils.SenderType;
 import lombok.Getter;
 
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class CommandSystem {
 
     @Getter
     private ExecutorService executorService = Executors.newFixedThreadPool(8);
+    private Object DiscordGuildCommandSender;
 
     public CommandSystem() {
         commands = new HashMap<>();
@@ -92,13 +94,37 @@ public class CommandSystem {
 
     public void execute(CommandSender sender, ParsedCommand command) {
         if (command == null) {
+            if(sender.getName() == "ConsoleSender") {
 
-            System.err.println("[CommandSystem] in the future you can see here the Help View!");
+            }
+
+
             //command.setCommand(sender,/* Help Command*/);
         }
         if (CommandType.isSupported(sender, command.getCommand().getTypes())) {
+
+
+
+
             if (sender.hasPermission(command.getCommand().getPermission())) {
+                StringBuilder builder = new StringBuilder();
+                boolean first = true;
+                for (String arg : command.getArgs()) {
+                    if (!first) builder.append(" ");
+                    builder.append(arg);
+                    first = false;
+                }
+                String msg = builder.toString();
                 command.getCommand().execute(sender, command.getArgs(), command.getCommand());
+                if(sender instanceof ConsoleCommandSender) {
+                    System.out.println(">  " + command.getCommandName() + " " + msg);
+                }else {
+                    System.out.println("[Command] " +  "<" + ((DiscordGuildCommandSender) sender).getGuild().getName() + "> " + ((DiscordGuildCommandSender) sender).getMember().getUser().getAsTag() + " -> " + command.getCommandName() + " " + msg);
+
+
+
+                }
+
             }
         }
     }

@@ -98,7 +98,16 @@ public class CommandSystem {
         }
         if (CommandType.isSupported(sender, command.getCommand().getTypes())) {
             if (sender.hasPermission(command.getCommand().getPermission())) {
+                StringBuilder builder = new StringBuilder();
+                boolean first = true;
+                for (String arg : command.getArgs()) {
+                    if (!first) builder.append(" ");
+                    builder.append(arg);
+                    first = false;
+                }
+                String msg = builder.toString();
                 command.getCommand().execute(sender, command.getArgs(), command.getCommand());
+                System.out.println("[Command] " + sender.getName() + " -> " + command.getCommandName() + " " + msg);
             }
         }
     }

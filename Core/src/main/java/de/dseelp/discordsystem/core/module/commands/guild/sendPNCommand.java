@@ -30,8 +30,13 @@ public class sendPNCommand extends Command {
         }
         String msg = builder.toString();
         eb.setDescription(msg);
+
         eb.setTitle("Privat-Nachricht-Test");
         eb.setColor(Color.GREEN);
+        if(msg == null) {
+            eb.setColor(Color.BLACK);
+            eb.setDescription("Test-Nachricht!");
+        }
         DevTools.sendPrivateEmbed(user, eb);
     }
 }

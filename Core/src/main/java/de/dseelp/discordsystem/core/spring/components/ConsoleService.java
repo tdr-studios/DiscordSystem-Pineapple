@@ -8,6 +8,8 @@ import de.dseelp.discordsystem.utils.console.ConsoleInitializer;
 import de.dseelp.discordsystem.utils.console.ConsoleSystem;
 import de.dseelp.discordsystem.utils.console.logging.LogSystem;
 import de.dseelp.discordsystem.utils.console.logging.LoggerRegistry;
+import de.tdrstudios.api.DevTools.DevTools;
+import jdk.nashorn.internal.objects.annotations.Getter;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -24,10 +26,12 @@ public class ConsoleService {
         console = ConsoleInitializer.initialize(ConsoleColor.RED+System.getProperty("user.name")+ConsoleColor.DEFAULT+"@"+Discord.getVersion()+" => ", "main");
         LoggerRegistry.register("bot", ConsoleSystem.createSubLogger(LoggerRegistry.get().getLogger(), "DiscordSystem"));
         LoggerRegistry.register("modules", ConsoleSystem.createSubLogger(LoggerRegistry.get().getLogger(), "Modules"));
+        LoggerRegistry.register("devtools", ConsoleSystem.createLogger("DevTools"));
         LogSystem normalLogger = LoggerRegistry.get("main");
         System.setOut(normalLogger.getOut());
         System.setErr(normalLogger.getError());
         Discord.setCommandSystem(new CommandSystem());
+        DevTools.initLog();
     }
 
     public void stop() {

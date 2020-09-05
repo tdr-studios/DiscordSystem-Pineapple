@@ -10,7 +10,7 @@ import de.dseelp.discordsystem.core.module.commands.console.moduleSupCommands.Un
 public class ModuleCommand extends Command {
 
     public ModuleCommand() {
-        super(null, "description", CommandType.ALL, "module", "modules");
+        super(null, "description", CommandType.CONSOLE, "module", "modules");
         registerSubCommand(new ListSubCommand());
         registerSubCommand(new InstallSubCommand());
         registerSubCommand(new UninstallSubCommand());

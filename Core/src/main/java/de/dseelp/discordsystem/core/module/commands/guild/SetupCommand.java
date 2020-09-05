@@ -12,7 +12,7 @@ import java.time.Instant;
 public class SetupCommand extends Command {
 
     public SetupCommand() {
-        super(null, "Execute a Setup", CommandType.CONSOLE, "setup");
+        super(null, "Execute a Setup", CommandType.DISCORD_GUILD, "setup");
     }
 
     @Override

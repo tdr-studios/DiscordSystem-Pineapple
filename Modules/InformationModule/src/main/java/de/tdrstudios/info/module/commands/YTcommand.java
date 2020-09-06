@@ -1,6 +1,7 @@
 package de.tdrstudios.info.module.commands;
 
 import de.dseelp.discordsystem.api.Discord;
+import de.dseelp.discordsystem.api.EmbedUtils;
 import de.dseelp.discordsystem.api.commands.*;
 import de.dseelp.discordsystem.utils.config.GuildConfig;
 import de.dseelp.discordsystem.utils.console.logging.LogSystem;
@@ -8,6 +9,7 @@ import de.tdrstudios.info.module.InformationModule;
 import net.dv8tion.jda.api.EmbedBuilder;
 
 import java.awt.*;
+import java.time.Instant;
 
 public class YTcommand extends Command {
 
@@ -27,6 +29,12 @@ public class YTcommand extends Command {
         eb.setDescription(yt);
         eb.setColor(Color.RED);
         eb.setTitle("YouTube");
+        if(yt == null) {
+            eb.setDescription("No Link!");
+        }
+
+        EmbedUtils.addUserFooter(eb, ((DiscordGuildCommandSender)sender).getAuthor());
+        EmbedUtils.setTimestamp(eb, Instant.now());
 
 
        // sender.sendMessage(eb.build());

@@ -15,7 +15,7 @@ public class SetStateCommand extends Command {
 
 
 
-        super(null, "A simple SetSate Command", CommandType.GUILD_AND_CONSOLE, "setstate");
+        super(new NullPermission(), "A simple SetSate Command", CommandType.GUILD_AND_CONSOLE, "setstate");
 
     }
 

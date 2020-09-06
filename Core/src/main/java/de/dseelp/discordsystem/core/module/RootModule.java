@@ -1,5 +1,6 @@
 package de.dseelp.discordsystem.core.module;
 
+import de.dseelp.discordsystem.api.BotConfig;
 import de.dseelp.discordsystem.api.Discord;
 import de.dseelp.discordsystem.api.DiscordModule;
 import de.dseelp.discordsystem.api.event.EventHandler;
@@ -64,10 +65,16 @@ public class RootModule extends DiscordModule implements Listener {
         Discord.getReloadManager().addReload(this, new ConfigReload());
         Discord.getReloadManager().addReload(this, new ModuleReload());
         if(!Discord.isMaintenance()) {
-            registerCommand(new SetStateCommand());
+            if(BotConfig.getallowActivityChange() == "true") {
+                registerCommand(new SetStateCommand());
+                registerCommand(new SetActivityCommand());
+            }else {
+                System.out.println("The setactivity & setstate Commands are disabled by the Config!");
+            }
+
 
         }
-        registerCommand(new SetActivityCommand());
+
 
         //registerCommand(new RestartCommand());
         registerCommand(new SetupCommand());

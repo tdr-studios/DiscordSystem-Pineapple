@@ -38,7 +38,7 @@ public class SetupManager {
         setups = reloads.toArray(new Setup[reloads.size()]);
     }
 
-    public void addReload(DiscordModule module, Setup setup) {
+    public void addSetup(DiscordModule module, Setup setup) {
         if (!canAdd(setup)) return;
         reloads.computeIfAbsent(module, k -> new ArrayList<>());
         List<Setup> setups = this.reloads.get(module);

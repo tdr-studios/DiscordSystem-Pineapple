@@ -16,7 +16,7 @@ public class ModerationModule extends DiscordModule {
     }
     public void registerSetups() {
         SetupManager setupManager = Discord.getSetupManager();
-        setupManager.addReload(this, new SuggestionSetup());
+        setupManager.addSetup(this, new SuggestionSetup());
     }
 
 

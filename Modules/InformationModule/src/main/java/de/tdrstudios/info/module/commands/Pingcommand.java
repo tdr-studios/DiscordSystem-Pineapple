@@ -54,6 +54,10 @@ public class Pingcommand extends Command {
                 logSystem.warning("[Ping] Server " + args[0] + " is unreachable! ❌");
                 eb.addField("Status", "Server is unreachable ❌" , false);
             }
+
+            eb.setFooter(sender.getName(), ((DiscordGuildCommandSender) sender).getAuthor().getAvatarUrl());
+            sender.sendMessage(eb.build()).queue();
+            ((DiscordGuildCommandSender) sender).getChannel().sendMessage(eb.build());
         }
 
 

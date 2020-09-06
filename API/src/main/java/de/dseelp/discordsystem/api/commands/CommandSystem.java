@@ -95,8 +95,7 @@ public class CommandSystem {
 
             System.err.println("[CommandSystem] in the future you can see here the Help View!");
             //command.setCommand(sender,/* Help Command*/);
-        }
-        if (CommandType.isSupported(sender, command.getCommand().getTypes())) {
+        }else if (CommandType.isSupported(sender, command.getCommand().getTypes())) {
             if (sender.hasPermission(command.getCommand().getPermission())) {
                 command.getCommand().execute(sender, command.getArgs(), command.getCommand());
             }

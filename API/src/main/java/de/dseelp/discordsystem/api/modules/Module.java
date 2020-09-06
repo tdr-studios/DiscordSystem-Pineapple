@@ -51,8 +51,7 @@ public abstract class Module {
     public void onEnable(){}
 
     public void onDisable(){}
-
-
+    
     final void init(ModuleInfo info) {
         if (this.info == null) {
             this.info = info;
@@ -60,19 +59,16 @@ public abstract class Module {
             throw new UnsupportedOperationException("Module already initialized!");
         }
     }
-
     @Getter
     private boolean enabled;
 
     public void setEnabled(boolean enabled) {
         if (!this.enabled && enabled) {
             enabled = true;
-
             onEnable();
         }else if (this.enabled && !enabled) {
             onDisable();
             enabled = false;
-
         }
     }
 }

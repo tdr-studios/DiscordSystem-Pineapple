@@ -51,7 +51,7 @@ public abstract class Module {
     public void onEnable(){}
 
     public void onDisable(){}
-    
+
     final void init(ModuleInfo info) {
         if (this.info == null) {
             this.info = info;

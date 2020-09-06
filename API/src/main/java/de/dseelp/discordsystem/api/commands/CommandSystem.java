@@ -100,12 +100,7 @@ public class CommandSystem {
 
 
             //command.setCommand(sender,/* Help Command*/);
-        }
-        if (CommandType.isSupported(sender, command.getCommand().getTypes())) {
-
-
-
-
+        }else if (CommandType.isSupported(sender, command.getCommand().getTypes())) {
             if (sender.hasPermission(command.getCommand().getPermission())) {
                 StringBuilder builder = new StringBuilder();
                 boolean first = true;

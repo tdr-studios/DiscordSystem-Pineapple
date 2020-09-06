@@ -15,6 +15,7 @@
     <modules>
         <module>SoundModule</module>
         <module>ModerationModule</module>
+        <module>InformationModule</module>
     </modules>
 
 

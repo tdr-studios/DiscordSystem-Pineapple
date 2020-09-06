@@ -4,6 +4,7 @@ import de.dseelp.discordsystem.api.Discord;
 import de.dseelp.discordsystem.api.event.EventManager;
 import de.dseelp.discordsystem.api.events.system.modules.*;
 import de.dseelp.discordsystem.api.modules.*;
+import de.dseelp.discordsystem.api.modules.Module;
 
 import java.io.File;
 import java.util.ArrayList;

@@ -9,7 +9,6 @@ import de.dseelp.discordsystem.utils.console.ConsoleSystem;
 import de.dseelp.discordsystem.utils.console.logging.LogSystem;
 import de.dseelp.discordsystem.utils.console.logging.LoggerRegistry;
 import de.tdrstudios.api.DevTools.DevTools;
-import jdk.nashorn.internal.objects.annotations.Getter;
 import org.springframework.stereotype.Component;
 
 @Component

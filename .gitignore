@@ -11,3 +11,4 @@ Launcher/target/
 API/dependency-reduced-pom.xml
 Core/dependency-reduced-pom.xml
 config.json
+Modules/InformationModule/target/

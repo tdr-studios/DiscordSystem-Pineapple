@@ -35,15 +35,9 @@ public class SetupCommand extends Command {
             builder.append(setup.getDescription() == null ? "No Description present!" : setup.getDescription());
             builder.append(System.lineSeparator());
         }
-        if (sender instanceof ConsoleCommandSender) {
-            sender.sendMessage("Please use: setup <Setup>");
-            sender.sendMessage("Setups:");
-            sender.sendMessage(builder.toString());
-        }else if (sender instanceof DiscordGuildCommandSender) {
-            EmbedBuilder eb = EmbedUtils.createErrorBuilder("Setups", builder.toString());
-            EmbedUtils.addUserFooter(eb, ((DiscordGuildCommandSender) sender).getAuthor());
-            EmbedUtils.setTimestamp(eb, Instant.now());
-            sender.sendMessage(eb.build());
-        }
+        EmbedBuilder eb = EmbedUtils.createErrorBuilder("Setups", builder.toString());
+        EmbedUtils.addUserFooter(eb, ((DiscordGuildCommandSender) sender).getAuthor());
+        EmbedUtils.setTimestamp(eb, Instant.now());
+        sender.sendMessage(eb.build()).queue();
     }
 }

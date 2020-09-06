@@ -67,10 +67,12 @@ public abstract class Module {
     public void setEnabled(boolean enabled) {
         if (!this.enabled && enabled) {
             enabled = true;
+
             onEnable();
         }else if (this.enabled && !enabled) {
             onDisable();
             enabled = false;
+
         }
     }
 }

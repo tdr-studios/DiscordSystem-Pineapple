@@ -26,20 +26,43 @@ public class YTsetup implements Setup {
                 sender.sendMessage(EmbedUtils.createError("Setup Error", "Please mention only one Link")).queue();
             }else {
 
-                GuildConfig guildConfig = Discord.getGuildManager().getGuildConfig(sender.getGuild());
-               // guildConfig.getDocument().add("info_yt", args[0]);
-                JsonDocument jsonDocument = guildConfig.getDocument();
-                jsonDocument.add("info_yt", args[0]);
-                guildConfig.setDocument(jsonDocument);
-                Discord.getGuildManager().save(guildConfig);
+                boolean valid = false;
 
-                GuildConfig guildConfig2 = Discord.getGuildManager().getGuildConfig(sender.getGuild());
+                if(args[0].startsWith("https://youtube.com/")) {
 
-                String check = guildConfig2.getDocument().getString("info_yt");
-                sender.sendMessage(EmbedUtils.createSuccess("YouTube-link set!", "The YouTube Link was set to "+ check+"!")).queue();
+                    if(args[0].contains("/watch?v=")) {
+                        valid = false;
+                    } else {
+                        valid = true;
+                    }
+
+                if(valid) {
+                    GuildConfig guildConfig = Discord.getGuildManager().getGuildConfig(sender.getGuild());
+                    // guildConfig.getDocument().add("info_yt", args[0]);
+                    JsonDocument jsonDocument = guildConfig.getDocument();
+                    jsonDocument.add("info_yt", args[0]);
+                    guildConfig.setDocument(jsonDocument);
+                    Discord.getGuildManager().save(guildConfig);
+
+                    GuildConfig guildConfig2 = Discord.getGuildManager().getGuildConfig(sender.getGuild());
+
+                    String check = guildConfig2.getDocument().getString("info_yt");
+                    sender.sendMessage(EmbedUtils.createSuccess("YouTube-link set!", "The YouTube Link was set to "+ check+"!")).queue();
+                }else {
+
+                    sender.sendMessage(EmbedUtils.createError("YouTube-Error" , " The Link isn't a YouTube Channel Link")).queue();
+
+                }
+
+
+
+
             }
         }
     }
+
+
+}
 
     @Override
     public String getName() {
@@ -48,6 +71,6 @@ public class YTsetup implements Setup {
 
     @Override
     public String getDescription() {
-        return "Set a YouTube-Link for " + BotConfig.getCommandPrefix() + "yt";
+        return "Set a Link for the " + BotConfig.getCommandPrefix() + "yt Command!";
     }
 }

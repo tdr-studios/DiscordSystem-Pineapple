@@ -1,5 +1,5 @@
 {
-  "token": "NzMxNTAwMTkyNDY5MjIxNDE2.Xwm8pA.9WRBaVMKw0cgKq8EKFa059Ny8mM",
+  "token": "NzMxNTAwMTkyNDY5MjIxNDE2.Xwm8pA.TETaZnmOP1jrBnJRgESnscXbeHs",
   "activity": "TDRStudios | System",
   "activityType": "PLAYING",
   "defaultOnlineStatus": "ONLINE",
@@ -10,5 +10,6 @@
   "moduleRepositories": [
     "https://api.tdrstudios.de"
   ],
+  "allowActivityChange": false,
   "token_old": "NzMxNTAwMTkyNDY5MjIxNDE2.Xwm8pA._AxX4cSgwCSkoQyA7IxTltjMzOM"
 }

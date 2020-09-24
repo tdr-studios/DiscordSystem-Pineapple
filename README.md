@@ -49,6 +49,7 @@ With this System you can create module based DiscordBots
 
 
 ## Standard modules
+ - Moderationmoudule
 
 ## Planned modules
   - Youtube Module

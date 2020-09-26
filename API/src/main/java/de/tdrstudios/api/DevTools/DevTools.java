@@ -21,7 +21,6 @@ public class DevTools {
     private static LogSystem logsystem;
     public static void initLog() {
         logsystem = LoggerRegistry.get("devtools");
-        logsystem.write("Logger \"devtools\" initialised successfully!");
     }
 
 

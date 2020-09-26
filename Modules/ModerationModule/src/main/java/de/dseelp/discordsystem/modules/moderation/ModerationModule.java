@@ -22,10 +22,6 @@ public class ModerationModule extends DiscordModule {
         setupManager.addSetup(this, new SuggestionSetup());
         setupManager.addSetup(this, new BugReportSetup());
     }
-
-
-
-
     public void registerCommands() {
         registerCommand(new SuggestionCommand());
         registerCommand(new BugReportCommand());

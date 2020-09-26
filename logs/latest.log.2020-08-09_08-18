@@ -1,5 +1,0 @@
-[09.08 08:18:35] INFO: [Updater]: Loading Module Repositories from Config...
-[09.08 08:18:37] INFO: [Updater]: Loaded repository Test Repository from https://api.tdrstudios.de!
-[09.08 08:18:37] INFO: [Updater]: Loaded 1 Repository!
-[09.08 08:18:37] INFO: [Bot]: Starting DiscordBot!
-[09.08 08:18:37] ERROR: [Bot]: Can't start DiscordBot! The provided token is invalid!

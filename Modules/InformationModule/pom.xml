@@ -5,7 +5,7 @@
     <parent>
         <artifactId>module-parent</artifactId>
         <groupId>de.dseelp.discordsystem.modules</groupId>
-        <version>1.0-ALPHA</version>
+        <version>1.1-ALPHA</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -15,7 +15,7 @@
         <dependency>
             <groupId>de.dseelp.discordsystem</groupId>
             <artifactId>api</artifactId>
-            <version>1.0-ALPHA</version>
+            <version>1.1-ALPHA</version>
         </dependency>
     </dependencies>
 

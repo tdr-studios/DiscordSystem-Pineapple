@@ -64,6 +64,7 @@ public class HelpCommand extends Command implements Listener {
         List<Command> guildCommands = new ArrayList<>();
         List<Command> privateCommands = new ArrayList<>();
         for (Command command : Discord.getCommandSystem().getCommands()) {
+            if (command.isCommandHidedFromHelp()) continue;
             if (Arrays.stream(command.getTypes()).anyMatch(type -> type == CommandType.CONSOLE)) {
                 consoleCommands.add(command);
             }

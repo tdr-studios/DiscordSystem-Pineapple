@@ -20,4 +20,8 @@ public abstract class ModuleManager {
     public abstract void disable(Module module);
     public abstract Module getModule(String name);
     public abstract List<Module> getModules();
+
+    public ModuleManager getInstance() {
+        return this;
+    }
 }

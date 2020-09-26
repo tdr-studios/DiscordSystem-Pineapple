@@ -1,5 +1,6 @@
 package de.dseelp.discordsystem.core.module;
 
+import de.dseelp.discordsystem.api.BotConfig;
 import de.dseelp.discordsystem.api.Discord;
 import de.dseelp.discordsystem.api.DiscordModule;
 import de.dseelp.discordsystem.api.event.EventHandler;
@@ -11,9 +12,8 @@ import de.dseelp.discordsystem.api.reload.ReloadableReloadedEvent;
 import de.dseelp.discordsystem.core.module.commands.HelpCommand;
 import de.dseelp.discordsystem.core.module.commands.SetActivityCommand;
 import de.dseelp.discordsystem.core.module.commands.SetStateCommand;
-import de.dseelp.discordsystem.core.module.commands.console.ModuleCommand;
-import de.dseelp.discordsystem.core.module.commands.console.ReloadCommand;
-import de.dseelp.discordsystem.core.module.commands.console.StopCommand;
+import de.dseelp.discordsystem.core.module.commands.VersionCommand;
+import de.dseelp.discordsystem.core.module.commands.console.*;
 import de.dseelp.discordsystem.core.module.commands.guild.SayCommand;
 import de.dseelp.discordsystem.core.module.commands.guild.SetupCommand;
 import de.dseelp.discordsystem.core.module.commands.guild.TestCommand;
@@ -59,15 +59,28 @@ public class RootModule extends DiscordModule implements Listener {
         registerCommand(new ReloadCommand());
         registerCommand(new ModuleCommand());
         registerCommand(new sendPNCommand());
+        registerCommand(new VersionCommand());
         Discord.getReloadManager().addReload(this, new AllReload());
         Discord.getReloadManager().addReload(this, new BotReload());
         Discord.getReloadManager().addReload(this, new ConfigReload());
         Discord.getReloadManager().addReload(this, new ModuleReload());
+
         if(!Discord.isMaintenance()) {
-            registerCommand(new SetStateCommand());
+            if(BotConfig.getallowActivityChange() == "true") {
+                registerCommand(new SetStateCommand());
+                registerCommand(new SetActivityCommand());
+            }else {
+                System.out.println("The setactivity & setstate Commands are disabled by the Config!");
+                registerCommand(new SetStateCommandMAINTENANCE());
+                registerCommand(new SetActivityCommandMAINTENANCE());
+            }
+
+
+        }else {
+            System.out.println("[Maintenance] The Bot is in Maintenance Mode");
 
         }
-        registerCommand(new SetActivityCommand());
+
 
         //registerCommand(new RestartCommand());
         registerCommand(new SetupCommand());

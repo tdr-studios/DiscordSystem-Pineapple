@@ -12,7 +12,7 @@ public class sendPNCommand extends Command {
 
     public sendPNCommand() {
 
-        super(null, "Test PN", CommandType.DISCORD_GUILD, "PN");
+        super(new RolePermission("testcommand"), "Test PN", CommandType.DISCORD_GUILD, "PN");
 
     }
 

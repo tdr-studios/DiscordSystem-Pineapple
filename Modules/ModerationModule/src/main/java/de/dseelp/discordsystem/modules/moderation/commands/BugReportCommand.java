@@ -3,7 +3,10 @@ package de.dseelp.discordsystem.modules.moderation.commands;
 import de.dseelp.discordsystem.api.BotConfig;
 import de.dseelp.discordsystem.api.Discord;
 import de.dseelp.discordsystem.api.EmbedUtils;
-import de.dseelp.discordsystem.api.commands.*;
+import de.dseelp.discordsystem.api.commands.Command;
+import de.dseelp.discordsystem.api.commands.CommandSender;
+import de.dseelp.discordsystem.api.commands.CommandType;
+import de.dseelp.discordsystem.api.commands.DiscordGuildCommandSender;
 import de.dseelp.discordsystem.modules.moderation.ModerationConfig;
 import de.dseelp.discordsystem.utils.JsonDocument;
 import de.dseelp.discordsystem.utils.config.GuildConfig;
@@ -13,14 +16,13 @@ import net.dv8tion.jda.api.entities.TextChannel;
 import net.dv8tion.jda.api.entities.User;
 
 import java.awt.*;
-import java.time.Instant;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
-public class SuggestionCommand extends Command {
+public class BugReportCommand extends Command {
 
-    public SuggestionCommand() {
-        super(null, "Creates a Suggestion", CommandType.DISCORD_GUILD, "suggestion");
+    public BugReportCommand() {
+        super(null, "Creates a BugReport", CommandType.DISCORD_GUILD, "bugReport");
     }
 
     @Override
@@ -28,8 +30,8 @@ public class SuggestionCommand extends Command {
         DiscordGuildCommandSender sender = (DiscordGuildCommandSender) commandSender;
         sender.getMessage().delete().queue();
         Guild guild = sender.getGuild();
-        if (!ModerationConfig.getDocument(guild).has("suggestionChannel")) {
-            sender.sendMessage(EmbedUtils.createError("Error","Please use the setup command first to setup the suggestionChannel!")).queue();
+        if (!ModerationConfig.getDocument(guild).has("bugReportChannel")) {
+            sender.sendMessage(EmbedUtils.createError("Error","Please use the setup command first to setup the bugReportChannel!")).queue();
         }else if (args.length > 1) {
             StringBuilder builder = new StringBuilder();
             boolean first = true;
@@ -45,13 +47,13 @@ public class SuggestionCommand extends Command {
             eb.setColor(Color.YELLOW);
             eb.setThumbnail(avatarUrl);
             eb.addField("Area", args[0], false);
-            eb.addField("Suggestion", builder.toString(), false);
-            TextChannel textChannel = guild.getTextChannelById(ModerationConfig.getSuggestionChannelId(guild));
+            eb.addField("Bug", builder.toString(), false);
+            TextChannel textChannel = guild.getTextChannelById(ModerationConfig.getBugReportChannelId(guild));
             if (textChannel == null) {
                 sender.sendMessage(EmbedUtils.createError("Error", "The Channel no longer exists!")).queue();
             }else {
                 textChannel.sendMessage(eb.build()).queue();
             }
-        }else sender.sendMessage(EmbedUtils.createError("Usage", "Please use: "+ BotConfig.getCommandPrefix() + "suggestion <Area> <Suggestion>")).queue(message -> message.delete().queueAfter(5, TimeUnit.SECONDS));
+        }else sender.sendMessage(EmbedUtils.createError("Usage", "Please use: "+ BotConfig.getCommandPrefix() + "bugreport <Area> <Bug>")).queue(message -> message.delete().queueAfter(5, TimeUnit.SECONDS));
     }
 }

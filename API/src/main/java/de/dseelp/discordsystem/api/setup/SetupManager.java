@@ -5,6 +5,8 @@ import de.dseelp.discordsystem.api.DiscordModule;
 import de.dseelp.discordsystem.api.commands.CommandSender;
 
 import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class SetupManager {
     private HashMap<DiscordModule, List<Setup>> reloads = new HashMap<>();
@@ -14,6 +16,8 @@ public class SetupManager {
     public Setup[] getSetups() {
         return setups;
     }
+
+    private ExecutorService service = Executors.newFixedThreadPool(8);
 
     public boolean setup(CommandSender sender, String[] args) {
         for (Setup setup : getSetups()) {
@@ -44,7 +48,7 @@ public class SetupManager {
         List<Setup> setups = this.reloads.get(module);
         setups.add(setup);
         this.reloads.put(module, setups);
-        updateSetups();
+        service.execute(this::updateSetups);
     }
 
     private boolean canAdd(Setup setup) {
@@ -60,5 +64,6 @@ public class SetupManager {
 
     public void removeSetups(DiscordModule module) {
         reloads.remove(module);
+        service.execute(this::updateSetups);
     }
 }

@@ -6,8 +6,6 @@ import lombok.Getter;
 
 public class ConfigReload implements Reloadable {
 
-   public static String rlName;
-
 
     @Override
     public void reload() {
@@ -18,12 +16,7 @@ public class ConfigReload implements Reloadable {
 
     @Override
     public String getReloadName() {
-        return rlName;
-    }
-
-    public static void setReloadName(String newName) {
-        rlName = newName;
-        System.out.println("[ReloadSystem] The ReloadName was set to " + rlName);
+        return "config";
     }
 
     @Override

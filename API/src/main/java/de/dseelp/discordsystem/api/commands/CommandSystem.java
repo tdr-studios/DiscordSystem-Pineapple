@@ -62,13 +62,13 @@ public class CommandSystem {
             List<Command> commands = this.commands.get(module);
             commands.add(command);
             this.commands.put(module, commands);
-            regenerateCommandList();
+            executorService.execute(this::regenerateCommandList);
         }
     }
 
     public void removeCommandsForModule(DiscordModule module) {
         commands.remove(module);
-        regenerateCommandList();
+        executorService.execute(this::regenerateCommandList);
     }
 
     public boolean commandExists(Command command) {
@@ -112,7 +112,7 @@ public class CommandSystem {
                 String msg = builder.toString();
                 command.getCommand().execute(sender, command.getArgs(), command.getCommand());
                 if(sender instanceof ConsoleCommandSender) {
-                    System.out.println(">  " + command.getCommandName() + " " + msg);
+                    System.out.println(command.getCommandName() + " " + msg);
                 }else {
                     System.out.println("[Command] " +  "<" + ((DiscordGuildCommandSender) sender).getGuild().getName() + "> " + ((DiscordGuildCommandSender) sender).getMember().getUser().getAsTag() + " -> " + command.getCommandName() + " " + msg);
 

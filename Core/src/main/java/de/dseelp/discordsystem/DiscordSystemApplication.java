@@ -3,10 +3,12 @@ package de.dseelp.discordsystem;
 import de.dseelp.discordsystem.api.BotConfig;
 import de.dseelp.discordsystem.api.Discord;
 import de.dseelp.discordsystem.api.DiscordBot;
+import de.dseelp.discordsystem.core.spring.components.ConsoleService;
 import de.dseelp.discordsystem.core.spring.components.ModuleService;
 import de.dseelp.discordsystem.core.spring.event.AppFinishedStartedEvent;
 import de.dseelp.discordsystem.core.spring.listeners.AppFinishedStartedListener;
 import de.dseelp.discordsystem.core.spring.listeners.ApplicationContextInitialized;
+import de.dseelp.discordsystem.utils.console.ConsoleSystem;
 import lombok.Getter;
 import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
@@ -39,16 +41,17 @@ public class DiscordSystemApplication {
 		context.publishEvent(new AppFinishedStartedEvent(context));
 	}
 
-	public static void shutdown() {
+	public static void stopServices() {
 		if (context != null) {
 			ModuleService moduleService = context.getBean(ModuleService.class);
 			if (moduleService != null) moduleService.stop();
 			Discord.getBot().stop();
-			ModuleService consoleService = context.getBean(ModuleService.class);
-			if (consoleService != null) consoleService.stop();
+			ConsoleService consoleService = context.getBean(ConsoleService.class);
+			if (consoleService != null) {
+				consoleService.stop();
+			}
 			context.close();
 		}
-		System.exit(0);
 	}
 
 }

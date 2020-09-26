@@ -25,7 +25,7 @@ public class ApplicationContextInitialized implements ApplicationListener<Applic
 
     @Override
     public void onApplicationEvent(ApplicationContextInitializedEvent event) {
-        Runtime.getRuntime().addShutdownHook(new Thread(DiscordSystemApplication::shutdown));
+        Runtime.getRuntime().addShutdownHook(new Thread(DiscordSystemApplication::stopServices));
         BotConfig.load();
         GsonUtils.addAdapter(DefaultArtifactVersion.class, new Serializer());
         Discord.setEventManager(new EventManager());

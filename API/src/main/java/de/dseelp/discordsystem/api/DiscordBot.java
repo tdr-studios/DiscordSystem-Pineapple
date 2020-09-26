@@ -47,7 +47,7 @@ public class DiscordBot {
                 shardManager = DefaultShardManagerBuilder.createDefault(token)
                 .build();
             } catch (Exception e) {
-                logSystem.error("Failed! "+e.getCause().getMessage());
+                logSystem.error(e.getCause().getMessage());
                 System.exit(0);
             }
             if(Discord.isMaintenance()){

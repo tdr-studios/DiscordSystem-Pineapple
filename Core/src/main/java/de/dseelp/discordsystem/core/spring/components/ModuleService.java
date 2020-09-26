@@ -72,9 +72,8 @@ public class ModuleService {
         Discord.getCommandSystem().removeCommandsForModule(rootModule);
         Discord.getReloadManager().removeReloads(rootModule);
         Discord.getSetupManager().removeSetups(rootModule);
-        CustomModuleManager moduleManager = (CustomModuleManager) this.manager;
         for (Module module : manager.getModules()) {
-            moduleManager.disable(module);
+            manager.disable(module);
         }
         manager.unloadAll();
     }

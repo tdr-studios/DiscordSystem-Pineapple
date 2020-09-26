@@ -15,12 +15,13 @@ import java.time.Instant;
 public class SetActivityCommand extends Command{
 
     public SetActivityCommand() {
-        super(null,"Set a Custom Activity",CommandType.GUILD_AND_CONSOLE,"setactivity");
+        super(new NullPermission(),"Set a Custom Activity",CommandType.GUILD_AND_CONSOLE,"setactivity");
 
     }
 
     @Override
     public void execute(CommandSender sender, String[] args, Command command) {
+
         EmbedBuilder eb = EmbedUtils.createNormalBuilder("Bot-System", "Cant resolve Command" + System.lineSeparator() +" -> ErrorCode #001 in SetActivityCommand");
         if(sender instanceof DiscordGuildCommandSender)
         {

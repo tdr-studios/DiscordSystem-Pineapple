@@ -2,11 +2,11 @@ package de.dseelp.discordsystem.api.setup;
 
 import de.dseelp.discordsystem.api.Discord;
 import de.dseelp.discordsystem.api.DiscordModule;
+import de.dseelp.discordsystem.api.commands.CommandSender;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class SetupManager {
     private HashMap<DiscordModule, List<Setup>> reloads = new HashMap<>();
@@ -17,19 +17,21 @@ public class SetupManager {
         return setups;
     }
 
-    public boolean setup(String name) {
-        for (Setup reload : getSetups()) {
-            if (reload.getName().toLowerCase().equals(name.toLowerCase())) {
-                setup(reload);
+    private ExecutorService service = Executors.newFixedThreadPool(8);
+
+    public boolean setup(CommandSender sender, String[] args) {
+        for (Setup setup : getSetups()) {
+            if (setup.getName().toLowerCase().equals(args[0].toLowerCase())) {
+                setup(sender, Arrays.copyOfRange(args, 1, args.length), setup);
                 return true;
             }
         }
         return false;
     }
 
-    public void setup(Setup setup) {
-        Discord.getEventManager().callEvent(new SetupEvent(setup));
-        setup.setup();
+    public void setup(CommandSender sender, String[] args, Setup setup) {
+        Discord.getEventManager().callEvent(new SetupEvent(sender, args, setup));
+        setup.setup(sender, args);
     }
 
     private void updateSetups() {
@@ -40,13 +42,13 @@ public class SetupManager {
         setups = reloads.toArray(new Setup[reloads.size()]);
     }
 
-    public void addReload(DiscordModule module, Setup setup) {
+    public void addSetup(DiscordModule module, Setup setup) {
         if (!canAdd(setup)) return;
         reloads.computeIfAbsent(module, k -> new ArrayList<>());
         List<Setup> setups = this.reloads.get(module);
         setups.add(setup);
         this.reloads.put(module, setups);
-        updateSetups();
+        service.execute(this::updateSetups);
     }
 
     private boolean canAdd(Setup setup) {
@@ -62,5 +64,6 @@ public class SetupManager {
 
     public void removeSetups(DiscordModule module) {
         reloads.remove(module);
+        service.execute(this::updateSetups);
     }
 }

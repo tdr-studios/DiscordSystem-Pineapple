@@ -17,6 +17,11 @@ public abstract class ModuleManager {
     public abstract void unload(Module module);
     public abstract void unload(ModuleInfo module);
     public abstract void disable(String name);
+    public abstract void disable(Module module);
     public abstract Module getModule(String name);
     public abstract List<Module> getModules();
+
+    public ModuleManager getInstance() {
+        return this;
+    }
 }

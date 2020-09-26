@@ -12,7 +12,7 @@ import java.time.Instant;
 public class SetupCommand extends Command {
 
     public SetupCommand() {
-        super(null, "Execute a Setup", CommandType.CONSOLE, "setup");
+        super(new NullPermission(), "Execute a Setup", CommandType.DISCORD_GUILD, "setup");
     }
 
     @Override
@@ -22,7 +22,7 @@ public class SetupCommand extends Command {
             sendHelp(sender);
             return;
         }
-        if (!setupManager.setup(args[0])) {
+        if (!setupManager.setup(sender, args)) {
             sendHelp(sender);
         }
     }
@@ -35,15 +35,9 @@ public class SetupCommand extends Command {
             builder.append(setup.getDescription() == null ? "No Description present!" : setup.getDescription());
             builder.append(System.lineSeparator());
         }
-        if (sender instanceof ConsoleCommandSender) {
-            sender.sendMessage("Please use: setup <Setup>");
-            sender.sendMessage("Setups:");
-            sender.sendMessage(builder.toString());
-        }else if (sender instanceof DiscordGuildCommandSender) {
-            EmbedBuilder eb = EmbedUtils.createErrorBuilder("Setups", builder.toString());
-            EmbedUtils.addUserFooter(eb, ((DiscordGuildCommandSender) sender).getAuthor());
-            EmbedUtils.setTimestamp(eb, Instant.now());
-            sender.sendMessage(eb.build());
-        }
+        EmbedBuilder eb = EmbedUtils.createErrorBuilder("Setups", builder.toString());
+        EmbedUtils.addUserFooter(eb, ((DiscordGuildCommandSender) sender).getAuthor());
+        EmbedUtils.setTimestamp(eb, Instant.now());
+        sender.sendMessage(eb.build()).queue();
     }
 }

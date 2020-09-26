@@ -2,8 +2,10 @@ package de.dseelp.discordsystem.core.module.reloads;
 
 import de.dseelp.discordsystem.api.BotConfig;
 import de.dseelp.discordsystem.api.reload.Reloadable;
+import lombok.Getter;
 
 public class ConfigReload implements Reloadable {
+
 
     @Override
     public void reload() {
@@ -14,7 +16,7 @@ public class ConfigReload implements Reloadable {
 
     @Override
     public String getReloadName() {
-        return "Config";
+        return "config";
     }
 
     @Override

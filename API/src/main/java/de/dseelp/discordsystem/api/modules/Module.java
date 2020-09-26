@@ -52,7 +52,6 @@ public abstract class Module {
 
     public void onDisable(){}
 
-
     final void init(ModuleInfo info) {
         if (this.info == null) {
             this.info = info;
@@ -60,7 +59,6 @@ public abstract class Module {
             throw new UnsupportedOperationException("Module already initialized!");
         }
     }
-
     @Getter
     private boolean enabled;
 

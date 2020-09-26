@@ -63,5 +63,6 @@ public class ReloadManager {
 
     public void removeReloads(DiscordModule module) {
         reloads.remove(module);
+        updateReloads();
     }
 }

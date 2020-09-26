@@ -29,6 +29,7 @@ public class BotConfig {
         List<String> defaultRepos = new ArrayList<>();
         defaultRepos.add("https://api.tdrstudios.de");
         config.setDefaultStringList("moduleRepositories", defaultRepos);
+        config.setDefault("allowActivityChange", true);
         config.save(file);
     }
 
@@ -63,5 +64,8 @@ public class BotConfig {
     }
     public static String getSayCommandHeader() {
         return config.getString("Say-Command Header");
+    }
+    public static String getallowActivityChange() {
+        return config.getString("allowActivityChange");
     }
 }

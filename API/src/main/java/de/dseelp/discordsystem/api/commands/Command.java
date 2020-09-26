@@ -109,5 +109,12 @@ public abstract class Command {
         return cmd;
     }
 
+    @Getter
+    private boolean commandHidedFromHelp;
+
+    public void setHideCommand(boolean hideCommand) {
+        this.commandHidedFromHelp = hideCommand;
+    }
+
     public abstract void execute(CommandSender sender, String[] args, Command command);
 }

@@ -1,5 +1,6 @@
 package de.dseelp.discordsystem.core.module.commands;
 
+import de.dseelp.discordsystem.api.BotConfig;
 import de.dseelp.discordsystem.api.Discord;
 import de.dseelp.discordsystem.api.EmbedUtils;
 import de.dseelp.discordsystem.api.commands.*;
@@ -13,9 +14,8 @@ public class SetStateCommand extends Command {
 
     public SetStateCommand() {
 
+        super(new NullPermission(), "A simple SetSate Command", CommandType.GUILD_AND_CONSOLE, "setstate");
 
-
-        super(null, "A simple SetSate Command", CommandType.GUILD_AND_CONSOLE, "setstate");
 
     }
 

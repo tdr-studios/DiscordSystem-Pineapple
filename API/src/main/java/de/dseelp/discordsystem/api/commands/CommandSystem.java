@@ -8,12 +8,12 @@ import de.dseelp.discordsystem.api.event.Listener;
 import de.dseelp.discordsystem.api.events.discord.guild.GuildMessageReceivedEvent;
 import de.dseelp.discordsystem.api.events.system.CommandListRegenerateEvent;
 import de.dseelp.discordsystem.utils.console.ConsoleSystem;
+import de.dseelp.discordsystem.utils.console.logging.LogSystem;
+import de.dseelp.discordsystem.utils.console.logging.LoggerRegistry;
+import de.tdrstudios.utils.SenderType;
 import lombok.Getter;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.function.Consumer;
@@ -27,6 +27,9 @@ public class CommandSystem {
 
     @Getter
     private ExecutorService executorService = Executors.newFixedThreadPool(8);
+    private Object DiscordGuildCommandSender;
+
+    private LogSystem logSystem;
 
     public CommandSystem() {
         commands = new HashMap<>();
@@ -37,6 +40,8 @@ public class CommandSystem {
                 executorService.execute(() -> execute(new ConsoleCommandSender(), parseCommand(s)));
             }
         });
+        LoggerRegistry.register("cmdLogger", ConsoleSystem.createSubLogger(LoggerRegistry.get().getLogger(), "CommandDebug"));
+        logSystem = LoggerRegistry.get("cmdLogger");
     }
 
     private Command[] commandArray = new Command[]{};
@@ -60,13 +65,13 @@ public class CommandSystem {
             List<Command> commands = this.commands.get(module);
             commands.add(command);
             this.commands.put(module, commands);
-            regenerateCommandList();
+            executorService.execute(this::regenerateCommandList);
         }
     }
 
     public void removeCommandsForModule(DiscordModule module) {
         commands.remove(module);
-        regenerateCommandList();
+        executorService.execute(this::regenerateCommandList);
     }
 
     public boolean commandExists(Command command) {
@@ -93,12 +98,25 @@ public class CommandSystem {
     public void execute(CommandSender sender, ParsedCommand command) {
         if (command == null) {
 
-            System.err.println("[CommandSystem] in the future you can see here the Help View!");
+
             //command.setCommand(sender,/* Help Command*/);
-        }
-        if (CommandType.isSupported(sender, command.getCommand().getTypes())) {
+        }else if (CommandType.isSupported(sender, command.getCommand().getTypes())) {
             if (sender.hasPermission(command.getCommand().getPermission())) {
+                StringBuilder builder = new StringBuilder();
+                boolean first = true;
+                for (String arg : command.getArgs()) {
+                    if (!first) builder.append(" ");
+                    builder.append(arg);
+                    first = false;
+                }
+                String msg = builder.toString();
                 command.getCommand().execute(sender, command.getArgs(), command.getCommand());
+                if(sender instanceof ConsoleCommandSender) {
+                    System.out.println(command.getCommandName() + " " + msg);
+                }else {
+                    logSystem.getDebug().println("<" + ((DiscordGuildCommandSender) sender).getGuild().getName() + "> " + ((DiscordGuildCommandSender) sender).getMember().getUser().getAsTag() + " -> " + command.getCommandName() + " " + msg);
+                }
+
             }
         }
     }

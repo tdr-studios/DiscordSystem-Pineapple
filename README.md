@@ -3,6 +3,9 @@
 [![GitHub contributors](https://img.shields.io/github/contributors/tdr-studios/DiscordSystem.svg)](https://github.com/tdr-studios/DiscordSystem/graphs/contributors)
 [![Github All Releases](https://img.shields.io/github/downloads/tdr-studios/DiscordSystem/total.svg)](https://github.com/tdr-studios/DiscordSystem/releases)
 [![GitHub release](https://img.shields.io/github/release/tdr-studios/DiscordSystem.svg)](https://github.com/tdr-studios/DiscordSystem/releases)
+
+**Warning**: This is a legacy Version and is no longer supported. You can find the new version here [tdr-studios/DiscordSystem](https://github.com/tdr-studios/DiscordSystem)
+
 # DiscordSystem
 
 ## Create your own DiscordBot

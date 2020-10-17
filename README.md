@@ -4,7 +4,6 @@
 [![Github All Releases](https://img.shields.io/github/downloads/tdr-studios/DiscordSystem-Legacy/total.svg)](https://github.com/tdr-studios/DiscordSystem-Legacy/releases)
 [![GitHub release](https://img.shields.io/github/release/tdr-studios/DiscordSystem-Legacy.svg)](https://github.com/tdr-studios/DiscordSystem-Legacy/releases)
 
-**Warning**: This is a legacy Version and is no longer supported. You can find the new version here [tdr-studios/DiscordSystem](https://github.com/tdr-studios/DiscordSystem)
 
 # DiscordSystem
 

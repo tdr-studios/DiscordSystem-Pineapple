@@ -87,8 +87,7 @@ public class DiscordBot {
         if(Discord.isMaintenance()) {
             logSystem.write(" ");
             logSystem.write("__________________________________________________");
-            logSystem.write("[TDRStudios] The Api of your Bot is in maintenance!");
-            logSystem.write("[TDRStudios] That can hold on for max 3 Weeks!");
+            logSystem.write("[TDRStudios] your Bot is in maintenance!");
             logSystem.write("__________________________________________________");
             logSystem.write(" ");
             shardManager.setStatus(OnlineStatus.DO_NOT_DISTURB);

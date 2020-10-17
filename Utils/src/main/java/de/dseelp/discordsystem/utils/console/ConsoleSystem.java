@@ -28,7 +28,7 @@ public class ConsoleSystem {
             ConsoleSystem.console = console;
             rootLogger = java.util.logging.Logger.getAnonymousLogger();
             rootLogger.setUseParentHandlers(false);
-            rootLogger.setLevel(Level.FINE);
+            rootLogger.setLevel(Level.CONFIG);
             CustomConsoleHandler consoleHandler = new CustomConsoleHandler();
             consoleHandler.setFormatter(new RootFormatter(true));
             File file = new File("logs");

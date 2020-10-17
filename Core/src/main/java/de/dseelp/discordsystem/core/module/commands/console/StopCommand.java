@@ -13,6 +13,7 @@ public class StopCommand extends Command {
 
     @Override
     public void execute(CommandSender sender, String[] args, Command command) {
-        DiscordSystemApplication.shutdown();
+        DiscordSystemApplication.stopServices();
+        System.exit(0);
     }
 }

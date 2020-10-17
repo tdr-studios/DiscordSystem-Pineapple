@@ -11,7 +11,7 @@
 	<packaging>jar</packaging>
 	<groupId>de.dseelp.discordsystem</groupId>
 	<artifactId>core</artifactId>
-	<version>1.0-ALPHA</version>
+	<version>1.1-ALPHA</version>
 	<name>Core</name>
 	<description>Demo project for Spring Boot</description>
 

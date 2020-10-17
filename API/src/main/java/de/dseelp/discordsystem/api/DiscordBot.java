@@ -75,7 +75,7 @@ public class DiscordBot {
             logSystem.error("is invalid! ");
             logSystem.lineSeperator();
             logSystem.write("Token: " + BotConfig.getToken());
-            logSystem.debug(" This is a Discord ore Config Error don't report this to tdr-studios");
+            logSystem.debug(" This is a Discord or Config Error don't report this to tdr-studios");
             logSystem.write("******************************************************");
             logSystem.lineSeperator();
 

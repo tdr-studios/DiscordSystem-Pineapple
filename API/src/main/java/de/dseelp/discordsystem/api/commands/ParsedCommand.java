@@ -13,4 +13,5 @@ public class ParsedCommand {
     private String[] args;
     private String commandName;
     private Command command;
+    private CommandType type;
 }
